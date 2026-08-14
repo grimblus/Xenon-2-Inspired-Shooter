@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bd4bxd4mj0p1n"]
+
+[ext_resource type="Texture2D" uid="uid://begd2o74ap2fr" path="res://graphics/24bit/missile.bmp" id="1_v7oki"]
+[ext_resource type="Script" uid="uid://cfkaauwawfh44" path="res://Bullet.cs" id="1_v8qja"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8qja"]
+size = Vector2(4, 11)
+
+[node name="Bullet" type="Area2D" unique_id=1537041186]
+script = ExtResource("1_v8qja")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1641281706]
+texture = ExtResource("1_v7oki")
+region_enabled = true
+region_rect = Rect2(6, 0, 4, 11)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=647260940]
+shape = SubResource("RectangleShape2D_v8qja")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=3916512]
+
+[connection signal="area_entered" from="." to="." method="OnAreaEntered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnVisibleOnScreenNotifier2DScreenExited"]

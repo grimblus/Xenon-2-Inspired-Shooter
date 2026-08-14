@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://l2yy24yc20rs"]
+
+[ext_resource type="Texture2D" uid="uid://dimehypoqecku" path="res://graphics/24bit/galaxy2.bmp" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://dcjpfraeg45ep" path="res://player.tscn" id="1_ig7tw"]
+
+[node name="Main" type="Node" unique_id=2067105497]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1338779425]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_0xm2m")
+stretch_mode = 1
+
+[node name="Background" type="Sprite2D" parent="." unique_id=545053024]
+visible = false
+texture = ExtResource("1_0xm2m")
+centered = false
+
+[node name="Player" parent="." unique_id=2036859991 instance=ExtResource("1_ig7tw")]
+position = Vector2(600, 300)
