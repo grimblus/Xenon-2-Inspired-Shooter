@@ -4,8 +4,21 @@
 [ext_resource type="Script" uid="uid://dmx3u1bds6b7r" path="res://Player.cs" id="1_sweqy"]
 [ext_resource type="PackedScene" uid="uid://bd4bxd4mj0p1n" path="res://bullet.tscn" id="2_2hs0m"]
 [ext_resource type="Texture2D" uid="uid://c5etd58dimfek" path="res://graphics/24bit/Burner1.bmp" id="2_onrkg"]
+[ext_resource type="Shader" uid="uid://le51gluc4kj8" path="res://shader.gdshader" id="3_1jxqw"]
 [ext_resource type="Texture2D" uid="uid://d0345gc33ak0w" path="res://graphics/24bit/Burner5.bmp" id="3_hqtel"]
 [ext_resource type="Texture2D" uid="uid://byoldds7th4lq" path="res://graphics/24bit/Burner6.bmp" id="4_sweqy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lypxw"]
+shader = ExtResource("3_1jxqw")
+shader_parameter/chroma_key = Color(1, 0, 1, 1)
+shader_parameter/similarity_threshold = 0.3
+shader_parameter/smoothness = 0.05
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1jxqw"]
+shader = ExtResource("3_1jxqw")
+shader_parameter/chroma_key = Color(1, 0, 1, 1)
+shader_parameter/similarity_threshold = 0.3
+shader_parameter/smoothness = 0.05
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2hs0m"]
 atlas = ExtResource("2_onrkg")
@@ -75,11 +88,13 @@ script = ExtResource("1_sweqy")
 BulletScene = ExtResource("2_2hs0m")
 
 [node name="Ship" type="Sprite2D" parent="." unique_id=1737988385]
+material = SubResource("ShaderMaterial_lypxw")
 texture = ExtResource("1_4flbx")
 hframes = 7
 frame = 3
 
 [node name="Boosters" type="AnimatedSprite2D" parent="Ship" unique_id=315759886]
+material = SubResource("ShaderMaterial_1jxqw")
 position = Vector2(-6, 48)
 sprite_frames = SubResource("SpriteFrames_e3tdd")
 animation = &"forward"
@@ -89,6 +104,7 @@ autoplay = "forward"
 one_shot = true
 
 [node name="HitBox" type="CollisionShape2D" parent="." unique_id=697705479]
+visible = false
 shape = SubResource("RectangleShape2D_e3tdd")
 
 [connection signal="timeout" from="GunCooldown" to="." method="OnGunCooldownTimeout"]
