@@ -2,22 +2,48 @@
 
 [ext_resource type="Texture2D" uid="uid://dimehypoqecku" path="res://graphics/24bit/galaxy2.bmp" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://dcjpfraeg45ep" path="res://player.tscn" id="1_ig7tw"]
+[ext_resource type="Material" uid="uid://vdb0ley6chky" path="res://chroma_key_material.tres" id="2_7mycd"]
+[ext_resource type="Script" uid="uid://clqt3caa8aewq" path="res://Scroller.cs" id="2_h2yge"]
+[ext_resource type="Texture2D" uid="uid://105gvxm1n4xt" path="res://graphics/24bit/GAster32.bmp" id="2_lquwl"]
+[ext_resource type="Texture2D" uid="uid://dxaswhgig86c2" path="res://graphics/24bit/GAster64.bmp" id="3_7mycd"]
 
 [node name="Main" type="Node" unique_id=2067105497]
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1338779425]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_0xm2m")
-stretch_mode = 1
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=923211884]
 
-[node name="Background" type="Sprite2D" parent="." unique_id=545053024]
-visible = false
+[node name="Galaxy" type="ParallaxLayer" parent="ParallaxBackground" unique_id=214118459]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(0, 480)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Galaxy" unique_id=24303475]
 texture = ExtResource("1_0xm2m")
 centered = false
 
-[node name="Player" parent="." unique_id=2036859991 instance=ExtResource("1_ig7tw")]
-position = Vector2(600, 300)
+[node name="Meteor_Small" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1641065677]
+motion_scale = Vector2(0.4, 0.4)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Meteor_Small" unique_id=712111469]
+material = ExtResource("2_7mycd")
+position = Vector2(476, 275)
+texture = ExtResource("2_lquwl")
+region_enabled = true
+region_rect = Rect2(0, 0, 32.989494, 32.25152)
+
+[node name="Meteor_Medium" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1136812853]
+motion_scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Meteor_Medium" unique_id=421887675]
+material = ExtResource("2_7mycd")
+position = Vector2(193, 174)
+texture = ExtResource("3_7mycd")
+region_enabled = true
+region_rect = Rect2(190, 130, 63, 56)
+
+[node name="Scroller" type="Node2D" parent="." unique_id=1846077116]
+script = ExtResource("2_h2yge")
+
+[node name="Camera2D" type="Camera2D" parent="Scroller" unique_id=386137376]
+anchor_mode = 0
+
+[node name="Player" parent="Scroller" unique_id=2036859991 instance=ExtResource("1_ig7tw")]
+position = Vector2(320, 420)
