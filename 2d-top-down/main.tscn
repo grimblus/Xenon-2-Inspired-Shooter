@@ -12,9 +12,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_kek77"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, -1)
+"points": PackedVector2Array(0, 0, 0, 0, -3, 0, 0, 0, 0, 0, -4, 0, 0, 0, 0, 0, 316, 0, 0, 0, 0, 0, 638, 2, 0, 0, 0, 0, 314, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, -3, 0)
 }
-point_count = 1
+point_count = 7
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_272bh"]
 texture = ExtResource("5_272bh")
@@ -90,8 +90,8 @@ position = Vector2(320, 420)
 curve = SubResource("Curve2D_kek77")
 
 [node name="MobSpawnLocation" type="PathFollow2D" parent="Scroller/MobPath" unique_id=645416124]
-position = Vector2(6, 9)
-rotation = -2.070143
+position = Vector2(-3, 0)
+rotation = 3.1415927
 
 [node name="Terrain" type="TileMapLayer" parent="." unique_id=543662033]
 material = ExtResource("2_7mycd")
