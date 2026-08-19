@@ -1,12 +1,20 @@
 [gd_scene format=3 uid="uid://l2yy24yc20rs"]
 
 [ext_resource type="Texture2D" uid="uid://dimehypoqecku" path="res://graphics/24bit/galaxy2.bmp" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://c8il7733psbm5" path="res://Main.cs" id="1_5vw27"]
 [ext_resource type="PackedScene" uid="uid://dcjpfraeg45ep" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="Material" uid="uid://vdb0ley6chky" path="res://chroma_key_material.tres" id="2_7mycd"]
 [ext_resource type="Script" uid="uid://clqt3caa8aewq" path="res://Scroller.cs" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://ebgn7q4t1v64" path="res://pattern_mover.tscn" id="2_kek77"]
 [ext_resource type="Texture2D" uid="uid://105gvxm1n4xt" path="res://graphics/24bit/GAster32.bmp" id="2_lquwl"]
 [ext_resource type="Texture2D" uid="uid://dxaswhgig86c2" path="res://graphics/24bit/GAster64.bmp" id="3_7mycd"]
 [ext_resource type="Texture2D" uid="uid://cbw8g3jjijjre" path="res://graphics/24bit/Blocks.bmp" id="5_272bh"]
+
+[sub_resource type="Curve2D" id="Curve2D_kek77"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -1)
+}
+point_count = 1
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_272bh"]
 texture = ExtResource("5_272bh")
@@ -34,6 +42,8 @@ texture_region_size = Vector2i(32, 32)
 sources/2 = SubResource("TileSetAtlasSource_272bh")
 
 [node name="Main" type="Node" unique_id=2067105497]
+script = ExtResource("1_5vw27")
+MobScene = ExtResource("2_kek77")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=923211884]
 
@@ -76,6 +86,21 @@ anchor_mode = 0
 [node name="Player" parent="Scroller" unique_id=2036859991 instance=ExtResource("1_ig7tw")]
 position = Vector2(320, 420)
 
+[node name="MobPath" type="Path2D" parent="Scroller" unique_id=928925929]
+curve = SubResource("Curve2D_kek77")
+
+[node name="MobSpawnLocation" type="PathFollow2D" parent="Scroller/MobPath" unique_id=645416124]
+position = Vector2(6, 9)
+rotation = -2.070143
+
 [node name="Terrain" type="TileMapLayer" parent="." unique_id=543662033]
 material = ExtResource("2_7mycd")
 tile_set = SubResource("TileSet_3ewea")
+
+[node name="MobTimer" type="Timer" parent="." unique_id=1556481222]
+wait_time = 0.5
+
+[node name="StartTimer" type="Timer" parent="." unique_id=1310393044]
+
+[connection signal="timeout" from="MobTimer" to="." method="OnMobTimerTimeout"]
+[connection signal="timeout" from="StartTimer" to="." method="OnStartTimerTimeout"]

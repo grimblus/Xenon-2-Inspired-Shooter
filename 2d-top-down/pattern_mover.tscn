@@ -127,6 +127,7 @@ animations = [{
 
 [node name="PatternMover" type="RigidBody2D" unique_id=2111961150]
 collision_mask = 0
+gravity_scale = 0.0
 script = ExtResource("1_55c17")
 metadata/_edit_group_ = true
 
