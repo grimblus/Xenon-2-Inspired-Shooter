@@ -602,7 +602,6 @@ frame_progress = 0.79813033
 script = ExtResource("4_4c57u")
 
 [node name="BG_Nebula" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1770639480]
-visible = false
 motion_scale = Vector2(0.2, 0.2)
 motion_mirroring = Vector2(0, 1080)
 
@@ -612,7 +611,6 @@ texture = ExtResource("2_kek77")
 centered = false
 
 [node name="BG_Stars" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1224873891]
-visible = false
 motion_scale = Vector2(0.4, 0.4)
 motion_mirroring = Vector2(0, 540)
 
