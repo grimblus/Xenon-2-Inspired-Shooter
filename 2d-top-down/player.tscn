@@ -97,7 +97,14 @@ frame = 3
 material = SubResource("ShaderMaterial_1jxqw")
 position = Vector2(-6, 48)
 sprite_frames = SubResource("SpriteFrames_e3tdd")
-animation = &"forward"
+animation = &"left"
+autoplay = "forward"
+
+[node name="Boosters2" type="AnimatedSprite2D" parent="Ship" unique_id=52006758]
+material = SubResource("ShaderMaterial_1jxqw")
+position = Vector2(7, 48)
+sprite_frames = SubResource("SpriteFrames_e3tdd")
+animation = &"left"
 autoplay = "forward"
 
 [node name="GunCooldown" type="Timer" parent="." unique_id=1354024316]
@@ -106,5 +113,8 @@ one_shot = true
 [node name="HitBox" type="CollisionShape2D" parent="." unique_id=697705479]
 visible = false
 shape = SubResource("RectangleShape2D_e3tdd")
+
+[node name="BulletSpawn" type="Marker2D" parent="." unique_id=1463174157]
+position = Vector2(0, -32)
 
 [connection signal="timeout" from="GunCooldown" to="." method="OnGunCooldownTimeout"]

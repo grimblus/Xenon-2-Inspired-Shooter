@@ -9,14 +9,18 @@ public partial class Player : Area2D
 	
 	private Sprite2D ship;
 	private AnimatedSprite2D boosters;
+	private AnimatedSprite2D boosters2;
 	private Timer cooldown;
+	private Marker2D bulletSpawn;
 	private Vector2 screenSize;
 	private bool canShoot = true;
 	
 	public override void _Ready() {
 		ship = GetNode<Sprite2D>("Ship");
 		boosters = GetNode<AnimatedSprite2D>("Ship/Boosters");
+		boosters2 = GetNode<AnimatedSprite2D>("Ship/Boosters2");
 		cooldown = GetNode<Timer>("GunCooldown");
+		bulletSpawn = GetNode<Marker2D>("BulletSpawn");
 		screenSize = GetViewportRect().Size;
 		Start();
 	}
@@ -32,16 +36,19 @@ public partial class Player : Area2D
 		if (input.X > 0) {
 			ship.Frame= 5;
 			boosters.Animation = "right";
+			boosters2.Animation = "right";
 		} 
 		else if (input.X < 0)
 		{
 			ship.Frame = 1;
 			boosters.Animation = "left";
+			boosters2.Animation = "left";
 		}
 		else
 		{
 			ship.Frame = 3;
 			boosters.Animation = "forward";
+			boosters2.Animation = "forward";
 		}
 		
 		Position += input * Speed * (float)delta;
@@ -62,9 +69,8 @@ public partial class Player : Area2D
 		cooldown.Start();
 
 		var b = BulletScene.Instantiate<Bullet>();
-		GetTree().Root.AddChild(b);
-
-		b.Start(Position + new Vector2(0, -8));
+		GetParent().AddChild(b);
+		b.GlobalPosition = bulletSpawn.GlobalPosition;
 	}
 	
 	private void OnGunCooldownTimeout() {
