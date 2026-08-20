@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://fq0gy0hfsjh2" path="res://PatternMover.cs" id="1_55c17"]
 [ext_resource type="Texture2D" uid="uid://bq6g2jspgj28q" path="res://graphics/24bit/drone.bmp" id="1_pj6rf"]
 
+[sub_resource type="Curve2D" id="Curve2D_ycdy4"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_pj6rf"]
 atlas = ExtResource("1_pj6rf")
 region = Rect2(0, 0, 32, 32)
@@ -125,10 +127,14 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cvvem"]
 
-[node name="PatternMover" type="RigidBody2D" unique_id=2111961150]
+[sub_resource type="Curve2D" id="Curve2D_55c17"]
+
+[node name="PatternMover" type="RigidBody2D" unique_id=2111961150 node_paths=PackedStringArray("PatternPath")]
 collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource("1_55c17")
+Pattern = SubResource("Curve2D_ycdy4")
+PatternPath = NodePath("Path2D")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1881222018]
@@ -140,3 +146,6 @@ scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_cvvem")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=917049643]
+
+[node name="Path2D" type="Path2D" parent="." unique_id=885411680]
+curve = SubResource("Curve2D_55c17")

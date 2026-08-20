@@ -1,16 +1,17 @@
 [gd_scene format=4 uid="uid://l2yy24yc20rs"]
 
 [ext_resource type="Script" uid="uid://c8il7733psbm5" path="res://Main.cs" id="1_5vw27"]
-[ext_resource type="Texture2D" uid="uid://bp7k8t1xqr7ql" path="res://graphics/background/08_ice/layer1_far.png" id="1_5vw27"]
 [ext_resource type="PackedScene" uid="uid://dcjpfraeg45ep" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://j1j4r2c2eriq" path="res://graphics/background/08_ice/layer3_stars.png" id="2_4c57u"]
 [ext_resource type="Material" uid="uid://vdb0ley6chky" path="res://chroma_key_material.tres" id="2_7mycd"]
 [ext_resource type="Script" uid="uid://clqt3caa8aewq" path="res://Scroller.cs" id="2_h2yge"]
-[ext_resource type="Texture2D" uid="uid://b53daxmgcg63f" path="res://graphics/background/08_ice/layer2_nebula.png" id="2_kek77"]
+[ext_resource type="PackedScene" uid="uid://ebgn7q4t1v64" path="res://pattern_mover.tscn" id="2_kek77"]
 [ext_resource type="Texture2D" uid="uid://105gvxm1n4xt" path="res://graphics/24bit/GAster32.bmp" id="2_lquwl"]
 [ext_resource type="Texture2D" uid="uid://dxaswhgig86c2" path="res://graphics/24bit/GAster64.bmp" id="3_7mycd"]
+[ext_resource type="Texture2D" uid="uid://bp7k8t1xqr7ql" path="res://graphics/background/08_ice/layer1_far.png" id="3_ycdy4"]
 [ext_resource type="Script" uid="uid://cyvifbxk7e4j0" path="res://MeteorDefault.cs" id="4_4c57u"]
 [ext_resource type="Texture2D" uid="uid://cbw8g3jjijjre" path="res://graphics/24bit/Blocks.bmp" id="5_272bh"]
+[ext_resource type="Texture2D" uid="uid://b53daxmgcg63f" path="res://graphics/background/08_ice/layer2_nebula.png" id="9_w48qg"]
 [ext_resource type="Texture2D" uid="uid://dpxtrwb3flq0q" path="res://graphics/24bit/GAster96.bmp" id="9_ycdy4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jq2sk"]
@@ -498,12 +499,6 @@ tile_data = PackedInt32Array(0, 2, 805306393, 917504, 2, 25, 1835008, 2, 8053063
 [sub_resource type="TileMapPattern" id="TileMapPattern_dg77c"]
 tile_data = PackedInt32Array(0, 2, 805306393, 917504, 2, 25, 1835008, 2, 805306393, 2752512, 2, 25, 3670016, 2, 805306393, 4587520, 2, 25, 5505024, 2, 805306393, 6422528, 2, 25, 7340032, 2, 805306393, 8257536, 2, 25, 9175040, 2, 805306393, 10092544, 2, 25)
 
-[sub_resource type="Curve2D" id="Curve2D_kek77"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -3, 0, 0, 0, 0, 0, -4, 0, 0, 0, 0, 0, 316, 0, 0, 0, 0, 0, 638, 2, 0, 0, 0, 0, 314, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, -3, 0)
-}
-point_count = 7
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_272bh"]
 texture = ExtResource("5_272bh")
 texture_region_size = Vector2i(32, 32)
@@ -537,6 +532,12 @@ sources/2 = SubResource("TileSetAtlasSource_272bh")
 pattern_0 = SubResource("TileMapPattern_efxa6")
 pattern_1 = SubResource("TileMapPattern_dg77c")
 
+[sub_resource type="Curve2D" id="Curve2D_kek77"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 145, 0, 0, 0, 0, 0, 490, 0, 0, 0, 0, 0, 815, 2, 0, 0, 0, 0, 485, -2, 0, 0, 0, 0, 145, 0)
+}
+point_count = 5
+
 [node name="Main" type="Node" unique_id=2067105497]
 script = ExtResource("1_5vw27")
 MobScene = ExtResource("2_kek77")
@@ -549,7 +550,7 @@ motion_mirroring = Vector2(0, 540)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/BG_Space" unique_id=24303475]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_5vw27")
+texture = ExtResource("3_ycdy4")
 centered = false
 metadata/_edit_lock_ = true
 
@@ -632,7 +633,7 @@ motion_mirroring = Vector2(0, 540)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/BG_Nebula" unique_id=1216560489]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_kek77")
+texture = ExtResource("9_w48qg")
 centered = false
 
 [node name="BG_Stars" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1224873891]
@@ -667,10 +668,9 @@ position = Vector2(320, 420)
 curve = SubResource("Curve2D_kek77")
 
 [node name="MobSpawnLocation" type="PathFollow2D" parent="Scroller/MobPath" unique_id=645416124]
-position = Vector2(-3, 0)
-rotation = 3.1415927
+position = Vector2(145, 0)
 
-[node name="Terrain" type="TileMapLayer" parent="." unique_id=543662033]
+[node name="Terrain" type="TileMapLayer" parent="." unique_id=2116481576]
 material = ExtResource("2_7mycd")
 tile_set = SubResource("TileSet_3ewea")
 
