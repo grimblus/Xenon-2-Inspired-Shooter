@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://l2yy24yc20rs"]
+[gd_scene format=4 uid="uid://l2yy24yc20rs"]
 
 [ext_resource type="Texture2D" uid="uid://bp7k8t1xqr7ql" path="res://graphics/background/08_ice/layer1_far.png" id="1_5vw27"]
 [ext_resource type="PackedScene" uid="uid://dcjpfraeg45ep" path="res://player.tscn" id="1_ig7tw"]
@@ -491,6 +491,9 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="TileMapPattern" id="TileMapPattern_efxa6"]
+tile_data = PackedInt32Array(0, 2, 805306393, 917504, 2, 25, 1835008, 2, 805306393, 2752512, 2, 25)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_272bh"]
 texture = ExtResource("5_272bh")
 texture_region_size = Vector2i(32, 32)
@@ -505,9 +508,15 @@ texture_region_size = Vector2i(32, 32)
 0:23/size_in_atlas = Vector2i(5, 2)
 0:23/0 = 0
 0:25/size_in_atlas = Vector2i(5, 7)
+0:25/next_alternative_id = 3
 0:25/0 = 0
+0:25/1 = 1
+0:25/1/flip_v = true
 0:19/size_in_atlas = Vector2i(11, 2)
+0:19/next_alternative_id = 2
 0:19/0 = 0
+0:19/1 = 1
+0:19/1/transpose = true
 10:21/size_in_atlas = Vector2i(3, 2)
 10:21/0 = 0
 11:19/size_in_atlas = Vector2i(5, 2)
@@ -515,6 +524,7 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_3ewea"]
 sources/2 = SubResource("TileSetAtlasSource_272bh")
+pattern_0 = SubResource("TileMapPattern_efxa6")
 
 [node name="Main" type="Node" unique_id=2067105497]
 
@@ -523,25 +533,30 @@ sources/2 = SubResource("TileSetAtlasSource_272bh")
 [node name="BG_Space" type="ParallaxLayer" parent="ParallaxBackground" unique_id=214118459]
 motion_scale = Vector2(0.1, 0.1)
 motion_mirroring = Vector2(0, 540)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/BG_Space" unique_id=24303475]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_5vw27")
 centered = false
+metadata/_edit_lock_ = true
 
 [node name="Meteor_Small-1" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1641065677]
 motion_scale = Vector2(0.4, 0.4)
 motion_mirroring = Vector2(0, 1200)
+metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/Meteor_Small-1" unique_id=981853390]
 material = ExtResource("2_7mycd")
 position = Vector2(806, -231)
 sprite_frames = SubResource("SpriteFrames_3ewea")
 script = ExtResource("4_4c57u")
+metadata/_edit_lock_ = true
 
 [node name="Meteor_Small-2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=27844545]
 motion_scale = Vector2(0.4, 0.4)
 motion_mirroring = Vector2(0, 1600)
+metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/Meteor_Small-2" unique_id=1225915991]
 material = ExtResource("2_7mycd")
@@ -552,6 +567,7 @@ script = ExtResource("4_4c57u")
 [node name="Meteor_Small-3" type="ParallaxLayer" parent="ParallaxBackground" unique_id=468595734]
 motion_scale = Vector2(0.4, 0.4)
 motion_mirroring = Vector2(0, 3600)
+metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/Meteor_Small-3" unique_id=990006156]
 material = ExtResource("2_7mycd")
@@ -562,6 +578,7 @@ script = ExtResource("4_4c57u")
 [node name="Meteor_Small-4" type="ParallaxLayer" parent="ParallaxBackground" unique_id=2034370772]
 motion_scale = Vector2(0.4, 0.4)
 motion_mirroring = Vector2(0, 2600)
+metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/Meteor_Small-4" unique_id=672372244]
 material = ExtResource("2_7mycd")
@@ -572,6 +589,7 @@ script = ExtResource("4_4c57u")
 [node name="Meteor_Medium-1" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1136812853]
 motion_scale = Vector2(0.3, 0.3)
 motion_mirroring = Vector2(0, 1500)
+metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/Meteor_Medium-1" unique_id=966255624]
 material = ExtResource("2_7mycd")
@@ -583,6 +601,7 @@ script = ExtResource("4_4c57u")
 [node name="Meteor_Medium-2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1661155759]
 motion_scale = Vector2(0.3, 0.3)
 motion_mirroring = Vector2(0, 2250)
+metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/Meteor_Medium-2" unique_id=463668319]
 material = ExtResource("2_7mycd")
@@ -593,6 +612,7 @@ script = ExtResource("4_4c57u")
 
 [node name="Meteor_Large" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1206698954]
 motion_mirroring = Vector2(0, 3000)
+metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/Meteor_Large" unique_id=1597259301]
 material = ExtResource("2_7mycd")
@@ -604,6 +624,7 @@ script = ExtResource("4_4c57u")
 [node name="BG_Nebula" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1770639480]
 motion_scale = Vector2(0.2, 0.2)
 motion_mirroring = Vector2(0, 1080)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/BG_Nebula" unique_id=1216560489]
 position = Vector2(-455, -481)
@@ -613,11 +634,22 @@ centered = false
 [node name="BG_Stars" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1224873891]
 motion_scale = Vector2(0.4, 0.4)
 motion_mirroring = Vector2(0, 540)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/BG_Stars" unique_id=987519703]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_4c57u")
 centered = false
+
+[node name="Terrain_Details" type="TileMapLayer" parent="." unique_id=1267307802]
+material = ExtResource("2_7mycd")
+tile_map_data = PackedByteArray("AAAJAAcAAgAKABUAAAAyAA4AAgAIABUAAFAwABEAAgAAABcAAAAIABgAAgAAABUAADA=")
+tile_set = SubResource("TileSet_3ewea")
+
+[node name="Terrain_Walls" type="TileMapLayer" parent="." unique_id=543662033]
+material = ExtResource("2_7mycd")
+tile_map_data = PackedByteArray("AAADAAIAAgAAABkAADADABAAAgAAABkAAAADAB4AAgAAABkAADADACwAAgAAABkAAAA4AAEAAgAAABkAADA4AA8AAgAAABkAAAA4AB0AAgAAABkAADA4ACsAAgAAABkAAAA=")
+tile_set = SubResource("TileSet_3ewea")
 
 [node name="Scroller" type="Node2D" parent="." unique_id=1846077116]
 script = ExtResource("2_h2yge")
@@ -627,7 +659,3 @@ anchor_mode = 0
 
 [node name="Player" parent="Scroller" unique_id=2036859991 instance=ExtResource("1_ig7tw")]
 position = Vector2(320, 420)
-
-[node name="Terrain" type="TileMapLayer" parent="." unique_id=543662033]
-material = ExtResource("2_7mycd")
-tile_set = SubResource("TileSet_3ewea")
