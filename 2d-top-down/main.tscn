@@ -497,6 +497,42 @@ tile_data = PackedInt32Array(0, 2, 805306393, 917504, 2, 25, 1835008, 2, 8053063
 [sub_resource type="TileMapPattern" id="TileMapPattern_dg77c"]
 tile_data = PackedInt32Array(0, 2, 805306393, 917504, 2, 25, 1835008, 2, 805306393, 2752512, 2, 25, 3670016, 2, 805306393, 4587520, 2, 25, 5505024, 2, 805306393, 6422528, 2, 25, 7340032, 2, 805306393, 8257536, 2, 25, 9175040, 2, 805306393, 10092544, 2, 25)
 
+[sub_resource type="TileMapPattern" id="TileMapPattern_ycdy4"]
+tile_data = PackedInt32Array(0, 2, 268435467, 196608, 393218, 15, 393216, 2, 805306379)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_w48qg"]
+tile_data = PackedInt32Array(0, 327682, 11, 131072, 327682, 536870923)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_yaehf"]
+tile_data = PackedInt32Array(1048576, 327682, 15, 655364, 458754, 5, 6, 327682, 11, 196614, 589826, 3, 1114118, 393218, 15, 1310726, 327682, 536870923)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_074og"]
+tile_data = PackedInt32Array(0, 2, 11, 917504, 2, 9, 1048576, 2, 10, 262145, 2, 3, 655362, 2, 6)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_vivmo"]
+tile_data = PackedInt32Array(0, 458754, 268435459, 3, 917506, 268435461, 7, 917506, 268435459, 65549, 2, 268435468)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_2cqfq"]
+tile_data = PackedInt32Array(0, 720898, 17, 917504, 720898, 536870929, 524290, 2, 25, 4, 720898, 268435473, 917508, 720898, 805306385)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_cegan"]
+tile_data = PackedInt32Array(196608, 196610, 805306389, 2, 720898, 17)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_82xsv"]
+tile_data = PackedInt32Array(0, 2, 21, 196608, 917506, 1342177289)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_getpj"]
+tile_data = PackedInt32Array(786432, 917506, 1342177289, 1, 2, 21, 196611, 720898, 1073741841, 851971, 917506, 1342177289, 786439, 720898, 805306385, 458760, 2, 805306387, 589832, 2, 19, 65547, 2, 1342177305, 786446, 2, 21)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_ryguw"]
+tile_data = PackedInt32Array(0, 917506, 1073741829, 196608, 458754, 1073741827)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_d13ii"]
+tile_data = PackedInt32Array(0, 262146, 805306380, 65541, 524290, 805306371)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_1u8w0"]
+tile_data = PackedInt32Array(0, 327682, 11, 196608, 2, 268435471, 393216, 327682, 536870923)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_272bh"]
 texture = ExtResource("5_272bh")
 texture_region_size = Vector2i(32, 32)
@@ -524,11 +560,81 @@ texture_region_size = Vector2i(32, 32)
 10:21/0 = 0
 11:19/size_in_atlas = Vector2i(5, 2)
 11:19/0 = 0
+11:17/size_in_atlas = Vector2i(3, 2)
+11:17/0 = 0
+6:17/size_in_atlas = Vector2i(5, 2)
+6:17/0 = 0
+0:17/size_in_atlas = Vector2i(5, 2)
+0:17/0 = 0
+0:15/size_in_atlas = Vector2i(5, 2)
+0:15/0 = 0
+0:12/size_in_atlas = Vector2i(4, 3)
+0:12/0 = 0
+4:12/size_in_atlas = Vector2i(4, 3)
+4:12/0 = 0
+8:12/size_in_atlas = Vector2i(3, 3)
+8:12/0 = 0
+14:3/size_in_atlas = Vector2i(2, 2)
+14:3/0 = 0
+14:5/size_in_atlas = Vector2i(2, 2)
+14:5/0 = 0
+14:7/size_in_atlas = Vector2i(2, 2)
+14:7/0 = 0
+0:6/size_in_atlas = Vector2i(7, 3)
+0:6/0 = 0
+0:3/size_in_atlas = Vector2i(6, 3)
+0:3/0 = 0
+6:15/size_in_atlas = Vector2i(5, 2)
+6:15/0 = 0
+11:15/size_in_atlas = Vector2i(4, 2)
+11:15/0 = 0
+11:12/size_in_atlas = Vector2i(3, 3)
+11:12/0 = 0
+10:10/size_in_atlas = Vector2i(4, 2)
+10:10/0 = 0
+14:9/size_in_atlas = Vector2i(2, 4)
+14:9/0 = 0
+14:13/size_in_atlas = Vector2i(2, 1)
+14:13/0 = 0
+5:11/size_in_atlas = Vector2i(5, 1)
+5:11/0 = 0
+5:10/size_in_atlas = Vector2i(5, 1)
+5:10/0 = 0
+0:11/size_in_atlas = Vector2i(5, 1)
+0:11/0 = 0
+5:16/0 = 0
+5:15/0 = 0
+7:35/size_in_atlas = Vector2i(8, 3)
+7:35/0 = 0
+7:5/size_in_atlas = Vector2i(7, 5)
+7:5/0 = 0
+9:3/size_in_atlas = Vector2i(5, 2)
+9:3/0 = 0
+8:3/size_in_atlas = Vector2i(1, 2)
+8:3/0 = 0
+7:3/size_in_atlas = Vector2i(1, 2)
+7:3/0 = 0
+0:10/size_in_atlas = Vector2i(5, 1)
+0:10/0 = 0
+0:9/size_in_atlas = Vector2i(5, 1)
+0:9/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_3ewea"]
 sources/2 = SubResource("TileSetAtlasSource_272bh")
 pattern_0 = SubResource("TileMapPattern_efxa6")
 pattern_1 = SubResource("TileMapPattern_dg77c")
+pattern_2 = SubResource("TileMapPattern_vivmo")
+pattern_3 = SubResource("TileMapPattern_2cqfq")
+pattern_4 = SubResource("TileMapPattern_cegan")
+pattern_5 = SubResource("TileMapPattern_82xsv")
+pattern_6 = SubResource("TileMapPattern_getpj")
+pattern_7 = SubResource("TileMapPattern_ryguw")
+pattern_8 = SubResource("TileMapPattern_d13ii")
+pattern_9 = SubResource("TileMapPattern_1u8w0")
+pattern_10 = SubResource("TileMapPattern_ycdy4")
+pattern_11 = SubResource("TileMapPattern_w48qg")
+pattern_12 = SubResource("TileMapPattern_yaehf")
+pattern_13 = SubResource("TileMapPattern_074og")
 
 [node name="Main" type="Node" unique_id=2067105497]
 
@@ -537,6 +643,7 @@ pattern_1 = SubResource("TileMapPattern_dg77c")
 [node name="BG_Space" type="ParallaxLayer" parent="ParallaxBackground" unique_id=214118459]
 motion_scale = Vector2(0.1, 0.1)
 motion_mirroring = Vector2(0, 540)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/BG_Space" unique_id=24303475]
 scale = Vector2(0.5, 0.5)
@@ -547,6 +654,7 @@ metadata/_edit_lock_ = true
 [node name="Meteor_Small-1" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1641065677]
 motion_scale = Vector2(0.4, 0.4)
 motion_mirroring = Vector2(0, 1200)
+metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/Meteor_Small-1" unique_id=981853390]
 material = ExtResource("2_7mycd")
@@ -557,6 +665,7 @@ script = ExtResource("4_4c57u")
 [node name="Meteor_Small-2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=27844545]
 motion_scale = Vector2(0.4, 0.4)
 motion_mirroring = Vector2(0, 1600)
+metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/Meteor_Small-2" unique_id=1225915991]
 material = ExtResource("2_7mycd")
@@ -567,6 +676,7 @@ script = ExtResource("4_4c57u")
 [node name="Meteor_Small-3" type="ParallaxLayer" parent="ParallaxBackground" unique_id=468595734]
 motion_scale = Vector2(0.4, 0.4)
 motion_mirroring = Vector2(0, 3600)
+metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/Meteor_Small-3" unique_id=990006156]
 material = ExtResource("2_7mycd")
@@ -577,6 +687,7 @@ script = ExtResource("4_4c57u")
 [node name="Meteor_Small-4" type="ParallaxLayer" parent="ParallaxBackground" unique_id=2034370772]
 motion_scale = Vector2(0.4, 0.4)
 motion_mirroring = Vector2(0, 2600)
+metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/Meteor_Small-4" unique_id=672372244]
 material = ExtResource("2_7mycd")
@@ -587,6 +698,7 @@ script = ExtResource("4_4c57u")
 [node name="Meteor_Medium-1" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1136812853]
 motion_scale = Vector2(0.3, 0.3)
 motion_mirroring = Vector2(0, 1500)
+metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/Meteor_Medium-1" unique_id=966255624]
 material = ExtResource("2_7mycd")
@@ -598,6 +710,7 @@ script = ExtResource("4_4c57u")
 [node name="Meteor_Medium-2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1661155759]
 motion_scale = Vector2(0.3, 0.3)
 motion_mirroring = Vector2(0, 2250)
+metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/Meteor_Medium-2" unique_id=463668319]
 material = ExtResource("2_7mycd")
@@ -608,6 +721,7 @@ script = ExtResource("4_4c57u")
 
 [node name="Meteor_Large" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1206698954]
 motion_mirroring = Vector2(0, 3000)
+metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/Meteor_Large" unique_id=1597259301]
 material = ExtResource("2_7mycd")
@@ -617,9 +731,9 @@ frame_progress = 0.79813033
 script = ExtResource("4_4c57u")
 
 [node name="BG_Nebula" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1770639480]
-visible = false
 motion_scale = Vector2(0.2, 0.2)
 motion_mirroring = Vector2(0, 540)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/BG_Nebula" unique_id=1216560489]
 scale = Vector2(0.5, 0.5)
@@ -629,15 +743,21 @@ centered = false
 [node name="BG_Stars" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1224873891]
 motion_scale = Vector2(0.4, 0.4)
 motion_mirroring = Vector2(0, 540)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/BG_Stars" unique_id=987519703]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_4c57u")
 centered = false
 
-[node name="Terrain_Details" type="TileMapLayer" parent="." unique_id=1267307802]
+[node name="Terrain_Details-2" type="TileMapLayer" parent="." unique_id=1267307802]
 material = ExtResource("2_7mycd")
-tile_map_data = PackedByteArray("AAAJAAcAAgAKABUAAAAyAA4AAgAIABUAAFAwABEAAgAAABcAAAAIABgAAgAAABUAADA=")
+tile_map_data = PackedByteArray("AAADAAf/AgAOAAMAABAPAAL+AgAIAAwAAAAtAE3+AgAHAAMAABARAIr+AgAHAAMAAAAvANX+AgAHAAMAAEAXAPT+AgAHAAMAACAUAPT+AgAOAAUAACAbAM/+AgAHAAMAABAeAM/+AgAOAAUAABAiAM/+AgAOAAMAABAoAND+AgAAAAwAABAqAD3/AgAOAAUAADAnAD3/AgAHAAMAADANAIb/AgAHAAMAAAAKAIb/AgAOAAUAAAAuAMn/AgAIAAwAADArAN3/AgALAAwAAAAUABz/AgAIAAMAABAPAB3/AgAEAAwAABAOAPH/AgAIAAwAAAAyAPH/AgAIAAwAABAwAO7/AgAAAAsAABAwAPH/AgAGAA8AAAAwAPT/AgAAAAsAADAQAO7/AgAFAAsAABAQAPH/AgAAAA8AAAAQAPT/AgAFAAsAADAsAA8AAgALAAwAAAAPABMAAgAEAAwAABAUABIAAgAIAAMAABAqAKX/AgAFAA8AAAAuAJ//AgAHAAUAAAAwAJX/AgAFAAsAAAAwAJj/AgAJAAMAAAAwAKb/AgAGAA8AAAAwAKn/AgAFAAsAACAMAIj/AgAAAAoAACAMAIr/AgAAAAkAACAMAJj/AgAAAAsAACANAJT/AgAAAAMAACAOAI7/AgAAAAYAACAwAEL/AgAFAAsAAAAwAET/AgAFAAsAACAwAEb/AgAFAAsAAAAwAEj/AgAFAAsAACAwAEr/AgAFAAsAAAAwAEz/AgAFAAsAACAMACL/AgAFAAsAABAMACT/AgAFAAsAADAMAB7/AgAFAAsAABAMACD/AgAFAAsAADATAIf+AgAAAAsAAAATAIr+AgAGAA8AABATAI3+AgAAAAsAACA0AED+AgAAAAsAABA0AEP+AgAGAA8AAAA0AEb+AgAAAAsAADAKABf+AgAFAAsAABAKABr+AgAJAAMAABAMACH+AgAHAAUAABAQACf+AgAFAA8AABAKACj+AgAGAA8AABAKACv+AgAFAAsAADALAPD9AgAAAAsAAAALAP79AgAAAAkAAAALAAD+AgAAAAoAAAAMAPT9AgAAAAMAAAANAPr9AgAAAAYAAAAvANT9AgAAAAsAABAvANf9AgAGAA8AAAAvANr9AgAAAAsAADAWAOf9AgAHAAMAAAATAOf9AgAOAAUAAAAPAOf9AgAOAAMAAAAJAOj9AgAAAAwAAAAvAB7+AgAIAAwAABAKACb/AgAIAAwAAFALAJr/AgAIAAwAAFAwAFf/AgAAAAMAABAxAFP/AgAAAAsAABAxAF7/AgAOAAkAAEA2AFv/AgAAABMAACAvAHj/AgAAAAsAABAvAHv/AgAGAA8AAAAvAH7/AgAAAAsAADAtAAb/AgAIAAwAABAnAFD/AgAIAAwAABA=")
+tile_set = SubResource("TileSet_3ewea")
+
+[node name="Terrain_Details-1" type="TileMapLayer" parent="." unique_id=1265777107]
+material = ExtResource("2_7mycd")
+tile_map_data = PackedByteArray("AAAxAAwAAgADABUAADAzAAkAAgALABEAAAAIAPH/AgALABEAABAKAPT/AgADABUAACAzANb/AgALABEAAAAxANn/AgADABUAADAIAIb/AgALABEAABAKAIn/AgADABUAACAzADX/AgALABEAAAAxADj/AgADABUAADAIAOz+AgALABEAABAKAO/+AgADABUAACA0AMD+AgALABEAAAAyAMP+AgADABUAADAIAHz+AgALABEAABAKAH/+AgADABUAACAzAEb+AgALABEAAAAxAEn+AgADABUAADAIAPr9AgALABEAABAKAP39AgADABUAACAzANH9AgALABEAAAAxANT9AgADABUAADAxAKL9AgADABUAABAzAKX9AgALABEAACAKAC3+AgADABUAAAAIADD+AgALABEAADAKACD/AgADABUAAAAIACP/AgALABEAADALABUAAgADABUAAAAJABgAAgALABEAADAxAAYAAgAAABUAAAAxAAkAAgAOAAkAAFAKAO7/AgAAABUAABAKAPH/AgAOAAkAAEAxAM//AgAAABUAAAAxANL/AgAOAAkAAFAJAID/AgAAABUAABAJAIP/AgAOAAkAAEAKABv/AgAAABUAABAKAB7/AgAOAAkAAEAyAMj+AgAAABUAAAAyAMv+AgAOAAkAAFAKAIL+AgAAABUAABAKAIX+AgAOAAkAAEAJACj+AgAAABUAABAJACv+AgAOAAkAAEAyANf9AgAAABUAAAAyANr9AgAOAAkAAFAyAJ39AgAAABUAAAAyAKD9AgAOAAkAAFAMAAD+AgALABEAAFAMAAT+AgALABEAAHAEAAL+AgAAABkAAHD+/wD+AgALABEAAED+/wT+AgALABEAAGBAABz+AgALABEAAFAyABz+AgALABEAAEA6AB7+AgAAABkAAGBAACD+AgALABEAAHAyACD+AgALABEAAGA9AEv+AgALABEAAFAvAEv+AgALABEAAEA3AE3+AgAAABkAAGA9AE/+AgALABEAAHAvAE/+AgALABEAAGAPAIj+AgALABEAAFABAIj+AgALABEAAEAJAIr+AgAAABkAAGAPAIz+AgALABEAAHABAIz+AgALABEAAGA6AM7+AgALABEAAFAsAM7+AgALABEAAEA0AND+AgAAABkAAGA6ANL+AgALABEAAHAsANL+AgALABEAAGAQAPP+AgALABEAAFACAPP+AgALABEAAEAKAPX+AgAAABkAAGAQAPf+AgALABEAAHACAPf+AgALABEAAGA7ADv/AgALABEAAFAtADv/AgALABEAAEA1AD3/AgAAABkAAGA7AD//AgALABEAAHAtAD//AgALABEAAGA/AMf/AgALABEAAFAxAMf/AgALABEAAEA5AMn/AgAAABkAAGA/AMv/AgALABEAAHAxAMv/AgALABEAAGA8ANv/AgALABEAAFAuANv/AgALABEAAEA2AN3/AgAAABkAAGA8AN//AgALABEAAHAuAN//AgALABEAAGANAA4AAgALABEAAFD//w4AAgALABEAAEAHABAAAgAAABkAAGANABIAAgALABEAAHD//xIAAgALABEAAGA9AA0AAgALABEAAFAvAA0AAgALABEAAEA3AA8AAgAAABkAAGA9ABEAAgALABEAAHAvABEAAgALABEAAGAKALb/AgAAABcAABAxAEf/AgAAABcAAAAyAF3+AgAAABcAAAAKAOX9AgAAABcAABA4AE7/AgALABEAAFA4AFL/AgALABEAAHAwAFD/AgAAABkAAFAqAE7/AgALABEAAEAqAFL/AgALABEAAGAxAH//AgADABUAABAzAIL/AgALABEAACAxAHf/AgADABUAADAzAHT/AgALABEAAAA+AAT/AgALABEAAFA+AAj/AgALABEAAHA2AAb/AgAAABkAAFAwAAT/AgALABEAAEAwAAj/AgALABEAAGA2AF/+AgALABEAABA2AG3+AgALABEAADA0AGX+AgAAABkAADAyAF/+AgALABEAAAAyAG3+AgALABEAACA1ANv9AgALABEAABA1AOn9AgALABEAADAzAOH9AgAAABkAADAxANv9AgALABEAAAAxAOn9AgALABEAACANAJz9AgALABEAAFANAKD9AgALABEAAHAHAJ79AgAAABkAAGD//5z9AgALABEAAED//6D9AgALABEAAGAJAKL9AgALABEAABAJALD9AgALABEAADAHAKr9AgAAABkAAAAFAKL9AgALABEAAAAFALD9AgALABEAACAyAHv/AgAIAAwAABAlAKL/AgAHAAMAABAoAKL/AgAOAAUAABAsAKL/AgAOAAMAABAyAKP/AgAAAAwAABAzAOz/AgAEAAwAACAuAO3/AgAIAAMAACA=")
 tile_set = SubResource("TileSet_3ewea")
 
 [node name="Terrain_Walls" type="TileMapLayer" parent="." unique_id=543662033]
