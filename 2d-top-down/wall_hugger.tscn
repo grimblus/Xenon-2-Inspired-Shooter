@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b6e4ek4ydg1q7"]
 
 [ext_resource type="Script" uid="uid://gahkftv7c1o6" path="res://WallHugger.cs" id="1_wjs2r"]
+[ext_resource type="Material" uid="uid://vdb0ley6chky" path="res://chroma_key_material.tres" id="2_47v3h"]
 [ext_resource type="Texture2D" uid="uid://dsdlkepjgl6yk" path="res://graphics/24bit/wallhugger.bmp" id="2_hmnmh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_47v3h"]
@@ -162,7 +163,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"facingleft",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -221,11 +222,13 @@ script = ExtResource("1_wjs2r")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=879398172]
+material = ExtResource("2_47v3h")
 sprite_frames = SubResource("SpriteFrames_voxn2")
 animation = &"facingleft"
-frame_progress = 0.47330764
+frame_progress = 0.75517035
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2096650773]
+visible = false
 rotation = 1.5707964
 scale = Vector2(2.1, 2.1)
 shape = SubResource("CapsuleShape2D_44oka")
