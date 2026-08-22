@@ -7,6 +7,11 @@ public partial class Player : Area2D
 	[Export] public float Cooldown = 0.25f;
 	[Export] PackedScene BulletScene;
 	
+	/// Health Variables
+	private ProgressBar healthBar;
+	private int maxHealth = 100;
+	private int currentHealth = 100;
+	
 	private Sprite2D ship;
 	private AnimatedSprite2D boosters;
 	private AnimatedSprite2D boosters2;
@@ -22,6 +27,11 @@ public partial class Player : Area2D
 		cooldown = GetNode<Timer>("GunCooldown");
 		bulletSpawn = GetNode<Marker2D>("BulletSpawn");
 		screenSize = GetViewportRect().Size;
+		
+		/// Health Bar Functioning
+		healthBar = GetNode<ProgressBar>("../../CanvasLayer_HealthBar/Health_Bar");		healthBar.MaxValue = maxHealth;
+		healthBar.Value = currentHealth;
+
 		Start();
 	}
 	
@@ -57,6 +67,12 @@ public partial class Player : Area2D
 		if (Input.IsActionPressed("shoot")) {
 			Shoot();
 		}
+		
+		/// Testing damage
+	if (Input.IsKeyPressed(Key.H)) {
+		TakeDamage(20);
+	}
+	
 	}
 	
 	public void Shoot(){
@@ -76,4 +92,45 @@ public partial class Player : Area2D
 	private void OnGunCooldownTimeout() {
 		canShoot = true;
 	}
+	
+	/// Player
+	
+	public void TakeDamage(int amount)
+{
+	currentHealth = Mathf.Clamp(currentHealth - amount, 0, maxHealth);
+	UpdateHealthBar();
+	if (currentHealth <= 0)
+	{
+		Die();
+	}
+}
+
+	public void Heal(int amount)
+{
+	currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+	UpdateHealthBar();
+}
+
+	private void UpdateHealthBar()
+{
+	healthBar.Value = currentHealth;
+
+	var fillStyle = new StyleBoxFlat();
+	float percent = (float)currentHealth / maxHealth;
+
+	if (percent > 0.5f)
+		fillStyle.BgColor = Colors.Green;
+	else if (percent > 0.2f)
+		fillStyle.BgColor = Colors.Orange;
+	else
+		fillStyle.BgColor = Colors.Red;
+
+	healthBar.AddThemeStyleboxOverride("fill", fillStyle);
+}
+
+	private void Die()
+{
+	GD.Print("Player died");
+}
+	
 }
