@@ -68,7 +68,7 @@ public partial class Player : Area2D
 			Shoot();
 		}
 		
-		/// Testing damage
+		/// Testing damage (Remove Later)
 	if (Input.IsKeyPressed(Key.H)) {
 		TakeDamage(20);
 	}
