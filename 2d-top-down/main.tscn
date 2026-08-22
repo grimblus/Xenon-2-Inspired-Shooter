@@ -773,3 +773,13 @@ anchor_mode = 0
 
 [node name="Player" parent="Scroller" unique_id=2036859991 instance=ExtResource("1_ig7tw")]
 position = Vector2(320, 420)
+
+[node name="CanvasLayer_HealthBar" type="CanvasLayer" parent="." unique_id=91850361]
+
+[node name="Health_Bar" type="ProgressBar" parent="CanvasLayer_HealthBar" unique_id=753519589]
+offset_left = 145.0
+offset_top = 499.0
+offset_right = 315.0
+offset_bottom = 539.0
+value = 100.0
+show_percentage = false
