@@ -6,8 +6,9 @@ public partial class Player : CharacterBody2D
 	[Export] public float Speed = 150f;
 	[Export] public float Cooldown = 0.25f;
 	[Export] PackedScene BulletScene;
-	[Export] public float BounceStrength = 0.3f;
-	
+	[Export] public float BounceStrength = 300f;
+	[Export] public float KnockbackDecay = 800f;
+
 	private Sprite2D ship;
 	private AnimatedSprite2D boosters;
 	private AnimatedSprite2D boosters2;
@@ -15,6 +16,7 @@ public partial class Player : CharacterBody2D
 	private Marker2D bulletSpawn;
 	private Vector2 screenSize;
 	private bool canShoot = true;
+	private Vector2 knockback = Vector2.Zero;
 	
 	public override void _Ready() {
 		ship = GetNode<Sprite2D>("Ship");
@@ -52,13 +54,15 @@ public partial class Player : CharacterBody2D
 			boosters2.Animation = "forward";
 		}
 
-		Velocity = input * Speed;
+		Velocity = input * Speed + knockback;
 		MoveAndSlide();
 
 		for (int i = 0; i < GetSlideCollisionCount(); i++) {
-				var collision = GetSlideCollision(i);
-				Velocity = Velocity.Bounce(collision.GetNormal()) * BounceStrength;
+			var collision = GetSlideCollision(i);
+			knockback = collision.GetNormal() * BounceStrength;
 		}
+
+		knockback = knockback.MoveToward(Vector2.Zero, KnockbackDecay * (float)delta);
 
 		if (Input.IsActionPressed("shoot")) {
 				Shoot();
