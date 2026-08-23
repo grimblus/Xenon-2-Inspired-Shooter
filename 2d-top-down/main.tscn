@@ -509,6 +509,12 @@ tile_data = PackedInt32Array(1048576, 327682, 15, 655364, 458754, 5, 6, 327682, 
 [sub_resource type="TileMapPattern" id="TileMapPattern_074og"]
 tile_data = PackedInt32Array(0, 2, 11, 917504, 2, 9, 1048576, 2, 10, 262145, 2, 3, 655362, 2, 6)
 
+[sub_resource type="TileMapPattern" id="TileMapPattern_0odxb"]
+tile_data = PackedInt32Array(0, 131074, 51, 524288, 2, 54, 917504, 131074, 59, 1048576, 196610, 60, 1245184, 262146, 61)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_lswn8"]
+tile_data = PackedInt32Array(0, 720898, 268435473, 458752, 720898, 805306385, 196610, 196610, 536870933, 262146, 196610, 21)
+
 [sub_resource type="TileMapPattern" id="TileMapPattern_vivmo"]
 tile_data = PackedInt32Array(0, 458754, 268435459, 3, 917506, 268435461, 7, 917506, 268435459, 65549, 2, 268435468)
 
@@ -691,6 +697,8 @@ pattern_10 = SubResource("TileMapPattern_ycdy4")
 pattern_11 = SubResource("TileMapPattern_w48qg")
 pattern_12 = SubResource("TileMapPattern_yaehf")
 pattern_13 = SubResource("TileMapPattern_074og")
+pattern_14 = SubResource("TileMapPattern_0odxb")
+pattern_15 = SubResource("TileMapPattern_lswn8")
 
 [node name="Main" type="Node" unique_id=2067105497]
 
