@@ -1,11 +1,12 @@
 using Godot;
 using System;
 
-public partial class Player : Area2D
+public partial class Player : CharacterBody2D
 {
 	[Export] public float Speed = 150f;
 	[Export] public float Cooldown = 0.25f;
 	[Export] PackedScene BulletScene;
+	[Export] public float BounceStrength = 0.3f;
 	
 	private Sprite2D ship;
 	private AnimatedSprite2D boosters;
@@ -30,14 +31,14 @@ public partial class Player : Area2D
 		cooldown.WaitTime = Cooldown;
 	}
 	
-	public override void _Process(double delta) {
+	public override void _PhysicsProcess(double delta) {
 		Vector2 input = Input.GetVector("left", "right", "up", "down");
-		
+
 		if (input.X > 0) {
-			ship.Frame= 5;
+			ship.Frame = 5;
 			boosters.Animation = "right";
 			boosters2.Animation = "right";
-		} 
+		}
 		else if (input.X < 0)
 		{
 			ship.Frame = 1;
@@ -50,14 +51,20 @@ public partial class Player : Area2D
 			boosters.Animation = "forward";
 			boosters2.Animation = "forward";
 		}
-		
-		Position += input * Speed * (float)delta;
-		Position = Position.Clamp(new Vector2(8, 8), screenSize - new Vector2(8, 8)); //Keeps within screen NOT FINAL
-		
+
+		Velocity = input * Speed;
+		MoveAndSlide();
+
+		for (int i = 0; i < GetSlideCollisionCount(); i++) {
+				var collision = GetSlideCollision(i);
+				Velocity = Velocity.Bounce(collision.GetNormal()) * BounceStrength;
+		}
+
 		if (Input.IsActionPressed("shoot")) {
-			Shoot();
+				Shoot();
 		}
 	}
+
 	
 	public void Shoot(){
 		if (!canShoot) {
