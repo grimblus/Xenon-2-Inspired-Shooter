@@ -80,10 +80,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e3tdd"]
-size = Vector2(62, 64)
-
-[node name="Player" type="Area2D" unique_id=2036859991]
+[node name="Player" type="CharacterBody2D" unique_id=2048921428]
+collision_layer = 2
 script = ExtResource("1_sweqy")
 BulletScene = ExtResource("2_2hs0m")
 
@@ -110,11 +108,10 @@ autoplay = "forward"
 [node name="GunCooldown" type="Timer" parent="." unique_id=1354024316]
 one_shot = true
 
-[node name="HitBox" type="CollisionShape2D" parent="." unique_id=697705479]
-visible = false
-shape = SubResource("RectangleShape2D_e3tdd")
-
 [node name="BulletSpawn" type="Marker2D" parent="." unique_id=1463174157]
 position = Vector2(0, -32)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=2126392463]
+polygon = PackedVector2Array(-31, 0, -31, 12, -17, 19, -17, 27, -13, 31, 13, 31, 17, 27, 17, 19, 31, 12, 31, 0, 19, 0, 19, -4, 15, -4, 15, -8, 12, -19, 5, -19, 1, -32, -1, -32, -5, -19, -11, -19, -15, -8, -15, -4, -19, -4, -19, 0, -22, 0)
 
 [connection signal="timeout" from="GunCooldown" to="." method="OnGunCooldownTimeout"]
