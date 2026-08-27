@@ -4,3 +4,4 @@
 
 - Graphics starter kit (ships, enemies, pickups, UI): provided by COSC2349 (Games Studio 2)
 - Parallax background art: [Nebula Parallax Vol. 2](https://nebulakit.itch.io/nebula-parallax-vol2)
+- Sci-fi game music pack: [30 Sci-fi Space Tracks Music Pack](https://alkakrab.itch.io/sci-fi-music-pack-vol-3)
