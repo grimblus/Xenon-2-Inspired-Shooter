@@ -865,3 +865,12 @@ wait_time = 0.5
 
 [connection signal="timeout" from="MobTimer" to="." method="OnMobTimerTimeout"]
 [connection signal="timeout" from="StartTimer" to="." method="OnStartTimerTimeout"]
+[node name="CanvasLayer_HealthBar" type="CanvasLayer" parent="." unique_id=91850361]
+
+[node name="Health_Bar" type="ProgressBar" parent="CanvasLayer_HealthBar" unique_id=753519589]
+offset_left = 145.0
+offset_top = 499.0
+offset_right = 315.0
+offset_bottom = 539.0
+value = 100.0
+show_percentage = false
