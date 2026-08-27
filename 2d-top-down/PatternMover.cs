@@ -8,10 +8,10 @@ public partial class PatternMover : RigidBody2D
 	[Export] public float PatternSpeed = 200.0f;
 	[Export] public Path2D PatternPath;
 
-	private Vector2 _spawnPosition;
-	private float _spawnRotation;
-	private float _distanceTravelled = 0.0f;
-	private float _patternLength;
+	private Vector2 spawnPosition;
+	private float spawnRotation;
+	private float distanceTravelled = 0.0f;
+	private float patternLength;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -20,39 +20,38 @@ public partial class PatternMover : RigidBody2D
 		string[] mobTypes = animatedSprite2D.SpriteFrames.GetAnimationNames();
 		animatedSprite2D.Play(mobTypes[GD.Randi() % mobTypes.Length]);
 		
-		_spawnPosition = GlobalPosition;
-		_spawnRotation = Rotation;
+		spawnPosition = GlobalPosition;
+		spawnRotation = Rotation;
 
+		//Makes the pattern from the Path2D work
 		if (Pattern != null)
-			_patternLength = Pattern.GetBakedLength();
+			patternLength = Pattern.GetBakedLength();
 			
 		if (PatternPath != null)
 		{
 			Pattern = PatternPath.Curve;
-			_patternLength = Pattern.GetBakedLength();
+			patternLength = Pattern.GetBakedLength();
 		}
 	}
 	
-	public override void _IntegrateForces(PhysicsDirectBodyState2D state)
+	public override void _PhysicsProcess(double delta)
 	{
-		if (Pattern == null || _patternLength <= 0)
+		if (Pattern == null || patternLength <= 0)
 			return;
 
-		_distanceTravelled += PatternSpeed * (float)state.Step;
+		distanceTravelled += PatternSpeed * (float)delta;
 
-		if (_distanceTravelled >= _patternLength)
+		if (distanceTravelled >= patternLength)
 		{
 			QueueFree();
 			return;
 		}
 
-		Vector2 localOffset = Pattern.SampleBaked(_distanceTravelled);
+		Vector2 localOffset = Pattern.SampleBaked(distanceTravelled);
+		Vector2 rotatedOffset = localOffset.Rotated(spawnRotation);
 
-		Vector2 rotatedOffset = localOffset.Rotated(_spawnRotation);
-
-		Vector2 targetPosition = _spawnPosition + rotatedOffset;
-
-		state.LinearVelocity = (targetPosition - state.Transform.Origin) / (float)state.Step;
+		// Area2D can just have its position set directly — no physics engine to fight
+		GlobalPosition = spawnPosition + rotatedOffset;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

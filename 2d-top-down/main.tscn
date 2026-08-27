@@ -704,9 +704,9 @@ pattern_15 = SubResource("TileMapPattern_lswn8")
 
 [sub_resource type="Curve2D" id="Curve2D_kek77"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 145, 0, 0, 0, 0, 0, 490, 0, 0, 0, 0, 0, 815, 2, 0, 0, 0, 0, 485, -2, 0, 0, 0, 0, 145, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 252, 1, 0, 0, 0, 0, 488, 1, 0, 0, 0, 0, 743, 2)
 }
-point_count = 5
+point_count = 3
 
 [node name="Main" type="Node" unique_id=2067105497]
 script = ExtResource("1_5vw27")
@@ -852,19 +852,21 @@ position = Vector2(320, 420)
 curve = SubResource("Curve2D_kek77")
 
 [node name="MobSpawnLocation" type="PathFollow2D" parent="Scroller/MobPath" unique_id=645416124]
-position = Vector2(145, 0)
+position = Vector2(252, 1)
 
 [node name="Terrain" type="TileMapLayer" parent="." unique_id=2116481576]
 material = ExtResource("2_7mycd")
 tile_set = SubResource("TileSet_3ewea")
 
 [node name="MobTimer" type="Timer" parent="." unique_id=1556481222]
-wait_time = 0.5
+wait_time = 0.25
+
+[node name="MobBatchTimer" type="Timer" parent="." unique_id=215502127]
+wait_time = 2.0
 
 [node name="StartTimer" type="Timer" parent="." unique_id=1310393044]
+wait_time = 3.0
 
-[connection signal="timeout" from="MobTimer" to="." method="OnMobTimerTimeout"]
-[connection signal="timeout" from="StartTimer" to="." method="OnStartTimerTimeout"]
 [node name="CanvasLayer_HealthBar" type="CanvasLayer" parent="." unique_id=91850361]
 
 [node name="Health_Bar" type="ProgressBar" parent="CanvasLayer_HealthBar" unique_id=753519589]
@@ -874,3 +876,7 @@ offset_right = 315.0
 offset_bottom = 539.0
 value = 100.0
 show_percentage = false
+
+[connection signal="timeout" from="MobTimer" to="." method="OnMobTimerTimeout"]
+[connection signal="timeout" from="MobBatchTimer" to="." method="OnMobBatchTimerTimeout"]
+[connection signal="timeout" from="StartTimer" to="." method="OnStartTimerTimeout"]

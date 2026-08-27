@@ -11,6 +11,14 @@ public partial class Main : Node
 	
 	[Export]
 	public PackedScene MobScene { get; set; }
+	
+	//How many are spawned before another spawn point is chosen
+	[Export]
+	public int SpawnTotal = 5; 
+
+	//spawn increment for spawn total
+	private int spawnCount = 0;
+	private float currentProgressRatio = 0f;
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
@@ -20,6 +28,7 @@ public partial class Main : Node
 	public void GameOver()
 	{
 		GetNode<Timer>("MobTimer").Stop();
+		GetNode<Timer>("MobBatchTimer").Stop();
 	}
 
 	public void NewGame()
@@ -32,35 +41,39 @@ public partial class Main : Node
 	
 	private void OnStartTimerTimeout()
 	{
+		GetNode<Timer>("MobBatchTimer").Start();
+	}
+	
+	//Made so mobs can spawn in batches rather than continuous spawning
+	private void OnMobBatchTimerTimeout()
+	{
+		// Choose random location on spawn2D, done here so that the batch spawns there
+		var mobSpawnLocation = GetNode<PathFollow2D>("Scroller/MobPath/MobSpawnLocation");
+		currentProgressRatio = GD.Randf();
+
+		// Start spawning, mobtimer starts
+		spawnCount = 0;
 		GetNode<Timer>("MobTimer").Start();
 	}
 	
 	// We also specified this function name in PascalCase in the editor's connection window.
 	private void OnMobTimerTimeout()
 	{
-		// Create a new instance of the Mob scene.
-		PatternMover mob = MobScene.Instantiate<PatternMover>();
-
-		// Choose a random location on Path2D.
 		var mobSpawnLocation = GetNode<PathFollow2D>("Scroller/MobPath/MobSpawnLocation");
-		//mobSpawnLocation.ProgressRatio = GD.Randf();
+		mobSpawnLocation.ProgressRatio = currentProgressRatio;
 
-		// Set the mob's direction perpendicular to the path direction.
-		//float direction = mobSpawnLocation.Rotation + Mathf.Pi / 2;
-
-		// Set the mob's position to a random location.
+		//Create new instance of mob
+		PatternMover mob = MobScene.Instantiate<PatternMover>();
 		mob.Position = mobSpawnLocation.GlobalPosition;
+		mob.Rotation = 0f; // so mobs only face downward
 
-		// Add some randomness to the direction.
-		//direction += (float)GD.RandRange(-Mathf.Pi / 4, Mathf.Pi / 4);
-		//mob.Rotation = direction;
-		mob.Rotation = mobSpawnLocation.Rotation;
-
-		// Choose the velocity.
-		//var velocity = new Vector2((float)GD.RandRange(150.0, 250.0), 0);
-		//mob.LinearVelocity = velocity.Rotated(direction);
-
-		// Spawn the mob by adding it to the Main scene.
 		AddChild(mob);
+
+		//Increment spawn count so it knows when the batch is finished
+		spawnCount++;
+		if (spawnCount >= SpawnTotal)
+		{
+			GetNode<Timer>("MobTimer").Stop(); // batch done, wait for next MobBatchTimer
+		}
 	}
 }
