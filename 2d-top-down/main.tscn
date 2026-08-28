@@ -888,7 +888,7 @@ grow_vertical = 2
 
 [node name="GameOver_Label" type="Label" parent="CanvasLayer_GameOver/GameOver_UI/VBoxContainer" unique_id=863480143]
 layout_mode = 2
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 25
 text = "Game Over"
 
 [node name="Retry_Button" type="Button" parent="CanvasLayer_GameOver/GameOver_UI/VBoxContainer" unique_id=46674394]
