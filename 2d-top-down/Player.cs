@@ -15,6 +15,8 @@ public partial class Player : CharacterBody2D
 	private int maxHealth = 100;
 	private int currentHealth = 100;
 	
+	private bool isDead = false;
+	
 	private Sprite2D ship;
 	private AnimatedSprite2D boosters;
 	private AnimatedSprite2D boosters2;
@@ -140,9 +142,17 @@ public partial class Player : CharacterBody2D
 	healthBar.AddThemeStyleboxOverride("fill", fillStyle);
 }
 
-	private void Die()
+private void Die()
 {
+	if (isDead) return;
+	isDead = true;
+	
 	GD.Print("Player died");
+	
+	var gameOverLayer = GetNode<CanvasLayer>("../../CanvasLayer_GameOver");
+	gameOverLayer.Visible = true;
+	
+	GetTree().Paused = true;
 }
 	
 }

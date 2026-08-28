@@ -850,6 +850,7 @@ value = 100.0
 show_percentage = false
 
 [node name="CanvasLayer_GameOver" type="CanvasLayer" parent="." unique_id=387434958]
+process_mode = 3
 visible = false
 script = ExtResource("12_dg77c")
 
