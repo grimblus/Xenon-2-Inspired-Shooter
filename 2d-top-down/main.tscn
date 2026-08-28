@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://cyvifbxk7e4j0" path="res://MeteorDefault.cs" id="4_4c57u"]
 [ext_resource type="Texture2D" uid="uid://cbw8g3jjijjre" path="res://graphics/24bit/Blocks.bmp" id="5_272bh"]
 [ext_resource type="Texture2D" uid="uid://dpxtrwb3flq0q" path="res://graphics/24bit/GAster96.bmp" id="9_ycdy4"]
+[ext_resource type="Script" uid="uid://bkf5ehn65x84f" path="res://GameOver.cs" id="12_dg77c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jq2sk"]
 atlas = ExtResource("2_lquwl")
@@ -847,3 +848,52 @@ offset_right = 315.0
 offset_bottom = 539.0
 value = 100.0
 show_percentage = false
+
+[node name="CanvasLayer_GameOver" type="CanvasLayer" parent="." unique_id=387434958]
+visible = false
+script = ExtResource("12_dg77c")
+
+[node name="GameOver_UI" type="Control" parent="CanvasLayer_GameOver" unique_id=1692983933]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer_GameOver/GameOver_UI" unique_id=2058514313]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.64705884)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer_GameOver/GameOver_UI" unique_id=243249846]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOver_Label" type="Label" parent="CanvasLayer_GameOver/GameOver_UI/VBoxContainer" unique_id=863480143]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Game Over"
+
+[node name="Retry_Button" type="Button" parent="CanvasLayer_GameOver/GameOver_UI/VBoxContainer" unique_id=46674394]
+layout_mode = 2
+text = "Retry (Enter)"
+
+[node name="Exit_Button" type="Button" parent="CanvasLayer_GameOver/GameOver_UI/VBoxContainer" unique_id=2037067063]
+layout_mode = 2
+text = "Exit (Esc)"
