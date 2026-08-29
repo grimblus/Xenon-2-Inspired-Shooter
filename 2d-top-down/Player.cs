@@ -149,8 +149,8 @@ private void Die()
 	
 	GD.Print("Player died");
 	
-	var gameOverLayer = GetNode<CanvasLayer>("../../CanvasLayer_GameOver");
-	gameOverLayer.Visible = true;
+	var gameOverLayer = GetNode<GameOver>("../../CanvasLayer_GameOver");
+	gameOverLayer.ShowGameOver();
 	
 	GetTree().Paused = true;
 }
