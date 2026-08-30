@@ -114,4 +114,9 @@ position = Vector2(0, -32)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=2126392463]
 polygon = PackedVector2Array(-31, 0, -31, 12, -17, 19, -17, 27, -13, 31, 13, 31, 17, 27, 17, 19, 31, 12, 31, 0, 19, 0, 19, -4, 15, -4, 15, -8, 12, -19, 5, -19, 1, -32, -1, -32, -5, -19, -11, -19, -15, -8, -15, -4, -19, -4, -19, 0, -22, 0)
 
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1699620953]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hurtbox" unique_id=1463505620]
+polygon = PackedVector2Array(-31, 0, -31, 12, -17, 19, -17, 27, -13, 31, 13, 31, 17, 27, 17, 19, 31, 12, 31, 0, 19, 0, 19, -4, 15, -4, 15, -8, 12, -19, 5, -19, 1, -32, -1, -32, -5, -19, -11, -19, -15, -8, -15, -4, -19, -4, -19, 0, -22, 0)
+
 [connection signal="timeout" from="GunCooldown" to="." method="OnGunCooldownTimeout"]

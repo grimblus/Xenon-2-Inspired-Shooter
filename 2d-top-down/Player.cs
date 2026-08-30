@@ -35,6 +35,11 @@ public partial class Player : CharacterBody2D
 		/// Health Bar Functioning
 		healthBar = GetNode<ProgressBar>("../../CanvasLayer_HealthBar/Health_Bar");		healthBar.MaxValue = maxHealth;
 		healthBar.Value = currentHealth;
+		
+		// For enemy collision
+		var hurtbox = GetNode<Area2D>("Hurtbox");
+		hurtbox.AreaEntered += OnHurtboxAreaEntered;
+		hurtbox.BodyEntered += OnHurtboxBodyEntered;
 
 		Start();
 	}
@@ -80,14 +85,14 @@ public partial class Player : CharacterBody2D
 		}
 		
 		/// Testing damage (Remove Later)
-	if (Input.IsKeyPressed(Key.H)) {
-		TakeDamage(20);
-	}
+		if (Input.IsKeyPressed(Key.H)) {
+			TakeDamage(20);
+		}
 	
 	}
 
 	
-	public void Shoot(){
+	public void Shoot() {
 		if (!canShoot) {
 			return;
 		}
@@ -108,41 +113,58 @@ public partial class Player : CharacterBody2D
 	/// Player
 	
 	public void TakeDamage(int amount)
-{
-	currentHealth = Mathf.Clamp(currentHealth - amount, 0, maxHealth);
-	UpdateHealthBar();
-	if (currentHealth <= 0)
 	{
-		Die();
+		currentHealth = Mathf.Clamp(currentHealth - amount, 0, maxHealth);
+		UpdateHealthBar();
+		if (currentHealth <= 0)
+		{
+			Die();
+		}
 	}
-}
 
 	public void Heal(int amount)
-{
-	currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-	UpdateHealthBar();
-}
+	{
+		currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+		UpdateHealthBar();
+	}
 
 	private void UpdateHealthBar()
-{
-	healthBar.Value = currentHealth;
+	{
+		healthBar.Value = currentHealth;
 
-	var fillStyle = new StyleBoxFlat();
-	float percent = (float)currentHealth / maxHealth;
+		var fillStyle = new StyleBoxFlat();
+		float percent = (float)currentHealth / maxHealth;
 
-	if (percent > 0.5f)
-		fillStyle.BgColor = Colors.Green;
-	else if (percent > 0.2f)
-		fillStyle.BgColor = Colors.Orange;
-	else
-		fillStyle.BgColor = Colors.Red;
+		if (percent > 0.5f)
+			fillStyle.BgColor = Colors.Green;
+		else if (percent > 0.2f)
+			fillStyle.BgColor = Colors.Orange;
+		else
+			fillStyle.BgColor = Colors.Red;
 
-	healthBar.AddThemeStyleboxOverride("fill", fillStyle);
-}
+		healthBar.AddThemeStyleboxOverride("fill", fillStyle);
+	}
 
 	private void Die()
-{
-	GD.Print("Player died");
-}
+	{
+		GD.Print("Player died");
+	}
+	
+	//For area2ds
+	private void HurtboxHit(Area2D area)
+	{
+		if (area.IsInGroup("enemies")) {
+			TakeDamage(10);
+		}
+	}
+	
+	//For rigidbodys, charbodys etc
+	private void OnHurtboxBodyEntered(Node2D body)
+	{
+		if (body.IsInGroup("enemies"))
+		{
+			TakeDamage(10);
+		}
+	}
 	
 }
