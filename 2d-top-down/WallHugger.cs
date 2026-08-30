@@ -17,8 +17,7 @@ public partial class WallHugger : RigidBody2D
 	private Vector2 direction;
 	
 	//health
-	private int maxHealth = 1;
-	private int currentHealth = 1;
+	private int health = 1;
 	
 	public override void _Ready()
 	{
@@ -60,6 +59,7 @@ public partial class WallHugger : RigidBody2D
 		}
 		
 		var bullet = BulletScene.Instantiate<Bullet>();
+		bullet.usedByEnemy = true;
 		GetParent().AddChild(bullet);
 
 		if (FacingRight) {
@@ -72,8 +72,12 @@ public partial class WallHugger : RigidBody2D
 		
 	}
 	
-	private void Die()
+	public void TakeDamage(int amount) 
 	{
-		QueueFree();
+		health -= amount;
+		if (health <= 0) 
+		{
+			QueueFree();
+		}
 	}
 }

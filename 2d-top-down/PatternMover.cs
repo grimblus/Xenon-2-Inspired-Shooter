@@ -13,9 +13,8 @@ public partial class PatternMover : RigidBody2D
 	private float distanceTravelled = 0.0f;
 	private float patternLength;
 	
-	//
-	private int maxHealth = 1;
-	private int currentHealth = 1;
+	// health
+	private int health = 1;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -71,5 +70,14 @@ public partial class PatternMover : RigidBody2D
 	private void Die() 
 	{
 		QueueFree();
+	}
+	
+	public void TakeDamage(int amount) 
+	{
+		health -= amount;
+		if (health <= 0) 
+		{
+			QueueFree();
+		}
 	}
 }

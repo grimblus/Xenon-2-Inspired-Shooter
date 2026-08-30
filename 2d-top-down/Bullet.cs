@@ -6,6 +6,7 @@ public partial class Bullet : Area2D
 	[Export] public float Speed = -250f;
 	public bool usedByRightHugger = false;
 	public bool usedByLeftHugger = false;
+	public bool usedByEnemy = false;
 	
 	public void Start(Vector2 pos) {
 		Position = pos;
@@ -33,8 +34,22 @@ public partial class Bullet : Area2D
 	}
 	
 	private void OnAreaEntered(Area2D area) {
-		if (area.IsInGroup("enemies")) {
+		if (area.IsInGroup("enemies") && (usedByEnemy == false)) {
 			//area.Explode();
+			if (area.HasMethod("TakeDamage")) 
+			{
+				area.Call("TakeDamage", 10);
+			}
+			QueueFree();
+		}
+	}
+	
+	private void OnBodyEntered(Node2D body) {
+		if (body.IsInGroup("enemies") && (usedByEnemy == false)) {
+			if (body.HasMethod("TakeDamage"))
+			{
+				body.Call("TakeDamage", 10);
+			}
 			QueueFree();
 		}
 	}
