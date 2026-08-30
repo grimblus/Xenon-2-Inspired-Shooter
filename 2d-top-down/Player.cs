@@ -155,6 +155,9 @@ public partial class Player : CharacterBody2D
 	{
 		if (area.IsInGroup("enemies")) {
 			TakeDamage(10);
+		} else if (area is Bullet bullet && bullet.usedByEnemy) {
+			TakeDamage(10);
+			bullet.QueueFree();
 		}
 	}
 	
@@ -164,6 +167,9 @@ public partial class Player : CharacterBody2D
 		if (body.IsInGroup("enemies"))
 		{
 			TakeDamage(10);
+		} else if (body is Bullet bullet && bullet.usedByEnemy) {
+			TakeDamage(10);
+			bullet.QueueFree();
 		}
 	}
 	

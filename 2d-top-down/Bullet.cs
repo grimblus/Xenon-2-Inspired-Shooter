@@ -7,6 +7,7 @@ public partial class Bullet : Area2D
 	public bool usedByRightHugger = false;
 	public bool usedByLeftHugger = false;
 	public bool usedByEnemy = false;
+	public Player player;
 	
 	public void Start(Vector2 pos) {
 		Position = pos;
@@ -41,6 +42,11 @@ public partial class Bullet : Area2D
 				area.Call("TakeDamage", 10);
 			}
 			QueueFree();
+		} else if (usedByEnemy == true) {
+			if (player.HasMethod("TakeDamage")) 
+			{
+				player.Call("TakeDamage",10);
+			}
 		}
 	}
 	
@@ -49,6 +55,11 @@ public partial class Bullet : Area2D
 			if (body.HasMethod("TakeDamage"))
 			{
 				body.Call("TakeDamage", 10);
+			} else if (usedByEnemy == true) {
+				if (player.HasMethod("TakeDamage")) 
+				{
+					player.Call("TakeDamage",10);
+				}
 			}
 			QueueFree();
 		}
