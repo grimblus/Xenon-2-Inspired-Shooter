@@ -228,7 +228,6 @@ sprite_frames = SubResource("SpriteFrames_voxn2")
 animation = &"facingright"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2096650773]
-visible = false
 rotation = 1.5707964
 scale = Vector2(2.1, 2.1)
 shape = SubResource("CapsuleShape2D_44oka")

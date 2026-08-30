@@ -148,7 +148,6 @@ sprite_frames = SubResource("SpriteFrames_44oka")
 frame_progress = 0.82587093
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=161763771]
-visible = false
 scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_cvvem")
 
