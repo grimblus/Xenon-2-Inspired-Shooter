@@ -216,8 +216,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_44oka"]
 
-[node name="WallHugger" type="RigidBody2D" unique_id=605522866]
-collision_mask = 0
+[node name="WallHugger" type="RigidBody2D" unique_id=605522866 groups=["enemies"]]
 gravity_scale = 0.0
 script = ExtResource("1_wjs2r")
 BulletScene = ExtResource("2_7aj6c")

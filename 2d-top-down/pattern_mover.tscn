@@ -134,8 +134,7 @@ _data = {
 }
 point_count = 34
 
-[node name="PatternMover" type="RigidBody2D" unique_id=2111961150 node_paths=PackedStringArray("PatternPath")]
-collision_mask = 0
+[node name="PatternMover" type="RigidBody2D" unique_id=2111961150 node_paths=PackedStringArray("PatternPath") groups=["enemies"]]
 gravity_scale = 0.0
 script = ExtResource("1_55c17")
 Pattern = SubResource("Curve2D_ycdy4")

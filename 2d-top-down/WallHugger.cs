@@ -16,6 +16,10 @@ public partial class WallHugger : RigidBody2D
 	private Player player = null;
 	private Vector2 direction;
 	
+	//health
+	private int maxHealth = 1;
+	private int currentHealth = 1;
+	
 	public override void _Ready()
 	{
 		var animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
@@ -66,5 +70,10 @@ public partial class WallHugger : RigidBody2D
 		bullet.Start(bulletSpawn.GlobalPosition);
 		bullet.Speed = BulletSpeed;
 		
+	}
+	
+	private void Die()
+	{
+		QueueFree();
 	}
 }

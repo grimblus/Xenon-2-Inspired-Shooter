@@ -38,8 +38,8 @@ public partial class Player : CharacterBody2D
 		
 		// For enemy collision
 		var hurtbox = GetNode<Area2D>("Hurtbox");
-		hurtbox.AreaEntered += OnHurtboxAreaEntered;
-		hurtbox.BodyEntered += OnHurtboxBodyEntered;
+		hurtbox.AreaEntered += HurtboxAreaHit;
+		hurtbox.BodyEntered += HurtboxBodyHit;
 
 		Start();
 	}
@@ -151,7 +151,7 @@ public partial class Player : CharacterBody2D
 	}
 	
 	//For area2ds
-	private void HurtboxHit(Area2D area)
+	private void HurtboxAreaHit(Area2D area)
 	{
 		if (area.IsInGroup("enemies")) {
 			TakeDamage(10);
@@ -159,7 +159,7 @@ public partial class Player : CharacterBody2D
 	}
 	
 	//For rigidbodys, charbodys etc
-	private void OnHurtboxBodyEntered(Node2D body)
+	private void HurtboxBodyHit(Node2D body)
 	{
 		if (body.IsInGroup("enemies"))
 		{
