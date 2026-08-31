@@ -40,6 +40,7 @@ public partial class Player : CharacterBody2D
 		healthBar = GetNode<ProgressBar>("../../CanvasLayer_HUD/HUD_Bar/Health_Bar");
 		healthBar.MaxValue = maxHealth;
 		healthBar.Value = currentHealth;
+		UpdateHealthBar();
 		
 		/// Score Display
 		scoreLabel = GetNode<Label>("../../CanvasLayer_HUD/HUD_Bar/Score_Label");
