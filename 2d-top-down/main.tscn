@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cbw8g3jjijjre" path="res://graphics/24bit/Blocks.bmp" id="5_272bh"]
 [ext_resource type="Texture2D" uid="uid://dpxtrwb3flq0q" path="res://graphics/24bit/GAster96.bmp" id="9_ycdy4"]
 [ext_resource type="Script" uid="uid://bkf5ehn65x84f" path="res://GameOver.cs" id="12_dg77c"]
+[ext_resource type="FontFile" uid="uid://ccrwa32pufb8n" path="res://fonts/pixel_font.png" id="13_ycdy4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jq2sk"]
 atlas = ExtResource("2_lquwl")
@@ -888,7 +889,8 @@ grow_vertical = 2
 
 [node name="GameOver_Label" type="Label" parent="CanvasLayer_GameOver/GameOver_UI/VBoxContainer" unique_id=863480143]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_fonts/font = ExtResource("13_ycdy4")
+theme_override_font_sizes/font_size = 32
 text = "Game Over"
 
 [node name="Retry_Button" type="Button" parent="CanvasLayer_GameOver/GameOver_UI/VBoxContainer" unique_id=46674394]
