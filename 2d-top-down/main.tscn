@@ -840,13 +840,28 @@ anchor_mode = 0
 [node name="Player" parent="Scroller" unique_id=2036859991 instance=ExtResource("1_ig7tw")]
 position = Vector2(320, 420)
 
-[node name="CanvasLayer_HealthBar" type="CanvasLayer" parent="." unique_id=91850361]
+[node name="CanvasLayer_HUD" type="CanvasLayer" parent="." unique_id=91850361]
 
-[node name="Health_Bar" type="ProgressBar" parent="CanvasLayer_HealthBar" unique_id=753519589]
-offset_left = 145.0
-offset_top = 499.0
-offset_right = 315.0
-offset_bottom = 539.0
+[node name="HUD_Bar" type="HBoxContainer" parent="CanvasLayer_HUD" unique_id=407333035]
+custom_minimum_size = Vector2(0, 40)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 16
+
+[node name="P1_Label" type="Label" parent="CanvasLayer_HUD/HUD_Bar" unique_id=123683239]
+layout_mode = 2
+text = "P1"
+
+[node name="Score_Label" type="Label" parent="CanvasLayer_HUD/HUD_Bar" unique_id=1307610057]
+layout_mode = 2
+text = "0000000"
+
+[node name="Health_Bar" type="ProgressBar" parent="CanvasLayer_HUD/HUD_Bar" unique_id=753519589]
+layout_mode = 2
 value = 100.0
 show_percentage = false
 
