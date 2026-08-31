@@ -886,17 +886,22 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 10
 
 [node name="GameOver_Label" type="Label" parent="CanvasLayer_GameOver/GameOver_UI/VBoxContainer" unique_id=863480143]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("13_ycdy4")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 80
 text = "Game Over"
 
 [node name="Retry_Button" type="Button" parent="CanvasLayer_GameOver/GameOver_UI/VBoxContainer" unique_id=46674394]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("13_ycdy4")
+theme_override_font_sizes/font_size = 32
 text = "Retry (Enter)"
 
 [node name="Exit_Button" type="Button" parent="CanvasLayer_GameOver/GameOver_UI/VBoxContainer" unique_id=2037067063]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("13_ycdy4")
+theme_override_font_sizes/font_size = 32
 text = "Exit (Esc)"
