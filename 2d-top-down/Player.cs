@@ -1,6 +1,5 @@
 using Godot;
 using System;
-
 public partial class Player : CharacterBody2D
 {
 	[Export] public float Speed = 150f;
@@ -8,12 +7,15 @@ public partial class Player : CharacterBody2D
 	[Export] PackedScene BulletScene;
 	[Export] public float BounceStrength = 300f;
 	[Export] public float KnockbackDecay = 800f;
-
 	
 	/// Health Variables
 	private ProgressBar healthBar;
 	private int maxHealth = 100;
 	private int currentHealth = 100;
+	
+	/// Score Variables
+	private Label scoreLabel;
+	private int score = 0;
 	
 	private bool isDead = false;
 	
@@ -35,9 +37,14 @@ public partial class Player : CharacterBody2D
 		screenSize = GetViewportRect().Size;
 		
 		/// Health Bar Functioning
-		healthBar = GetNode<ProgressBar>("../../CanvasLayer_HealthBar/Health_Bar");		healthBar.MaxValue = maxHealth;
+		healthBar = GetNode<ProgressBar>("../../CanvasLayer_HUD/HUD_Bar/Health_Bar");
+		healthBar.MaxValue = maxHealth;
 		healthBar.Value = currentHealth;
-
+		
+		/// Score Display
+		scoreLabel = GetNode<Label>("../../CanvasLayer_HUD/HUD_Bar/Score_Label");
+		UpdateScoreLabel();
+		
 		Start();
 	}
 	
@@ -48,7 +55,6 @@ public partial class Player : CharacterBody2D
 	
 	public override void _PhysicsProcess(double delta) {
 		Vector2 input = Input.GetVector("left", "right", "up", "down");
-
 		if (input.X > 0) {
 			ship.Frame = 5;
 			boosters.Animation = "right";
@@ -66,17 +72,13 @@ public partial class Player : CharacterBody2D
 			boosters.Animation = "forward";
 			boosters2.Animation = "forward";
 		}
-
 		Velocity = input * Speed + knockback;
 		MoveAndSlide();
-
 		for (int i = 0; i < GetSlideCollisionCount(); i++) {
 			var collision = GetSlideCollision(i);
 			knockback = collision.GetNormal() * BounceStrength;
 		}
-
 		knockback = knockback.MoveToward(Vector2.Zero, KnockbackDecay * (float)delta);
-
 		if (Input.IsActionPressed("shoot")) {
 				Shoot();
 		}
@@ -87,7 +89,6 @@ public partial class Player : CharacterBody2D
 	}
 	
 	}
-
 	
 	public void Shoot(){
 		if (!canShoot) {
@@ -95,9 +96,7 @@ public partial class Player : CharacterBody2D
 		}
 		
 		canShoot = false;
-
 		cooldown.Start();
-
 		var b = BulletScene.Instantiate<Bullet>();
 		GetParent().AddChild(b);
 		b.GlobalPosition = bulletSpawn.GlobalPosition;
@@ -118,30 +117,35 @@ public partial class Player : CharacterBody2D
 		Die();
 	}
 }
-
 	public void Heal(int amount)
 {
 	currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
 	UpdateHealthBar();
 }
-
 	private void UpdateHealthBar()
 {
 	healthBar.Value = currentHealth;
-
 	var fillStyle = new StyleBoxFlat();
 	float percent = (float)currentHealth / maxHealth;
-
 	if (percent > 0.5f)
 		fillStyle.BgColor = Colors.Green;
 	else if (percent > 0.2f)
 		fillStyle.BgColor = Colors.Orange;
 	else
 		fillStyle.BgColor = Colors.Red;
-
 	healthBar.AddThemeStyleboxOverride("fill", fillStyle);
 }
-
+	
+	public void AddScore(int amount)
+{
+	score += amount;
+	UpdateScoreLabel();
+}
+	private void UpdateScoreLabel()
+{
+	scoreLabel.Text = score.ToString("D7"); // pads to 7 digits, e.g. 0041920
+}
+	
 private void Die()
 {
 	if (isDead) return;
