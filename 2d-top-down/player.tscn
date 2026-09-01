@@ -7,6 +7,7 @@
 [ext_resource type="Shader" uid="uid://le51gluc4kj8" path="res://shader.gdshader" id="3_1jxqw"]
 [ext_resource type="Texture2D" uid="uid://d0345gc33ak0w" path="res://graphics/24bit/Burner5.bmp" id="3_hqtel"]
 [ext_resource type="Texture2D" uid="uid://byoldds7th4lq" path="res://graphics/24bit/Burner6.bmp" id="4_sweqy"]
+[ext_resource type="Texture2D" uid="uid://b1f6sc0f7yx1f" path="res://laser.tres" id="8_dw050"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lypxw"]
 shader = ExtResource("3_1jxqw")
@@ -80,6 +81,17 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e3tdd"]
+size = Vector2(2, 540)
+
+[sub_resource type="Gradient" id="Gradient_dw050"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 0, 0.39215687)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dw050"]
+gradient = SubResource("Gradient_dw050")
+width = 1
+
 [node name="Player" type="CharacterBody2D" unique_id=2048921428]
 collision_layer = 2
 script = ExtResource("1_sweqy")
@@ -111,7 +123,30 @@ one_shot = true
 [node name="BulletSpawn" type="Marker2D" parent="." unique_id=1463174157]
 position = Vector2(0, -32)
 
+[node name="TripleBulletSpawn1" type="Marker2D" parent="." unique_id=2088722118]
+position = Vector2(-17, -4)
+
+[node name="TripleBulletSpawn2" type="Marker2D" parent="." unique_id=1772344748]
+position = Vector2(18, -4)
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=2126392463]
+visible = false
 polygon = PackedVector2Array(-31, 0, -31, 12, -17, 19, -17, 27, -13, 31, 13, 31, 17, 27, 17, 19, 31, 12, 31, 0, 19, 0, 19, -4, 15, -4, 15, -8, 12, -19, 5, -19, 1, -32, -1, -32, -5, -19, -11, -19, -15, -8, -15, -4, -19, -4, -19, 0, -22, 0)
+
+[node name="Laser" type="Area2D" parent="." unique_id=2097695182]
+position = Vector2(0, -32)
+
+[node name="LaserHitbox" type="CollisionShape2D" parent="Laser" unique_id=1928144462]
+position = Vector2(0, -270)
+shape = SubResource("RectangleShape2D_e3tdd")
+
+[node name="LaserSprite" type="Sprite2D" parent="Laser" unique_id=302591430]
+position = Vector2(0, -270)
+scale = Vector2(2, 540)
+texture = ExtResource("8_dw050")
+
+[node name="Shield" type="Sprite2D" parent="." unique_id=993496730]
+scale = Vector2(70, 70)
+texture = SubResource("GradientTexture1D_dw050")
 
 [connection signal="timeout" from="GunCooldown" to="." method="OnGunCooldownTimeout"]
