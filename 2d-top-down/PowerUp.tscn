@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bakjxdy64tk8s"]
+
+[ext_resource type="Script" uid="uid://ckbhb2palrnc7" path="res://PowerUp.cs" id="1_1jq60"]
+
+[node name="PowerUp" type="Area2D" unique_id=391771576]
+script = ExtResource("1_1jq60")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=36389957]
