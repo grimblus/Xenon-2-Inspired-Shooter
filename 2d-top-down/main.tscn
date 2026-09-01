@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://cyvifbxk7e4j0" path="res://MeteorDefault.cs" id="4_4c57u"]
 [ext_resource type="Texture2D" uid="uid://cbw8g3jjijjre" path="res://graphics/24bit/Blocks.bmp" id="5_272bh"]
 [ext_resource type="Texture2D" uid="uid://dpxtrwb3flq0q" path="res://graphics/24bit/GAster96.bmp" id="9_ycdy4"]
+[ext_resource type="AudioStream" uid="uid://com52k75g1xem" path="res://music/2. Entering the Void (Loop).mp3" id="10_bgmusic"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jq2sk"]
 atlas = ExtResource("2_lquwl")
@@ -847,3 +848,8 @@ offset_right = 315.0
 offset_bottom = 539.0
 value = 100.0
 show_percentage = false
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_bgmusic")
+volume_db = -10.0
+autoplay = true
