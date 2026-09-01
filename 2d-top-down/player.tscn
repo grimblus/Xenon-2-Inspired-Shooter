@@ -56,7 +56,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"forward",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -107,7 +107,7 @@ frame = 3
 material = SubResource("ShaderMaterial_1jxqw")
 position = Vector2(-6, 48)
 sprite_frames = SubResource("SpriteFrames_e3tdd")
-animation = &"left"
+animation = &"forward"
 autoplay = "forward"
 
 [node name="Boosters2" type="AnimatedSprite2D" parent="Ship" unique_id=52006758]
