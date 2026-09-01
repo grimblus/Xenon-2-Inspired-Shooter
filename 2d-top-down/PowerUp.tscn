@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bakjxdy64tk8s"]
 
 [ext_resource type="Script" uid="uid://ckbhb2palrnc7" path="res://PowerUp.cs" id="1_1jq60"]
+[ext_resource type="Material" uid="uid://vdb0ley6chky" path="res://chroma_key_material.tres" id="2_8d637"]
 [ext_resource type="Texture2D" uid="uid://bphvhw2ongbc5" path="res://graphics/24bit/PUInvuln.bmp" id="2_xn8ad"]
 [ext_resource type="Texture2D" uid="uid://bxlr0rbrk7etv" path="res://graphics/24bit/PULaser.bmp" id="3_8d637"]
 [ext_resource type="Texture2D" uid="uid://doebecxogyid8" path="res://graphics/24bit/PUMissil.bmp" id="4_ks7fv"]
@@ -380,6 +381,7 @@ animations = [{
 }]
 
 [node name="PowerUp" type="Area2D" unique_id=391771576]
+collision_mask = 2
 script = ExtResource("1_1jq60")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=36389957]
@@ -388,5 +390,8 @@ script = ExtResource("1_1jq60")
 shape = SubResource("CircleShape2D_e3tdd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=214413000]
+material = ExtResource("2_8d637")
 sprite_frames = SubResource("SpriteFrames_e3tdd")
 animation = &"invincibleUp"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
