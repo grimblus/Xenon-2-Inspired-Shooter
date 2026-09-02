@@ -39,11 +39,13 @@ public partial class PatternMover : RigidBody2D
 	
 	public override void _PhysicsProcess(double delta)
 	{
+		//if no pattern do nothing
 		if (Pattern == null || patternLength <= 0)
 			return;
 
 		distanceTravelled += PatternSpeed * (float)delta;
 
+		//Once the pattern has been travelled through, queuefree
 		if (distanceTravelled >= patternLength)
 		{
 			QueueFree();
@@ -53,7 +55,6 @@ public partial class PatternMover : RigidBody2D
 		Vector2 localOffset = Pattern.SampleBaked(distanceTravelled);
 		Vector2 rotatedOffset = localOffset.Rotated(spawnRotation);
 
-		// Area2D can just have its position set directly — no physics engine to fight
 		GlobalPosition = spawnPosition + rotatedOffset;
 	}
 
