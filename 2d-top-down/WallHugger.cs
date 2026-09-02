@@ -8,12 +8,13 @@ public partial class WallHugger : RigidBody2D
 	[Export] public PackedScene BulletScene;
 	[Export] public float ShootInterval = 1.5f;
 	[Export] public float BulletSpeed = 250f;
+	[Export] public float ShootRange = 800f;
 	
 	// Called when the node enters the scene tree for the first time.
 	private Marker2D bulletSpawn;
 	private Timer cooldown;
 	private bool canShoot = true;
-	private Player player = null;
+	private Player player;
 	private Vector2 direction;
 	
 	//health
@@ -32,6 +33,8 @@ public partial class WallHugger : RigidBody2D
 		cooldown = GetNode<Timer>("ShootCooldown");
 		cooldown.WaitTime = ShootInterval;
 		cooldown.Start();
+		
+		player = GetNode<Player>("/root/Main/Scroller/Player");
 	}
 	
 	private void OnVisibleOnScreenNotifier2DScreenExited()
@@ -49,7 +52,15 @@ public partial class WallHugger : RigidBody2D
 	
 	private void OnShootTimerTimeout()
 	{
-		Shoot();
+		if (player == null) {
+			canShoot = false;
+		}
+		
+		float playerDistance = GlobalPosition.DistanceTo(player.GlobalPosition);
+		
+		if (playerDistance <= ShootRange) {
+			Shoot();
+		}
 	}
 	
 	public void Shoot() 

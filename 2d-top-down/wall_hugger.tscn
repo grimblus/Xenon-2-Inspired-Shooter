@@ -226,6 +226,8 @@ metadata/_edit_group_ = true
 material = ExtResource("2_47v3h")
 sprite_frames = SubResource("SpriteFrames_voxn2")
 animation = &"facingright"
+frame = 8
+frame_progress = 0.36699378
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2096650773]
 rotation = 1.5707964
