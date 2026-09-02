@@ -873,120 +873,118 @@ position = Vector2(814, -1075)
 FacingRight = false
 
 [node name="WallHugger4" parent="WallHuggers" unique_id=1630074839 instance=ExtResource("14_w48qg")]
-position = Vector2(146, -1259)
+position = Vector2(153, -1253)
 
 [node name="WallHugger5" parent="WallHuggers" unique_id=2059575408 instance=ExtResource("14_w48qg")]
-position = Vector2(143, -1319)
+position = Vector2(156, -1386)
 
 [node name="WallHugger6" parent="WallHuggers" unique_id=93814686 instance=ExtResource("14_w48qg")]
-position = Vector2(143, -1387)
+position = Vector2(156, -1510)
 
 [node name="WallHugger7" parent="WallHuggers" unique_id=406048385 instance=ExtResource("14_w48qg")]
-position = Vector2(819, -1868)
+position = Vector2(818, -1862)
 FacingRight = false
 
 [node name="WallHugger8" parent="WallHuggers" unique_id=1931010297 instance=ExtResource("14_w48qg")]
-position = Vector2(817, -1946)
+position = Vector2(818, -1935)
 FacingRight = false
 
 [node name="WallHugger9" parent="WallHuggers" unique_id=1998438644 instance=ExtResource("14_w48qg")]
-position = Vector2(687, -2121)
+position = Vector2(819, -1785)
 FacingRight = false
 
 [node name="WallHugger10" parent="WallHuggers" unique_id=1368855468 instance=ExtResource("14_w48qg")]
-position = Vector2(279, -3525)
+position = Vector2(156, -3362)
 
 [node name="WallHugger11" parent="WallHuggers" unique_id=1425349487 instance=ExtResource("14_w48qg")]
-position = Vector2(348, -3643)
+position = Vector2(151, -3750)
 
 [node name="WallHugger12" parent="WallHuggers" unique_id=754832597 instance=ExtResource("14_w48qg")]
 position = Vector2(824, -3575)
 FacingRight = false
 
 [node name="WallHugger13" parent="WallHuggers" unique_id=779564274 instance=ExtResource("14_w48qg")]
-position = Vector2(710, -3041)
-FacingRight = false
+position = Vector2(153, -3126)
 
 [node name="WallHugger14" parent="WallHuggers" unique_id=1660494265 instance=ExtResource("14_w48qg")]
-position = Vector2(709, -2984)
-FacingRight = false
+position = Vector2(152, -3008)
 
 [node name="WallHugger15" parent="WallHuggers" unique_id=899834901 instance=ExtResource("14_w48qg")]
-position = Vector2(709, -2922)
-FacingRight = false
+position = Vector2(154, -2893)
 
 [node name="WallHugger16" parent="WallHuggers" unique_id=960906657 instance=ExtResource("14_w48qg")]
-position = Vector2(144, -4141)
+position = Vector2(158, -4067)
 
 [node name="WallHugger17" parent="WallHuggers" unique_id=1082644825 instance=ExtResource("14_w48qg")]
-position = Vector2(156, -4076)
+position = Vector2(154, -3935)
 
 [node name="WallHugger18" parent="WallHuggers" unique_id=881674690 instance=ExtResource("14_w48qg")]
-position = Vector2(831, -4236)
+position = Vector2(823, -4236)
 FacingRight = false
 
 [node name="WallHugger19" parent="WallHuggers" unique_id=1791323646 instance=ExtResource("14_w48qg")]
 position = Vector2(150, -4874)
 
 [node name="WallHugger20" parent="WallHuggers" unique_id=26412686 instance=ExtResource("14_w48qg")]
-position = Vector2(399, -5974)
+position = Vector2(157, -5810)
 
 [node name="WallHugger21" parent="WallHuggers" unique_id=115022750 instance=ExtResource("14_w48qg")]
-position = Vector2(828, -5968)
+position = Vector2(822, -6147)
 FacingRight = false
 
 [node name="WallHugger22" parent="WallHuggers" unique_id=1770616224 instance=ExtResource("14_w48qg")]
-position = Vector2(150, -5520)
+position = Vector2(153, -5675)
 
 [node name="WallHugger23" parent="WallHuggers" unique_id=538257716 instance=ExtResource("14_w48qg")]
-position = Vector2(150, -5454)
+position = Vector2(156, -5419)
 
 [node name="WallHugger24" parent="WallHuggers" unique_id=2040641880 instance=ExtResource("14_w48qg")]
-position = Vector2(705, -6961)
+position = Vector2(816, -7462)
 FacingRight = false
 
 [node name="WallHugger25" parent="WallHuggers" unique_id=1989682245 instance=ExtResource("14_w48qg")]
-position = Vector2(756, -7113)
+position = Vector2(815, -7331)
 FacingRight = false
 
 [node name="WallHugger26" parent="WallHuggers" unique_id=2031707744 instance=ExtResource("14_w48qg")]
-position = Vector2(755, -7038)
-FacingRight = false
+position = Vector2(149, -7023)
 
 [node name="WallHugger27" parent="WallHuggers" unique_id=46187856 instance=ExtResource("14_w48qg")]
-position = Vector2(258, -7542)
+position = Vector2(818, -7587)
+FacingRight = false
 
 [node name="WallHugger28" parent="WallHuggers" unique_id=1869022023 instance=ExtResource("14_w48qg")]
-position = Vector2(311, -7660)
+position = Vector2(155, -7200)
 
 [node name="WallHugger29" parent="WallHuggers" unique_id=1204848001 instance=ExtResource("14_w48qg")]
-position = Vector2(259, -7766)
+position = Vector2(149, -7913)
 
 [node name="WallHugger30" parent="WallHuggers" unique_id=16410190 instance=ExtResource("14_w48qg")]
-position = Vector2(715, -7708)
+position = Vector2(820, -7892)
 FacingRight = false
 
 [node name="WallHugger31" parent="WallHuggers" unique_id=1423077293 instance=ExtResource("14_w48qg")]
-position = Vector2(303, -8151)
+position = Vector2(154, -8044)
 
 [node name="WallHugger32" parent="WallHuggers" unique_id=2000842313 instance=ExtResource("14_w48qg")]
 position = Vector2(326, -8283)
 
 [node name="WallHugger33" parent="WallHuggers" unique_id=2051401182 instance=ExtResource("14_w48qg")]
-position = Vector2(293, -8384)
+position = Vector2(817, -8352)
+FacingRight = false
 
 [node name="WallHugger34" parent="WallHuggers" unique_id=272791521 instance=ExtResource("14_w48qg")]
 position = Vector2(148, -8491)
 
 [node name="WallHugger35" parent="WallHuggers" unique_id=1965463022 instance=ExtResource("14_w48qg")]
-position = Vector2(681, -8840)
+position = Vector2(733, -8732)
 FacingRight = false
 
 [node name="WallHugger36" parent="WallHuggers" unique_id=158097562 instance=ExtResource("14_w48qg")]
-position = Vector2(147, -9228)
+position = Vector2(153, -9118)
 
 [node name="WallHugger37" parent="WallHuggers" unique_id=1311308693 instance=ExtResource("14_w48qg")]
-position = Vector2(147, -9288)
+position = Vector2(157, -9280)
 
 [node name="WallHugger38" parent="WallHuggers" unique_id=501409562 instance=ExtResource("14_w48qg")]
 position = Vector2(823, -9258)
