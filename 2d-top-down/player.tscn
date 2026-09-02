@@ -114,7 +114,7 @@ autoplay = "forward"
 material = SubResource("ShaderMaterial_1jxqw")
 position = Vector2(7, 48)
 sprite_frames = SubResource("SpriteFrames_e3tdd")
-animation = &"left"
+animation = &"forward"
 autoplay = "forward"
 
 [node name="GunCooldown" type="Timer" parent="." unique_id=1354024316]
@@ -146,6 +146,7 @@ scale = Vector2(2, 540)
 texture = ExtResource("8_dw050")
 
 [node name="Shield" type="Sprite2D" parent="." unique_id=993496730]
+visible = false
 scale = Vector2(70, 70)
 texture = SubResource("GradientTexture1D_dw050")
 

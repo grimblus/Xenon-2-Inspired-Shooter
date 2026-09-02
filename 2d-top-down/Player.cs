@@ -35,6 +35,9 @@ public partial class Player : CharacterBody2D
 	private bool canShoot = true;
 	private Vector2 knockback = Vector2.Zero;
 	
+	private Vector2 boostersPos;
+	private Vector2 boosters2Pos;
+	
 	public override void _Ready() {
 		ship = GetNode<Sprite2D>("Ship");
 		boosters = GetNode<AnimatedSprite2D>("Ship/Boosters");
@@ -46,6 +49,9 @@ public partial class Player : CharacterBody2D
 		laser = GetNode<Area2D>("Laser");
 		shield = GetNode<Sprite2D>("Shield");
 		screenSize = GetViewportRect().Size;
+		
+		boostersPos = boosters.Position;
+		boosters2Pos = boosters2.Position;
 		
 		/// Health Bar Functioning
 		healthBar = GetNode<ProgressBar>("../../CanvasLayer_HealthBar/Health_Bar");		healthBar.MaxValue = maxHealth;
@@ -90,16 +96,22 @@ public partial class Player : CharacterBody2D
 			ship.Frame = 5;
 			boosters.Animation = "right";
 			boosters2.Animation = "right";
+			boosters.Position = boostersPos + new Vector2(-10,0);
+			boosters2.Position = boosters2Pos + new Vector2(-10,0);
 		}
 		else if (input.X < 0) {
 			ship.Frame = 1;
 			boosters.Animation = "left";
 			boosters2.Animation = "left";
+			boosters.Position = boostersPos + new Vector2(10,0);
+			boosters2.Position = boosters2Pos + new Vector2(10,0);
 		}
 		else {
 			ship.Frame = 3;
 			boosters.Animation = "forward";
 			boosters2.Animation = "forward";
+			boosters.Position = boostersPos + new Vector2(0,0);
+			boosters2.Position = boosters2Pos + new Vector2(0,0);
 		}
 		
 		Velocity = input * Speed + knockback;
