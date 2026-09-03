@@ -37,13 +37,13 @@ public partial class Player : CharacterBody2D
 		screenSize = GetViewportRect().Size;
 		
 		/// Health Bar Functioning
-		healthBar = GetNode<ProgressBar>("../../CanvasLayer_HUD/HUD_Bar/Health_Bar");
+		healthBar = GetNode<ProgressBar>("../../CanvasLayer_HUD/HUD_Panel/HUD_Bar/Health_Panel/Health_Bar");
 		healthBar.MaxValue = maxHealth;
 		healthBar.Value = currentHealth;
 		UpdateHealthBar();
 		
 		/// Score Display
-		scoreLabel = GetNode<Label>("../../CanvasLayer_HUD/HUD_Bar/Score_Label");
+		scoreLabel = GetNode<Label>("../../CanvasLayer_HUD/HUD_Bar/Score_Panel/Score_Label");
 		UpdateScoreLabel();
 		
 		Start();

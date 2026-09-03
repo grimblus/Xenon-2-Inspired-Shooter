@@ -895,7 +895,15 @@ theme_override_colors/font_color = Color(0.9098039, 0.9098039, 0.9098039, 1)
 theme_override_fonts/font = ExtResource("13_ycdy4")
 text = "0000000"
 
-[node name="Health_Bar" type="ProgressBar" parent="CanvasLayer_HUD/HUD_Panel/HUD_Bar" unique_id=753519589]
+[node name="Health_Panel" type="MarginContainer" parent="CanvasLayer_HUD/HUD_Panel/HUD_Bar" unique_id=130686835]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Health_Bar" type="ProgressBar" parent="CanvasLayer_HUD/HUD_Panel/HUD_Bar/Health_Panel" unique_id=753519589]
 custom_minimum_size = Vector2(200, 24)
 layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_w48qg")
