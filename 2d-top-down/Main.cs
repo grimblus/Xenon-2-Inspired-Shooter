@@ -34,7 +34,6 @@ public partial class Main : Node
 	public void NewGame()
 	{
 		var player = GetNode<Player>("Scroller/Player");
-		var startPosition = GetNode<Marker2D>("StartPosition");
 
 		GetNode<Timer>("StartTimer").Start();
 	}

@@ -198,17 +198,7 @@ public partial class Player : CharacterBody2D
 	private void Die() {
 		GD.Print("Player died");
 	}
-	
-	public void TakeDamage(int amount)
-	{
-		currentHealth = Mathf.Clamp(currentHealth - amount, 0, maxHealth);
-		UpdateHealthBar();
-		if (currentHealth <= 0)
-		{
-			Die();
-		}
-	}
-	
+
 	//For area2ds
 	private void HurtboxAreaHit(Area2D area)
 	{

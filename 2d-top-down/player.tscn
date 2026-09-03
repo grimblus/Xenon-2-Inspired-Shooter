@@ -84,6 +84,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e3tdd"]
 size = Vector2(2, 540)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ajdi"]
+size = Vector2(21.333334, 22.333336)
+
 [sub_resource type="Gradient" id="Gradient_dw050"]
 offsets = PackedFloat32Array(1)
 colors = PackedColorArray(1, 1, 0, 0.39215687)
@@ -148,6 +151,7 @@ texture = ExtResource("8_dw050")
 [node name="Shield" type="Sprite2D" parent="." unique_id=993496730]
 scale = Vector2(70, 70)
 texture = SubResource("GradientTexture1D_dw050")
+
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1699620953]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=197461672]
