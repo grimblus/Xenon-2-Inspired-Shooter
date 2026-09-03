@@ -1,0 +1,141 @@
+[gd_scene format=3 uid="uid://bi44bxmpw1rch"]
+
+[ext_resource type="Texture2D" uid="uid://byrw4xd3dng75" path="res://graphics/24bit/Homing.bmp" id="1_cdceo"]
+[ext_resource type="Script" uid="uid://8lrnotknb6kd" path="res://Homer.cs" id="1_mdlqk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdlqk"]
+atlas = ExtResource("1_cdceo")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpsvm"]
+atlas = ExtResource("1_cdceo")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqrrt"]
+atlas = ExtResource("1_cdceo")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxmsi"]
+atlas = ExtResource("1_cdceo")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cis5"]
+atlas = ExtResource("1_cdceo")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jw68r"]
+atlas = ExtResource("1_cdceo")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrowh"]
+atlas = ExtResource("1_cdceo")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3gia"]
+atlas = ExtResource("1_cdceo")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_job0b"]
+atlas = ExtResource("1_cdceo")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1t1r"]
+atlas = ExtResource("1_cdceo")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cdl2"]
+atlas = ExtResource("1_cdceo")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ldrpx"]
+atlas = ExtResource("1_cdceo")
+region = Rect2(192, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dybod"]
+atlas = ExtResource("1_cdceo")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41xhc"]
+atlas = ExtResource("1_cdceo")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ausyc"]
+atlas = ExtResource("1_cdceo")
+region = Rect2(128, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anoe5"]
+atlas = ExtResource("1_cdceo")
+region = Rect2(192, 192, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_voxn2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdlqk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpsvm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqrrt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxmsi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7cis5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jw68r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrowh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3gia")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_job0b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1t1r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8cdl2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ldrpx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dybod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41xhc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ausyc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_anoe5")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_44oka"]
+
+[node name="Homer" type="Area2D" unique_id=61518603]
+script = ExtResource("1_mdlqk")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1453151280]
+sprite_frames = SubResource("SpriteFrames_voxn2")
+frame = 12
+frame_progress = 0.31754407
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1452151157]
+scale = Vector2(3, 3)
+shape = SubResource("CircleShape2D_44oka")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1636863045]

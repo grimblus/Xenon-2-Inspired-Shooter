@@ -1,17 +1,20 @@
 [gd_scene format=4 uid="uid://l2yy24yc20rs"]
 
-[ext_resource type="Texture2D" uid="uid://bp7k8t1xqr7ql" path="res://graphics/background/08_ice/layer1_far.png" id="1_5vw27"]
+[ext_resource type="Script" uid="uid://c8il7733psbm5" path="res://Main.cs" id="1_5vw27"]
 [ext_resource type="PackedScene" uid="uid://dcjpfraeg45ep" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://j1j4r2c2eriq" path="res://graphics/background/08_ice/layer3_stars.png" id="2_4c57u"]
 [ext_resource type="Material" uid="uid://vdb0ley6chky" path="res://chroma_key_material.tres" id="2_7mycd"]
 [ext_resource type="Script" uid="uid://clqt3caa8aewq" path="res://Scroller.cs" id="2_h2yge"]
-[ext_resource type="Texture2D" uid="uid://b53daxmgcg63f" path="res://graphics/background/08_ice/layer2_nebula.png" id="2_kek77"]
+[ext_resource type="PackedScene" uid="uid://ebgn7q4t1v64" path="res://pattern_mover.tscn" id="2_kek77"]
 [ext_resource type="Texture2D" uid="uid://105gvxm1n4xt" path="res://graphics/24bit/GAster32.bmp" id="2_lquwl"]
 [ext_resource type="Texture2D" uid="uid://dxaswhgig86c2" path="res://graphics/24bit/GAster64.bmp" id="3_7mycd"]
+[ext_resource type="Texture2D" uid="uid://bp7k8t1xqr7ql" path="res://graphics/background/08_ice/layer1_far.png" id="3_ycdy4"]
 [ext_resource type="Script" uid="uid://cyvifbxk7e4j0" path="res://MeteorDefault.cs" id="4_4c57u"]
 [ext_resource type="Texture2D" uid="uid://cbw8g3jjijjre" path="res://graphics/24bit/Blocks.bmp" id="5_272bh"]
+[ext_resource type="Texture2D" uid="uid://b53daxmgcg63f" path="res://graphics/background/08_ice/layer2_nebula.png" id="9_w48qg"]
 [ext_resource type="Texture2D" uid="uid://dpxtrwb3flq0q" path="res://graphics/24bit/GAster96.bmp" id="9_ycdy4"]
 [ext_resource type="AudioStream" uid="uid://b7krbtbn052jg" path="res://music/19. Breach the Horizon (Loop).mp3" id="12_dg77c"]
+[ext_resource type="PackedScene" uid="uid://b6e4ek4ydg1q7" path="res://wall_hugger.tscn" id="14_w48qg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jq2sk"]
 atlas = ExtResource("2_lquwl")
@@ -701,7 +704,15 @@ pattern_13 = SubResource("TileMapPattern_074og")
 pattern_14 = SubResource("TileMapPattern_0odxb")
 pattern_15 = SubResource("TileMapPattern_lswn8")
 
+[sub_resource type="Curve2D" id="Curve2D_kek77"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 252, 1, 0, 0, 0, 0, 488, 1, 0, 0, 0, 0, 743, 2)
+}
+point_count = 3
+
 [node name="Main" type="Node" unique_id=2067105497]
+script = ExtResource("1_5vw27")
+MobScene = ExtResource("2_kek77")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=923211884]
 
@@ -712,7 +723,7 @@ metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/BG_Space" unique_id=24303475]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_5vw27")
+texture = ExtResource("3_ycdy4")
 centered = false
 metadata/_edit_lock_ = true
 
@@ -802,7 +813,7 @@ metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/BG_Nebula" unique_id=1216560489]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_kek77")
+texture = ExtResource("9_w48qg")
 centered = false
 
 [node name="BG_Stars" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1224873891]
@@ -839,6 +850,156 @@ anchor_mode = 0
 [node name="Player" parent="Scroller" unique_id=2036859991 instance=ExtResource("1_ig7tw")]
 position = Vector2(320, 420)
 
+[node name="MobPath" type="Path2D" parent="Scroller" unique_id=928925929]
+curve = SubResource("Curve2D_kek77")
+
+[node name="MobSpawnLocation" type="PathFollow2D" parent="Scroller/MobPath" unique_id=645416124]
+position = Vector2(252, 1)
+
+[node name="Terrain" type="TileMapLayer" parent="." unique_id=2116481576]
+material = ExtResource("2_7mycd")
+tile_set = SubResource("TileSet_3ewea")
+
+[node name="WallHuggers" type="Node2D" parent="." unique_id=1850199907]
+
+[node name="WallHugger" parent="WallHuggers" unique_id=605522866 instance=ExtResource("14_w48qg")]
+position = Vector2(821, -413)
+FacingRight = false
+
+[node name="WallHugger2" parent="WallHuggers" unique_id=1507393166 instance=ExtResource("14_w48qg")]
+position = Vector2(144, -403)
+
+[node name="WallHugger3" parent="WallHuggers" unique_id=105121946 instance=ExtResource("14_w48qg")]
+position = Vector2(814, -1075)
+FacingRight = false
+
+[node name="WallHugger4" parent="WallHuggers" unique_id=1630074839 instance=ExtResource("14_w48qg")]
+position = Vector2(153, -1253)
+
+[node name="WallHugger5" parent="WallHuggers" unique_id=2059575408 instance=ExtResource("14_w48qg")]
+position = Vector2(156, -1386)
+
+[node name="WallHugger6" parent="WallHuggers" unique_id=93814686 instance=ExtResource("14_w48qg")]
+position = Vector2(156, -1510)
+
+[node name="WallHugger7" parent="WallHuggers" unique_id=406048385 instance=ExtResource("14_w48qg")]
+position = Vector2(818, -1862)
+FacingRight = false
+
+[node name="WallHugger8" parent="WallHuggers" unique_id=1931010297 instance=ExtResource("14_w48qg")]
+position = Vector2(818, -1935)
+FacingRight = false
+
+[node name="WallHugger9" parent="WallHuggers" unique_id=1998438644 instance=ExtResource("14_w48qg")]
+position = Vector2(819, -1785)
+FacingRight = false
+
+[node name="WallHugger10" parent="WallHuggers" unique_id=1368855468 instance=ExtResource("14_w48qg")]
+position = Vector2(156, -3362)
+
+[node name="WallHugger11" parent="WallHuggers" unique_id=1425349487 instance=ExtResource("14_w48qg")]
+position = Vector2(151, -3750)
+
+[node name="WallHugger12" parent="WallHuggers" unique_id=754832597 instance=ExtResource("14_w48qg")]
+position = Vector2(824, -3575)
+FacingRight = false
+
+[node name="WallHugger13" parent="WallHuggers" unique_id=779564274 instance=ExtResource("14_w48qg")]
+position = Vector2(153, -3126)
+
+[node name="WallHugger14" parent="WallHuggers" unique_id=1660494265 instance=ExtResource("14_w48qg")]
+position = Vector2(152, -3008)
+
+[node name="WallHugger15" parent="WallHuggers" unique_id=899834901 instance=ExtResource("14_w48qg")]
+position = Vector2(154, -2893)
+
+[node name="WallHugger16" parent="WallHuggers" unique_id=960906657 instance=ExtResource("14_w48qg")]
+position = Vector2(158, -4067)
+
+[node name="WallHugger17" parent="WallHuggers" unique_id=1082644825 instance=ExtResource("14_w48qg")]
+position = Vector2(154, -3935)
+
+[node name="WallHugger18" parent="WallHuggers" unique_id=881674690 instance=ExtResource("14_w48qg")]
+position = Vector2(823, -4236)
+FacingRight = false
+
+[node name="WallHugger19" parent="WallHuggers" unique_id=1791323646 instance=ExtResource("14_w48qg")]
+position = Vector2(150, -4874)
+
+[node name="WallHugger20" parent="WallHuggers" unique_id=26412686 instance=ExtResource("14_w48qg")]
+position = Vector2(157, -5810)
+
+[node name="WallHugger21" parent="WallHuggers" unique_id=115022750 instance=ExtResource("14_w48qg")]
+position = Vector2(822, -6147)
+FacingRight = false
+
+[node name="WallHugger22" parent="WallHuggers" unique_id=1770616224 instance=ExtResource("14_w48qg")]
+position = Vector2(153, -5675)
+
+[node name="WallHugger23" parent="WallHuggers" unique_id=538257716 instance=ExtResource("14_w48qg")]
+position = Vector2(156, -5419)
+
+[node name="WallHugger24" parent="WallHuggers" unique_id=2040641880 instance=ExtResource("14_w48qg")]
+position = Vector2(816, -7462)
+FacingRight = false
+
+[node name="WallHugger25" parent="WallHuggers" unique_id=1989682245 instance=ExtResource("14_w48qg")]
+position = Vector2(815, -7331)
+FacingRight = false
+
+[node name="WallHugger26" parent="WallHuggers" unique_id=2031707744 instance=ExtResource("14_w48qg")]
+position = Vector2(149, -7023)
+
+[node name="WallHugger27" parent="WallHuggers" unique_id=46187856 instance=ExtResource("14_w48qg")]
+position = Vector2(818, -7587)
+FacingRight = false
+
+[node name="WallHugger28" parent="WallHuggers" unique_id=1869022023 instance=ExtResource("14_w48qg")]
+position = Vector2(155, -7200)
+
+[node name="WallHugger29" parent="WallHuggers" unique_id=1204848001 instance=ExtResource("14_w48qg")]
+position = Vector2(149, -7913)
+
+[node name="WallHugger30" parent="WallHuggers" unique_id=16410190 instance=ExtResource("14_w48qg")]
+position = Vector2(820, -7892)
+FacingRight = false
+
+[node name="WallHugger31" parent="WallHuggers" unique_id=1423077293 instance=ExtResource("14_w48qg")]
+position = Vector2(154, -8044)
+
+[node name="WallHugger32" parent="WallHuggers" unique_id=2000842313 instance=ExtResource("14_w48qg")]
+position = Vector2(326, -8283)
+
+[node name="WallHugger33" parent="WallHuggers" unique_id=2051401182 instance=ExtResource("14_w48qg")]
+position = Vector2(817, -8352)
+FacingRight = false
+
+[node name="WallHugger34" parent="WallHuggers" unique_id=272791521 instance=ExtResource("14_w48qg")]
+position = Vector2(148, -8491)
+
+[node name="WallHugger35" parent="WallHuggers" unique_id=1965463022 instance=ExtResource("14_w48qg")]
+position = Vector2(733, -8732)
+FacingRight = false
+
+[node name="WallHugger36" parent="WallHuggers" unique_id=158097562 instance=ExtResource("14_w48qg")]
+position = Vector2(153, -9118)
+
+[node name="WallHugger37" parent="WallHuggers" unique_id=1311308693 instance=ExtResource("14_w48qg")]
+position = Vector2(157, -9280)
+
+[node name="WallHugger38" parent="WallHuggers" unique_id=501409562 instance=ExtResource("14_w48qg")]
+position = Vector2(823, -9258)
+FacingRight = false
+
+[node name="MobTimer" type="Timer" parent="." unique_id=1556481222]
+wait_time = 0.25
+
+[node name="MobBatchTimer" type="Timer" parent="." unique_id=215502127]
+wait_time = 2.0
+
+[node name="StartTimer" type="Timer" parent="." unique_id=1310393044]
+wait_time = 3.0
+
 [node name="CanvasLayer_HealthBar" type="CanvasLayer" parent="." unique_id=91850361]
 
 [node name="Health_Bar" type="ProgressBar" parent="CanvasLayer_HealthBar" unique_id=753519589]
@@ -853,3 +1014,7 @@ show_percentage = false
 stream = ExtResource("12_dg77c")
 volume_db = -10.0
 autoplay = true
+
+[connection signal="timeout" from="MobTimer" to="." method="OnMobTimerTimeout"]
+[connection signal="timeout" from="MobBatchTimer" to="." method="OnMobBatchTimerTimeout"]
+[connection signal="timeout" from="StartTimer" to="." method="OnStartTimerTimeout"]
