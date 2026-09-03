@@ -1,10 +1,20 @@
 [gd_scene format=3 uid="uid://c5bvyibdcc6ig"]
 
+[ext_resource type="Script" uid="uid://bv7t7jpv7p71m" path="res://BootScreen.cs" id="1_e05bb"]
+[ext_resource type="Texture2D" uid="uid://beysguc8u7kp6" path="res://logos/bblogo_clean.png" id="2_nxau8"]
+[ext_resource type="Texture2D" uid="uid://c5jmryltwfg2r" path="res://logos/logo.jpg" id="3_v07ap"]
+[ext_resource type="Texture2D" uid="uid://dyquipqyhbawq" path="res://logos/pcflogo_clean.png" id="4_5sw8o"]
+[ext_resource type="Texture2D" uid="uid://dejtisj1741ry" path="res://logos/xlogo_clean.png" id="5_qxbx5"]
+
 [node name="BootScreen" type="Control" unique_id=303292086]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e05bb")
+Logos = Array[Texture2D]([ExtResource("2_nxau8"), ExtResource("3_v07ap"), ExtResource("4_5sw8o"), ExtResource("5_qxbx5")])
 
 [node name="Background" type="ColorRect" parent="." unique_id=702314643]
 layout_mode = 1
