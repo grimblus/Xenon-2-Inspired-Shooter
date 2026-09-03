@@ -59,7 +59,7 @@ public partial class Player : CharacterBody2D
 		UpdateHealthBar();
 		
 		/// Score Display
-		scoreLabel = GetNode<Label>("../../CanvasLayer_HUD/HUD_Bar/Score_Panel/Score_Label");
+		scoreLabel = GetNode<Label>("../../CanvasLayer_HUD/HUD_Panel/HUD_Bar/Score_Panel/Score_Label");
 		UpdateScoreLabel();
 		
 		// For enemy collision
