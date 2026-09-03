@@ -51,11 +51,6 @@ public partial class Player : CharacterBody2D
 		healthBar = GetNode<ProgressBar>("../../CanvasLayer_HealthBar/Health_Bar");		healthBar.MaxValue = maxHealth;
 		healthBar.Value = currentHealth;
 		
-		// For enemy collision
-		var hurtbox = GetNode<Area2D>("Hurtbox");
-		hurtbox.AreaEntered += HurtboxAreaHit;
-		hurtbox.BodyEntered += HurtboxBodyHit;
-
 		Start();
 	}
 	
@@ -125,11 +120,9 @@ public partial class Player : CharacterBody2D
 		if (Input.IsKeyPressed(Key.H)) {
 			TakeDamage(20);
 		}
-	
 	}
-
 	
-	public void Shoot() {
+	public void Shoot(){
 		if (!canShoot) {
 			return;
 		}
@@ -198,38 +191,4 @@ public partial class Player : CharacterBody2D
 	private void Die() {
 		GD.Print("Player died");
 	}
-	
-	public void TakeDamage(int amount)
-	{
-		currentHealth = Mathf.Clamp(currentHealth - amount, 0, maxHealth);
-		UpdateHealthBar();
-		if (currentHealth <= 0)
-		{
-			Die();
-		}
-	}
-	
-	//For area2ds
-	private void HurtboxAreaHit(Area2D area)
-	{
-		if (area.IsInGroup("enemies")) {
-			TakeDamage(10);
-		} else if (area is Bullet bullet && bullet.usedByEnemy) {
-			TakeDamage(10);
-			bullet.QueueFree();
-		}
-	}
-	
-	//For rigidbodys, charbodys etc
-	private void HurtboxBodyHit(Node2D body)
-	{
-		if (body.IsInGroup("enemies"))
-		{
-			TakeDamage(10);
-		} else if (body is Bullet bullet && bullet.usedByEnemy) {
-			TakeDamage(10);
-			bullet.QueueFree();
-		}
-	}
-	
 }

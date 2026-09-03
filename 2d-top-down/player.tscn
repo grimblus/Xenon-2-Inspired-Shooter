@@ -148,11 +148,5 @@ texture = ExtResource("8_dw050")
 [node name="Shield" type="Sprite2D" parent="." unique_id=993496730]
 scale = Vector2(70, 70)
 texture = SubResource("GradientTexture1D_dw050")
-[node name="Hurtbox" type="Area2D" parent="." unique_id=1699620953]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=197461672]
-position = Vector2(-1.4305115e-06, -0.50000095)
-scale = Vector2(3, 3)
-shape = SubResource("RectangleShape2D_1ajdi")
 
 [connection signal="timeout" from="GunCooldown" to="." method="OnGunCooldownTimeout"]
