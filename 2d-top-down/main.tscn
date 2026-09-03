@@ -702,6 +702,22 @@ pattern_13 = SubResource("TileMapPattern_074og")
 pattern_14 = SubResource("TileMapPattern_0odxb")
 pattern_15 = SubResource("TileMapPattern_lswn8")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b8y47"]
+bg_color = Color(0.08627451, 0.10980392, 0.18039216, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wkoc5"]
+bg_color = Color(0, 0, 0, 1)
+border_width_right = 2
+border_color = Color(0.16470589, 0.2, 0.3137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ycdy4"]
+bg_color = Color(0, 0, 0, 1)
+border_width_right = 2
+border_color = Color(0.16470589, 0.2, 0.3137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w48qg"]
+bg_color = Color(0.047058824, 0.05882353, 0.101960786, 1)
+
 [node name="Main" type="Node" unique_id=2067105497]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=923211884]
@@ -842,29 +858,47 @@ position = Vector2(320, 420)
 
 [node name="CanvasLayer_HUD" type="CanvasLayer" parent="." unique_id=91850361]
 
-[node name="HUD_Bar" type="HBoxContainer" parent="CanvasLayer_HUD" unique_id=407333035]
-custom_minimum_size = Vector2(0, 40)
+[node name="HUD_Panel" type="PanelContainer" parent="CanvasLayer_HUD" unique_id=1337136807]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -40.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_b8y47")
+
+[node name="HUD_Bar" type="HBoxContainer" parent="CanvasLayer_HUD/HUD_Panel" unique_id=407333035]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="P1_Label" type="Label" parent="CanvasLayer_HUD/HUD_Bar" unique_id=123683239]
+[node name="P1_Panel" type="PanelContainer" parent="CanvasLayer_HUD/HUD_Panel/HUD_Bar" unique_id=611493977]
+custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wkoc5")
+
+[node name="P1_Label" type="Label" parent="CanvasLayer_HUD/HUD_Panel/HUD_Bar/P1_Panel" unique_id=123683239]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9490196, 0.75686276, 0.30588236, 1)
 theme_override_fonts/font = ExtResource("13_ycdy4")
 text = "P1"
 
-[node name="Score_Label" type="Label" parent="CanvasLayer_HUD/HUD_Bar" unique_id=1307610057]
+[node name="Score_Panel" type="PanelContainer" parent="CanvasLayer_HUD/HUD_Panel/HUD_Bar" unique_id=126439692]
+custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ycdy4")
+
+[node name="Score_Label" type="Label" parent="CanvasLayer_HUD/HUD_Panel/HUD_Bar/Score_Panel" unique_id=1307610057]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9098039, 0.9098039, 0.9098039, 1)
 theme_override_fonts/font = ExtResource("13_ycdy4")
 text = "0000000"
 
-[node name="Health_Bar" type="ProgressBar" parent="CanvasLayer_HUD/HUD_Bar" unique_id=753519589]
+[node name="Health_Bar" type="ProgressBar" parent="CanvasLayer_HUD/HUD_Panel/HUD_Bar" unique_id=753519589]
 custom_minimum_size = Vector2(200, 24)
 layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_w48qg")
 value = 100.0
 show_percentage = false
 
