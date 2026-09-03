@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://b7krbtbn052jg" path="res://music/19. Breach the Horizon (Loop).mp3" id="12_dg77c"]
 [ext_resource type="FontFile" uid="uid://ccrwa32pufb8n" path="res://fonts/pixel_font.png" id="13_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://b6e4ek4ydg1q7" path="res://wall_hugger.tscn" id="14_w48qg"]
+[ext_resource type="Script" uid="uid://bkf5ehn65x84f" path="res://GameOver.cs" id="16_yaehf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jq2sk"]
 atlas = ExtResource("2_lquwl")
@@ -1104,6 +1105,7 @@ wait_time = 3.0
 [node name="CanvasLayer_GameOver" type="CanvasLayer" parent="." unique_id=387434958]
 process_mode = 3
 visible = false
+script = ExtResource("16_yaehf")
 
 [node name="GameOver_UI" type="Control" parent="CanvasLayer_GameOver" unique_id=1692983933]
 process_mode = 3
