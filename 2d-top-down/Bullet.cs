@@ -34,6 +34,10 @@ public partial class Bullet : Area2D
 		Rotation = shootDirection.Angle() + Mathf.Pi / 2;
 	}
 	
+	//pls merge :)
+	
+	
+	
 	private void OnAreaEntered(Area2D area) {
 		if (area.IsInGroup("enemies") && (usedByEnemy == false)) {
 			//area.Explode();
