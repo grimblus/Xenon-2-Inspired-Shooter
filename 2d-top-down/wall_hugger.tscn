@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://b6e4ek4ydg1q7"]
 
 [ext_resource type="Script" uid="uid://gahkftv7c1o6" path="res://WallHugger.cs" id="1_wjs2r"]
+[ext_resource type="PackedScene" uid="uid://bd4bxd4mj0p1n" path="res://bullet.tscn" id="2_7aj6c"]
+[ext_resource type="Material" uid="uid://vdb0ley6chky" path="res://chroma_key_material.tres" id="2_47v3h"]
 [ext_resource type="Texture2D" uid="uid://dsdlkepjgl6yk" path="res://graphics/24bit/wallhugger.bmp" id="2_hmnmh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_47v3h"]
@@ -162,7 +164,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"facingleft",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -209,21 +211,23 @@ animations = [{
 }],
 "loop": 1,
 "name": &"facingright",
-"speed": 5.0
+"speed": 15.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_44oka"]
 
-[node name="WallHugger" type="RigidBody2D" unique_id=605522866]
-collision_mask = 0
+[node name="WallHugger" type="RigidBody2D" unique_id=605522866 groups=["enemies"]]
 gravity_scale = 0.0
 script = ExtResource("1_wjs2r")
+BulletScene = ExtResource("2_7aj6c")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=879398172]
+material = ExtResource("2_47v3h")
 sprite_frames = SubResource("SpriteFrames_voxn2")
-animation = &"facingleft"
-frame_progress = 0.47330764
+animation = &"facingright"
+frame = 8
+frame_progress = 0.36699378
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2096650773]
 rotation = 1.5707964
@@ -233,4 +237,8 @@ shape = SubResource("CapsuleShape2D_44oka")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=100370898]
 
 [node name="ShootCooldown" type="Timer" parent="." unique_id=1419687922]
-one_shot = true
+wait_time = 0.5
+
+[node name="BulletSpawn" type="Marker2D" parent="." unique_id=1291082739]
+
+[connection signal="timeout" from="ShootCooldown" to="." method="OnShootTimerTimeout"]
