@@ -13,7 +13,7 @@ public partial class Bullet : Area2D
 		Position += new Vector2(0, Speed * (float)delta);
 	}
 	
-	private void OnAreaEntered(Area2D area) {
+	private void _on_area_entered(Area2D area) {
 		if (area.IsInGroup("enemies")) {
 			//area.Explode();
 			QueueFree();

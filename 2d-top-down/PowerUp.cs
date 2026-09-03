@@ -9,7 +9,9 @@ public partial class PowerUp : Area2D
 		LaserUp,
 		ShieldUp,
 		InvincibleUp,
-		MissileUp
+		MissileBuy,
+		DroneBuy,
+		DodgeBuy
 	}
 	
 	[Export] public PowerType Type;
@@ -43,8 +45,16 @@ public partial class PowerUp : Area2D
 				orb.Animation = "invincibleUp";
 				break;
 				
-			case PowerType.MissileUp:
-				orb.Animation = "missileUp";
+			case PowerType.MissileBuy:
+				orb.Animation = "missileBuy";
+				break;
+				
+			case PowerType.DroneBuy:
+				orb.Animation = "droneBuy";
+				break;
+				
+			case PowerType.DodgeBuy:
+				orb.Animation = "dodgeBuy";
 				break;
 		}
 		
@@ -80,8 +90,8 @@ public partial class PowerUp : Area2D
 				player.invincibleUp = true;
 				break;
 				
-			case PowerType.MissileUp:
-				player.missileUp = true;
+			case PowerType.MissileBuy:
+				player.missileBuy = true;
 				break;
 		}
 	}

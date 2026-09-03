@@ -15,7 +15,8 @@ public partial class Player : CharacterBody2D
 	[Export] public bool laserUp = false;
 	[Export] public bool shieldUp = false;
 	[Export] public bool invincibleUp = false;
-	[Export] public bool missileUp = false;
+	
+	[Export] public bool missileBuy = false;
 	
 	/// Health Variables
 	private ProgressBar healthBar;

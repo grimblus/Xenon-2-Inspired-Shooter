@@ -7,6 +7,7 @@
 [ext_resource type="Shader" uid="uid://le51gluc4kj8" path="res://shader.gdshader" id="3_1jxqw"]
 [ext_resource type="Texture2D" uid="uid://d0345gc33ak0w" path="res://graphics/24bit/Burner5.bmp" id="3_hqtel"]
 [ext_resource type="Texture2D" uid="uid://byoldds7th4lq" path="res://graphics/24bit/Burner6.bmp" id="4_sweqy"]
+[ext_resource type="Script" uid="uid://ydbktit3lxu3" path="res://Laser.cs" id="8_b26j0"]
 [ext_resource type="Texture2D" uid="uid://b1f6sc0f7yx1f" path="res://laser.tres" id="8_dw050"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lypxw"]
@@ -134,7 +135,9 @@ visible = false
 polygon = PackedVector2Array(-31, 0, -31, 12, -17, 19, -17, 27, -13, 31, 13, 31, 17, 27, 17, 19, 31, 12, 31, 0, 19, 0, 19, -4, 15, -4, 15, -8, 12, -19, 5, -19, 1, -32, -1, -32, -5, -19, -11, -19, -15, -8, -15, -4, -19, -4, -19, 0, -22, 0)
 
 [node name="Laser" type="Area2D" parent="." unique_id=2097695182]
+visible = false
 position = Vector2(0, -32)
+script = ExtResource("8_b26j0")
 
 [node name="LaserHitbox" type="CollisionShape2D" parent="Laser" unique_id=1928144462]
 position = Vector2(0, -270)
@@ -151,3 +154,4 @@ scale = Vector2(70, 70)
 texture = SubResource("GradientTexture1D_dw050")
 
 [connection signal="timeout" from="GunCooldown" to="." method="OnGunCooldownTimeout"]
+[connection signal="area_entered" from="Laser" to="." method="_on_laser_area_entered"]

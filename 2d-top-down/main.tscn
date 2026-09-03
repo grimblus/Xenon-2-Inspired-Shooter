@@ -851,3 +851,7 @@ show_percentage = false
 
 [node name="PowerUp" parent="." unique_id=391771576 instance=ExtResource("12_dg77c")]
 position = Vector2(448, 127)
+
+[node name="PowerUp2" parent="." unique_id=893168936 instance=ExtResource("12_dg77c")]
+position = Vector2(523, -107)
+Type = 3
