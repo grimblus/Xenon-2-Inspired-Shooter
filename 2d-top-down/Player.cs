@@ -62,7 +62,6 @@ public partial class Player : CharacterBody2D
 		scoreLabel = GetNode<Label>("../../CanvasLayer_HUD/HUD_Bar/Score_Panel/Score_Label");
 		UpdateScoreLabel();
 		
-		
 		// For enemy collision
 		var hurtbox = GetNode<Area2D>("Hurtbox");
 		hurtbox.AreaEntered += HurtboxAreaHit;
@@ -121,15 +120,10 @@ public partial class Player : CharacterBody2D
 		Velocity = input * Speed + knockback;
 		MoveAndSlide();
 		
-		Velocity = input * Speed + knockback;
-		MoveAndSlide();
-		
 		for (int i = 0; i < GetSlideCollisionCount(); i++) {
 			var collision = GetSlideCollision(i);
 			knockback = collision.GetNormal() * BounceStrength;
 		}
-		knockback = knockback.MoveToward(Vector2.Zero, KnockbackDecay * (float)delta);
-		
 		knockback = knockback.MoveToward(Vector2.Zero, KnockbackDecay * (float)delta);
 		
 		if (Input.IsActionPressed("shoot")) {
@@ -140,7 +134,6 @@ public partial class Player : CharacterBody2D
 		if (Input.IsKeyPressed(Key.H)) {
 			TakeDamage(20);
 		}
-	
 	}
 	
 	public void Shoot() {
@@ -149,11 +142,6 @@ public partial class Player : CharacterBody2D
 		}
 		
 		canShoot = false;
-		cooldown.Start();
-		var b = BulletScene.Instantiate<Bullet>();
-		GetParent().AddChild(b);
-		b.GlobalPosition = bulletSpawn.GlobalPosition;
-		
 		cooldown.Start();
 		
 		if (!laserUp) {
@@ -178,6 +166,8 @@ public partial class Player : CharacterBody2D
 	}
 	
 	public void TakeDamage(int amount) {
+		if (isDead) return;
+		
 		if (!invincibleUp) {	
 			if (!shieldUp) {
 				currentHealth = Mathf.Clamp(currentHealth - amount, 0, maxHealth);
@@ -213,55 +203,29 @@ public partial class Player : CharacterBody2D
 		healthBar.AddThemeStyleboxOverride("fill", fillStyle);
 	}
 	
-	private void Die() {
-		GD.Print("Player died");
+	public void AddScore(int amount) {
+		score += amount;
+		UpdateScoreLabel();
 	}
-}
-	public void Heal(int amount)
-{
-	currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-	UpdateHealthBar();
-}
-	private void UpdateHealthBar()
-{
-	healthBar.Value = currentHealth;
-	var fillStyle = new StyleBoxFlat();
-	float percent = (float)currentHealth / maxHealth;
-	if (percent > 0.5f)
-		fillStyle.BgColor = Colors.Green;
-	else if (percent > 0.2f)
-		fillStyle.BgColor = Colors.Orange;
-	else
-		fillStyle.BgColor = Colors.Red;
-	healthBar.AddThemeStyleboxOverride("fill", fillStyle);
-}
 	
-	public void AddScore(int amount)
-{
-	score += amount;
-	UpdateScoreLabel();
-}
-	private void UpdateScoreLabel()
-{
-	scoreLabel.Text = score.ToString("D7"); // pads to 7 digits, e.g. 0041920
-}
+	private void UpdateScoreLabel() {
+		scoreLabel.Text = score.ToString("D7"); // pads to 7 digits, e.g. 0041920
+	}
 	
-private void Die()
-{
-	if (isDead) return;
-	isDead = true;
+	private void Die() {
+		if (isDead) return;
+		isDead = true;
+		
+		GD.Print("Player died");
+		
+		var gameOverLayer = GetNode<GameOver>("../../CanvasLayer_GameOver");
+		gameOverLayer.ShowGameOver();
+		
+		GetTree().Paused = true;
+	}
 	
-	GD.Print("Player died");
-	
-	var gameOverLayer = GetNode<GameOver>("../../CanvasLayer_GameOver");
-	gameOverLayer.ShowGameOver();
-	
-	GetTree().Paused = true;
-}
-
 	//For area2ds
-	private void HurtboxAreaHit(Area2D area)
-	{
+	private void HurtboxAreaHit(Area2D area) {
 		if (area.IsInGroup("enemies")) {
 			TakeDamage(10);
 		} else if (area is Bullet bullet && bullet.usedByEnemy) {
@@ -271,15 +235,12 @@ private void Die()
 	}
 	
 	//For rigidbodys, charbodys etc
-	private void HurtboxBodyHit(Node2D body)
-	{
-		if (body.IsInGroup("enemies"))
-		{
+	private void HurtboxBodyHit(Node2D body) {
+		if (body.IsInGroup("enemies")) {
 			TakeDamage(10);
 		} else if (body is Bullet bullet && bullet.usedByEnemy) {
 			TakeDamage(10);
 			bullet.QueueFree();
 		}
 	}
-	
 }
