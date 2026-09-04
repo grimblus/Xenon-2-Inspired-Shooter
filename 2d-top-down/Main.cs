@@ -11,10 +11,13 @@ public partial class Main : Node
 	
 	[Export]
 	public PackedScene MobScene { get; set; }
-	
+
 	//How many are spawned before another spawn point is chosen
 	[Export]
-	public int SpawnTotal = 5; 
+	public int SpawnTotal = 5;
+
+	[Export]
+	public string ShopScreenPath = "res://shop_screen.tscn";
 
 	//spawn increment for spawn total
 	private int spawnCount = 0;
@@ -23,6 +26,11 @@ public partial class Main : Node
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		// Debug: jump straight to the shop screen
+		if (Input.IsKeyPressed(Key.Quoteleft))
+		{
+			GetTree().ChangeSceneToFile(ShopScreenPath);
+		}
 	}
 	
 	public void GameOver()
