@@ -713,24 +713,26 @@ _data = {
 point_count = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b8y47"]
-bg_color = Color(0.08627451, 0.10980392, 0.18039216, 1)
+bg_color = Color(0, 0, 0, 0.6745098)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wkoc5"]
 content_margin_left = 20.0
 content_margin_right = 20.0
-bg_color = Color(0, 0, 0, 1)
-border_width_right = 2
-border_color = Color(0.16470589, 0.2, 0.3137255, 1)
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ycdy4"]
 content_margin_left = 20.0
 content_margin_right = 20.0
-bg_color = Color(0, 0, 0, 1)
-border_width_right = 2
+bg_color = Color(0.6, 0.6, 0.6, 0)
 border_color = Color(0.16470589, 0.2, 0.3137255, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w48qg"]
-bg_color = Color(0.047058824, 0.05882353, 0.101960786, 1)
+bg_color = Color(0.047058824, 0.05882353, 0.101960786, 0.65)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 15
 
 [node name="Main" type="Node" unique_id=2067105497]
 script = ExtResource("1_5vw27")
@@ -885,13 +887,13 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 40.0
 grow_horizontal = 2
-grow_vertical = 1
+size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_b8y47")
 
 [node name="HUD_Bar" type="HBoxContainer" parent="CanvasLayer_HUD/HUD_Panel" unique_id=407333035]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 0
 
 [node name="P1_Panel" type="PanelContainer" parent="CanvasLayer_HUD/HUD_Panel/HUD_Bar" unique_id=611493977]
 custom_minimum_size = Vector2(100, 0)
@@ -902,7 +904,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_wkoc5")
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9490196, 0.75686276, 0.30588236, 1)
 theme_override_fonts/font = ExtResource("13_ycdy4")
-text = "P1"
+text = "P1 Score"
 
 [node name="Score_Panel" type="PanelContainer" parent="CanvasLayer_HUD/HUD_Panel/HUD_Bar" unique_id=126439692]
 custom_minimum_size = Vector2(160, 0)
@@ -919,9 +921,9 @@ text = "0000000"
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
+theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
+theme_override_constants/margin_bottom = 8
 
 [node name="Health_Bar" type="ProgressBar" parent="CanvasLayer_HUD/HUD_Panel/HUD_Bar/Health_Panel" unique_id=753519589]
 custom_minimum_size = Vector2(600, 24)
@@ -1072,8 +1074,6 @@ wait_time = 2.0
 
 [node name="StartTimer" type="Timer" parent="." unique_id=1310393044]
 wait_time = 3.0
-
-[node name="CanvasLayer_HealthBar" type="CanvasLayer" parent="." unique_id=2041219991]
 
 [node name="CanvasLayer_GameOver" type="CanvasLayer" parent="." unique_id=387434958]
 process_mode = 3

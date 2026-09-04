@@ -195,15 +195,16 @@ public partial class Player : CharacterBody2D
 		healthBar.Value = currentHealth;
 		
 		var fillStyle = new StyleBoxFlat();
+		fillStyle.SetCornerRadiusAll(8);
 		float percent = (float)currentHealth / maxHealth;
-		
+
 		if (percent > 0.5f)
 			fillStyle.BgColor = Colors.Green;
 		else if (percent > 0.2f)
 			fillStyle.BgColor = Colors.Orange;
 		else
 			fillStyle.BgColor = Colors.Red;
-		
+
 		healthBar.AddThemeStyleboxOverride("fill", fillStyle);
 	}
 	
