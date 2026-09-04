@@ -8,9 +8,14 @@ public partial class Bullet : Area2D
 	public bool usedByLeftHugger = false;
 	public bool usedByEnemy = false;
 	public Player player;
+	public Node2D Shooter;
 	
 	public void Start(Vector2 pos) {
 		Position = pos;
+		
+		if (usedByEnemy == true) {
+			Modulate = new Color (1.0f, 0.647f, 0.0f);
+		}
 	}
 
 	public override void _Process(double delta) {
@@ -39,6 +44,10 @@ public partial class Bullet : Area2D
 	
 	
 	private void OnAreaEntered(Area2D area) {
+		if (area == Shooter) {
+			return;
+		}
+		
 		if (area.IsInGroup("enemies") && (usedByEnemy == false)) {
 			//area.Explode();
 			if (area.HasMethod("TakeDamage")) 
@@ -46,26 +55,32 @@ public partial class Bullet : Area2D
 				area.Call("TakeDamage", 10);
 			}
 			QueueFree();
-		} else if (usedByEnemy == true) {
+		} else if (player != null && usedByEnemy == true) {
 			if (player.HasMethod("TakeDamage")) 
 			{
 				player.Call("TakeDamage",10);
+				QueueFree();
 			}
 		}
 	}
 	
 	private void OnBodyEntered(Node2D body) {
-		if (body.IsInGroup("enemies") && (usedByEnemy == false)) {
+		if (body == Shooter) {
+			return;
+		}
+		
+		if (body.IsInGroup("enemies") && !usedByEnemy) {
 			if (body.HasMethod("TakeDamage"))
 			{
 				body.Call("TakeDamage", 10);
-			} else if (usedByEnemy == true) {
-				if (player.HasMethod("TakeDamage")) 
-				{
-					player.Call("TakeDamage",10);
-				}
-			}
+			} 
 			QueueFree();
+		} else if (usedByEnemy == true) {
+			if (player != null && player.HasMethod("TakeDamage")) 
+			{
+				player.Call("TakeDamage",10);
+				QueueFree();
+			}
 		}
 	}
 	

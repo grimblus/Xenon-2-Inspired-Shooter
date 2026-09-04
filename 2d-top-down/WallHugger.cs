@@ -70,6 +70,7 @@ public partial class WallHugger : RigidBody2D
 		}
 		
 		var bullet = BulletScene.Instantiate<Bullet>();
+		bullet.Shooter = this;
 		bullet.usedByEnemy = true;
 		GetParent().AddChild(bullet);
 

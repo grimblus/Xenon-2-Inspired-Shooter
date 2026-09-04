@@ -153,5 +153,5 @@ shape = SubResource("CircleShape2D_cvvem")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=917049643]
 
-[node name="Path2D" type="Path2D" parent="." unique_id=885411680]
+[node name="Path2D" type="Path2D" parent="." unique_id=885411680 groups=["enemies"]]
 curve = SubResource("Curve2D_55c17")

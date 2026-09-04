@@ -140,6 +140,7 @@ public partial class Player : CharacterBody2D
 		
 		if (!laserUp) {
 			var b = BulletScene.Instantiate<Bullet>();
+			b.Shooter = this;
 			GetParent().AddChild(b);
 			b.GlobalPosition = bulletSpawn.GlobalPosition;
 		}
