@@ -215,6 +215,8 @@ animations = [{
 "name": &"main",
 "speed": 15.0
 }]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ajdi"]
+size = Vector2(21.333334, 22.333336)
 
 [node name="Player" type="CharacterBody2D" unique_id=2048921428]
 collision_layer = 2
@@ -292,6 +294,12 @@ BulletScene = ExtResource("2_2hs0m")
 [node name="DroneBulletSpawn" type="Marker2D" parent="Drone" unique_id=428509913]
 visible = false
 position = Vector2(0, -12)
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1699620953]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=197461672]
+position = Vector2(-1.4305115e-06, -0.50000095)
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_1ajdi")
 
 [connection signal="timeout" from="GunCooldown" to="." method="OnGunCooldownTimeout"]
 [connection signal="area_entered" from="Laser" to="." method="_on_laser_area_entered"]

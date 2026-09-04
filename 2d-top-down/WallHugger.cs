@@ -3,17 +3,38 @@ using System;
 
 public partial class WallHugger : RigidBody2D
 {
+	
+	[Export] public bool FacingRight = true;
+	[Export] public PackedScene BulletScene;
+	[Export] public float ShootInterval = 1.5f;
+	[Export] public float BulletSpeed = 250f;
+	[Export] public float ShootRange = 800f;
+	
 	// Called when the node enters the scene tree for the first time.
-	private bool canShoot = false;
+	private Marker2D bulletSpawn;
 	private Timer cooldown;
+	private bool canShoot = true;
+	private Player player;
+	private Vector2 direction;
+	
+	//health
+	private int health = 1;
 	
 	public override void _Ready()
 	{
 		var animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		string[] mobTypes = animatedSprite2D.SpriteFrames.GetAnimationNames();
-		animatedSprite2D.Play(mobTypes[GD.Randi() % mobTypes.Length]);
+		if (FacingRight) {
+			animatedSprite2D.Play("facingright");
+		} else {
+			animatedSprite2D.Play("facingleft");
+		}
 		
+		bulletSpawn = GetNode<Marker2D>("BulletSpawn");
 		cooldown = GetNode<Timer>("ShootCooldown");
+		cooldown.WaitTime = ShootInterval;
+		cooldown.Start();
+		
+		player = GetNode<Player>("/root/Main/Scroller/Player");
 	}
 	
 	private void OnVisibleOnScreenNotifier2DScreenExited()
@@ -29,13 +50,47 @@ public partial class WallHugger : RigidBody2D
 		//}
 	}
 	
+	private void OnShootTimerTimeout()
+	{
+		if (player == null) {
+			canShoot = false;
+		}
+		
+		float playerDistance = GlobalPosition.DistanceTo(player.GlobalPosition);
+		
+		if (playerDistance <= ShootRange) {
+			Shoot();
+		}
+	}
+	
 	public void Shoot() 
 	{
 		if (!canShoot) {
 			return;
 		}
 		
-		cooldown.Start();
+		var bullet = BulletScene.Instantiate<Bullet>();
+		bullet.Shooter = this;
+		bullet.usedByEnemy = true;
+		GetParent().AddChild(bullet);
+
+		if (FacingRight) {
+			bullet.usedByRightHugger = true;
+		} else {
+			bullet.usedByLeftHugger = true;
+		}
+		bullet.Start(bulletSpawn.GlobalPosition);
+		bullet.Speed = BulletSpeed;
 		
+	}
+	
+	public void TakeDamage(int amount) 
+	{
+		health -= amount;
+		if (health <= 0) 
+		{
+			QueueFree();
+			player.Call("AddScore", 100);
+		}
 	}
 }
