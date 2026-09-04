@@ -17,6 +17,7 @@ public partial class GameOver : CanvasLayer {
 		retryButton.Pressed += Retry;
 		exitButton.Pressed += Exit;
 
+		gameOverLabel.PivotOffset = gameOverLabel.Size / 2f;
 		gameOverLabel.Resized += () => gameOverLabel.PivotOffset = gameOverLabel.Size / 2f;
 	}
 
@@ -29,6 +30,8 @@ public partial class GameOver : CanvasLayer {
 	private void StartPulse()
 	{
 		pulseTween?.Kill();
+
+		gameOverLabel.PivotOffset = gameOverLabel.Size / 2f;
 
 		pulseTween = gameOverLabel.CreateTween();
 		pulseTween.SetLoops();
