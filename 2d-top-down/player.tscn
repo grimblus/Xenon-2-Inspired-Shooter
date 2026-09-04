@@ -90,7 +90,7 @@ size = Vector2(2, 540)
 
 [sub_resource type="Gradient" id="Gradient_dw050"]
 offsets = PackedFloat32Array(1)
-colors = PackedColorArray(1, 1, 0, 0.39215687)
+colors = PackedColorArray(0, 1, 1, 0.39200002)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_dw050"]
 gradient = SubResource("Gradient_dw050")
@@ -223,7 +223,7 @@ size = Vector2(21.333334, 22.333336)
 collision_layer = 2
 script = ExtResource("1_sweqy")
 BulletScene = ExtResource("2_2hs0m")
-laserUp = true
+droneBuy = true
 
 [node name="Ship" type="Sprite2D" parent="." unique_id=1737988385]
 material = SubResource("ShaderMaterial_lypxw")
@@ -279,6 +279,11 @@ scale = Vector2(2, 540)
 texture = ExtResource("8_dw050")
 
 [node name="Shield" type="Sprite2D" parent="." unique_id=993496730]
+visible = false
+scale = Vector2(70, 70)
+texture = SubResource("GradientTexture1D_dw050")
+
+[node name="Invincible" type="Sprite2D" parent="." unique_id=963533516]
 visible = false
 scale = Vector2(70, 70)
 texture = SubResource("GradientTexture1D_dw050")

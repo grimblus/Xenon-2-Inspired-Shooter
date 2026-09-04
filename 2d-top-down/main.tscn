@@ -963,130 +963,155 @@ tile_set = SubResource("TileSet_3ewea")
 
 [node name="WallHugger" parent="WallHuggers" unique_id=605522866 instance=ExtResource("14_w48qg")]
 position = Vector2(821, -413)
-FacingRight = false
+BulletScene = null
 
 [node name="WallHugger2" parent="WallHuggers" unique_id=1507393166 instance=ExtResource("14_w48qg")]
 position = Vector2(144, -403)
+BulletScene = null
 
 [node name="WallHugger3" parent="WallHuggers" unique_id=105121946 instance=ExtResource("14_w48qg")]
 position = Vector2(814, -1075)
-FacingRight = false
+BulletScene = null
 
 [node name="WallHugger4" parent="WallHuggers" unique_id=1630074839 instance=ExtResource("14_w48qg")]
 position = Vector2(153, -1253)
+BulletScene = null
 
 [node name="WallHugger5" parent="WallHuggers" unique_id=2059575408 instance=ExtResource("14_w48qg")]
 position = Vector2(156, -1386)
+BulletScene = null
 
 [node name="WallHugger6" parent="WallHuggers" unique_id=93814686 instance=ExtResource("14_w48qg")]
 position = Vector2(156, -1510)
+BulletScene = null
 
 [node name="WallHugger7" parent="WallHuggers" unique_id=406048385 instance=ExtResource("14_w48qg")]
 position = Vector2(818, -1862)
-FacingRight = false
+BulletScene = null
 
 [node name="WallHugger8" parent="WallHuggers" unique_id=1931010297 instance=ExtResource("14_w48qg")]
 position = Vector2(818, -1935)
-FacingRight = false
+BulletScene = null
 
 [node name="WallHugger9" parent="WallHuggers" unique_id=1998438644 instance=ExtResource("14_w48qg")]
 position = Vector2(819, -1785)
-FacingRight = false
+BulletScene = null
 
 [node name="WallHugger10" parent="WallHuggers" unique_id=1368855468 instance=ExtResource("14_w48qg")]
 position = Vector2(156, -3362)
+BulletScene = null
 
 [node name="WallHugger11" parent="WallHuggers" unique_id=1425349487 instance=ExtResource("14_w48qg")]
 position = Vector2(151, -3750)
+BulletScene = null
 
 [node name="WallHugger12" parent="WallHuggers" unique_id=754832597 instance=ExtResource("14_w48qg")]
 position = Vector2(824, -3575)
-FacingRight = false
+BulletScene = null
 
 [node name="WallHugger13" parent="WallHuggers" unique_id=779564274 instance=ExtResource("14_w48qg")]
 position = Vector2(153, -3126)
+BulletScene = null
 
 [node name="WallHugger14" parent="WallHuggers" unique_id=1660494265 instance=ExtResource("14_w48qg")]
 position = Vector2(152, -3008)
+BulletScene = null
 
 [node name="WallHugger15" parent="WallHuggers" unique_id=899834901 instance=ExtResource("14_w48qg")]
 position = Vector2(154, -2893)
+BulletScene = null
 
 [node name="WallHugger16" parent="WallHuggers" unique_id=960906657 instance=ExtResource("14_w48qg")]
 position = Vector2(158, -4067)
+BulletScene = null
 
 [node name="WallHugger17" parent="WallHuggers" unique_id=1082644825 instance=ExtResource("14_w48qg")]
 position = Vector2(154, -3935)
+BulletScene = null
 
 [node name="WallHugger18" parent="WallHuggers" unique_id=881674690 instance=ExtResource("14_w48qg")]
 position = Vector2(823, -4236)
-FacingRight = false
+BulletScene = null
 
 [node name="WallHugger19" parent="WallHuggers" unique_id=1791323646 instance=ExtResource("14_w48qg")]
 position = Vector2(150, -4874)
+BulletScene = null
 
 [node name="WallHugger20" parent="WallHuggers" unique_id=26412686 instance=ExtResource("14_w48qg")]
 position = Vector2(157, -5810)
+BulletScene = null
 
 [node name="WallHugger21" parent="WallHuggers" unique_id=115022750 instance=ExtResource("14_w48qg")]
 position = Vector2(822, -6147)
-FacingRight = false
+BulletScene = null
 
 [node name="WallHugger22" parent="WallHuggers" unique_id=1770616224 instance=ExtResource("14_w48qg")]
 position = Vector2(153, -5675)
+BulletScene = null
 
 [node name="WallHugger23" parent="WallHuggers" unique_id=538257716 instance=ExtResource("14_w48qg")]
 position = Vector2(156, -5419)
+BulletScene = null
 
 [node name="WallHugger24" parent="WallHuggers" unique_id=2040641880 instance=ExtResource("14_w48qg")]
 position = Vector2(816, -7462)
+BulletScene = null
 
 [node name="WallHugger25" parent="WallHuggers" unique_id=1989682245 instance=ExtResource("14_w48qg")]
 position = Vector2(815, -7331)
-FacingRight = false
+BulletScene = null
 
 [node name="WallHugger26" parent="WallHuggers" unique_id=2031707744 instance=ExtResource("14_w48qg")]
 position = Vector2(149, -7023)
+BulletScene = null
 
 [node name="WallHugger27" parent="WallHuggers" unique_id=46187856 instance=ExtResource("14_w48qg")]
 position = Vector2(818, -7587)
+BulletScene = null
 
 [node name="WallHugger28" parent="WallHuggers" unique_id=1869022023 instance=ExtResource("14_w48qg")]
 position = Vector2(155, -7200)
+BulletScene = null
 
 [node name="WallHugger29" parent="WallHuggers" unique_id=1204848001 instance=ExtResource("14_w48qg")]
 position = Vector2(149, -7913)
+BulletScene = null
 
 [node name="WallHugger30" parent="WallHuggers" unique_id=16410190 instance=ExtResource("14_w48qg")]
 position = Vector2(820, -7892)
-FacingRight = false
+BulletScene = null
 
 [node name="WallHugger31" parent="WallHuggers" unique_id=1423077293 instance=ExtResource("14_w48qg")]
 position = Vector2(154, -8044)
+BulletScene = null
 
 [node name="WallHugger32" parent="WallHuggers" unique_id=2000842313 instance=ExtResource("14_w48qg")]
 position = Vector2(326, -8283)
+BulletScene = null
 
 [node name="WallHugger33" parent="WallHuggers" unique_id=2051401182 instance=ExtResource("14_w48qg")]
 position = Vector2(817, -8352)
-FacingRight = false
+BulletScene = null
 
 [node name="WallHugger34" parent="WallHuggers" unique_id=272791521 instance=ExtResource("14_w48qg")]
 position = Vector2(148, -8491)
+BulletScene = null
 
 [node name="WallHugger35" parent="WallHuggers" unique_id=1965463022 instance=ExtResource("14_w48qg")]
 position = Vector2(733, -8732)
-FacingRight = false
+BulletScene = null
 
 [node name="WallHugger36" parent="WallHuggers" unique_id=158097562 instance=ExtResource("14_w48qg")]
 position = Vector2(153, -9118)
+BulletScene = null
 
 [node name="WallHugger37" parent="WallHuggers" unique_id=1311308693 instance=ExtResource("14_w48qg")]
 position = Vector2(157, -9280)
+BulletScene = null
 
 [node name="WallHugger38" parent="WallHuggers" unique_id=501409562 instance=ExtResource("14_w48qg")]
 position = Vector2(823, -9258)
-FacingRight = false
+BulletScene = null
 
 [node name="MobTimer" type="Timer" parent="." unique_id=1556481222]
 wait_time = 0.25

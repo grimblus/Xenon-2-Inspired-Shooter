@@ -39,6 +39,7 @@ public partial class Player : CharacterBody2D
 	private Marker2D tripleBulletSpawn2;
 	private Area2D laser;
 	private Sprite2D shield;///Find circle sprite
+	private Sprite2D invincible;
 	private AnimatedSprite2D drone;
 	private Vector2 screenSize;
 	private bool canShoot = true;
@@ -73,6 +74,7 @@ public partial class Player : CharacterBody2D
 		tripleBulletSpawn2 = GetNode<Marker2D>("TripleBulletSpawn2");
 		laser = GetNode<Area2D>("Laser");
 		shield = GetNode<Sprite2D>("Shield");
+		invincible = GetNode<Sprite2D>("Invincible");
 		drone = GetNode<AnimatedSprite2D>("Drone");
 		screenSize = GetViewportRect().Size;
 		
@@ -118,6 +120,13 @@ public partial class Player : CharacterBody2D
 			laser.Visible = false;
 			laser.ProcessMode = Node.ProcessModeEnum.Disabled;
 			laser.SetDeferred("monitoring", false);
+		}
+		
+		if (invincibleUp) {
+			invincible.Visible = true;
+		}
+		else {
+			invincible.Visible = false;
 		}
 		
 		if (shieldUp) {

@@ -9,9 +9,11 @@ public partial class Drone : AnimatedSprite2D
 	
 	private Timer droneTimer;
 	private float angle = 0f;
+	private Marker2D droneBulletSpawn;
 	
 	public override void _Ready() {
 		droneTimer = GetNode<Timer>("DroneTimer");
+		droneBulletSpawn = GetNode<Marker2D>("DroneBulletSpawn");
 		
 		droneTimer.Timeout += Shoot;
 		droneTimer.Start();
@@ -30,10 +32,9 @@ public partial class Drone : AnimatedSprite2D
 		if (BulletScene == null)
 			return;
 		
-		Node2D bullet = BulletScene.Instantiate<Node2D>();
-		
-		GetTree().CurrentScene.AddChild(bullet);
-		
-		bullet.GlobalPosition = GlobalPosition;
+		var b = BulletScene.Instantiate<Bullet>();
+		b.Shooter = this;
+		GetParent().AddChild(b);
+		b.Start(droneBulletSpawn.GlobalPosition);
 	}
 }
