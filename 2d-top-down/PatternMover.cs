@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class PatternMover : RigidBody2D
+public partial class PatternMover : Area2D
 {
 	
 	[Export] public Curve2D Pattern;
