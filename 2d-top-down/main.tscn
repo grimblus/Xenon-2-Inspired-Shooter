@@ -878,13 +878,13 @@ script = ExtResource("17_leveltrigger")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEndTrigger" unique_id=1698765433]
 shape = SubResource("RectangleShape2D_leveltrigger")
 
-[node name="LevelEndTrigger2" type="Area2D" parent="." unique_id=631163159]
-position = Vector2(480, -1452)
+[node name="DEBUG-LevelEndTrigger" type="Area2D" parent="." unique_id=631163159]
+position = Vector2(1184, -157)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("17_leveltrigger")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEndTrigger2" unique_id=1624219735]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DEBUG-LevelEndTrigger" unique_id=1624219735]
 shape = SubResource("RectangleShape2D_leveltrigger")
 
 [node name="Scroller" type="Node2D" parent="." unique_id=1846077116]
