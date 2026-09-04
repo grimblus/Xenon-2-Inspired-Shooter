@@ -14,7 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://b53daxmgcg63f" path="res://graphics/background/08_ice/layer2_nebula.png" id="9_w48qg"]
 [ext_resource type="Texture2D" uid="uid://dpxtrwb3flq0q" path="res://graphics/24bit/GAster96.bmp" id="9_ycdy4"]
 [ext_resource type="AudioStream" uid="uid://b7krbtbn052jg" path="res://music/19. Breach the Horizon (Loop).mp3" id="12_dg77c"]
+[ext_resource type="FontFile" uid="uid://ccrwa32pufb8n" path="res://fonts/pixel_font.png" id="13_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://b6e4ek4ydg1q7" path="res://wall_hugger.tscn" id="14_w48qg"]
+[ext_resource type="Script" uid="uid://bkf5ehn65x84f" path="res://GameOver.cs" id="16_yaehf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jq2sk"]
 atlas = ExtResource("2_lquwl")
@@ -710,6 +712,26 @@ _data = {
 }
 point_count = 3
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b8y47"]
+bg_color = Color(0.08627451, 0.10980392, 0.18039216, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wkoc5"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+bg_color = Color(0, 0, 0, 1)
+border_width_right = 2
+border_color = Color(0.16470589, 0.2, 0.3137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ycdy4"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+bg_color = Color(0, 0, 0, 1)
+border_width_right = 2
+border_color = Color(0.16470589, 0.2, 0.3137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w48qg"]
+bg_color = Color(0.047058824, 0.05882353, 0.101960786, 1)
+
 [node name="Main" type="Node" unique_id=2067105497]
 script = ExtResource("1_5vw27")
 MobScene = ExtResource("2_kek77")
@@ -856,6 +878,61 @@ curve = SubResource("Curve2D_kek77")
 [node name="MobSpawnLocation" type="PathFollow2D" parent="Scroller/MobPath" unique_id=645416124]
 position = Vector2(252, 1)
 
+[node name="CanvasLayer_HUD" type="CanvasLayer" parent="." unique_id=91850361]
+
+[node name="HUD_Panel" type="PanelContainer" parent="CanvasLayer_HUD" unique_id=1337136807]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_b8y47")
+
+[node name="HUD_Bar" type="HBoxContainer" parent="CanvasLayer_HUD/HUD_Panel" unique_id=407333035]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="P1_Panel" type="PanelContainer" parent="CanvasLayer_HUD/HUD_Panel/HUD_Bar" unique_id=611493977]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wkoc5")
+
+[node name="P1_Label" type="Label" parent="CanvasLayer_HUD/HUD_Panel/HUD_Bar/P1_Panel" unique_id=123683239]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9490196, 0.75686276, 0.30588236, 1)
+theme_override_fonts/font = ExtResource("13_ycdy4")
+text = "P1"
+
+[node name="Score_Panel" type="PanelContainer" parent="CanvasLayer_HUD/HUD_Panel/HUD_Bar" unique_id=126439692]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ycdy4")
+
+[node name="Score_Label" type="Label" parent="CanvasLayer_HUD/HUD_Panel/HUD_Bar/Score_Panel" unique_id=1307610057]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9098039, 0.9098039, 0.9098039, 1)
+theme_override_fonts/font = ExtResource("13_ycdy4")
+text = "0000000"
+
+[node name="Health_Panel" type="MarginContainer" parent="CanvasLayer_HUD/HUD_Panel/HUD_Bar" unique_id=130686835]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Health_Bar" type="ProgressBar" parent="CanvasLayer_HUD/HUD_Panel/HUD_Bar/Health_Panel" unique_id=753519589]
+custom_minimum_size = Vector2(600, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_w48qg")
+value = 100.0
+show_percentage = false
+
 [node name="Terrain" type="TileMapLayer" parent="." unique_id=2116481576]
 material = ExtResource("2_7mycd")
 tile_set = SubResource("TileSet_3ewea")
@@ -941,7 +1018,6 @@ position = Vector2(156, -5419)
 
 [node name="WallHugger24" parent="WallHuggers" unique_id=2040641880 instance=ExtResource("14_w48qg")]
 position = Vector2(816, -7462)
-FacingRight = false
 
 [node name="WallHugger25" parent="WallHuggers" unique_id=1989682245 instance=ExtResource("14_w48qg")]
 position = Vector2(815, -7331)
@@ -952,7 +1028,6 @@ position = Vector2(149, -7023)
 
 [node name="WallHugger27" parent="WallHuggers" unique_id=46187856 instance=ExtResource("14_w48qg")]
 position = Vector2(818, -7587)
-FacingRight = false
 
 [node name="WallHugger28" parent="WallHuggers" unique_id=1869022023 instance=ExtResource("14_w48qg")]
 position = Vector2(155, -7200)
@@ -1000,15 +1075,63 @@ wait_time = 2.0
 [node name="StartTimer" type="Timer" parent="." unique_id=1310393044]
 wait_time = 3.0
 
-[node name="CanvasLayer_HealthBar" type="CanvasLayer" parent="." unique_id=91850361]
+[node name="CanvasLayer_HealthBar" type="CanvasLayer" parent="." unique_id=2041219991]
 
-[node name="Health_Bar" type="ProgressBar" parent="CanvasLayer_HealthBar" unique_id=753519589]
-offset_left = 145.0
-offset_top = 499.0
-offset_right = 315.0
-offset_bottom = 539.0
-value = 100.0
-show_percentage = false
+[node name="CanvasLayer_GameOver" type="CanvasLayer" parent="." unique_id=387434958]
+process_mode = 3
+visible = false
+script = ExtResource("16_yaehf")
+
+[node name="GameOver_UI" type="Control" parent="CanvasLayer_GameOver" unique_id=1692983933]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer_GameOver/GameOver_UI" unique_id=2058514313]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.64705884)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer_GameOver/GameOver_UI" unique_id=243249846]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="GameOver_Label" type="Label" parent="CanvasLayer_GameOver/GameOver_UI/VBoxContainer" unique_id=863480143]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("13_ycdy4")
+theme_override_font_sizes/font_size = 80
+text = "Game Over"
+
+[node name="Retry_Button" type="Button" parent="CanvasLayer_GameOver/GameOver_UI/VBoxContainer" unique_id=46674394]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("13_ycdy4")
+theme_override_font_sizes/font_size = 32
+text = "Retry (Enter)"
+
+[node name="Exit_Button" type="Button" parent="CanvasLayer_GameOver/GameOver_UI/VBoxContainer" unique_id=2037067063]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("13_ycdy4")
+theme_override_font_sizes/font_size = 32
+text = "Exit (Esc)"
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=1218465614]
 stream = ExtResource("12_dg77c")
