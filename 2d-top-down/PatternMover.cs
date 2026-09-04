@@ -12,6 +12,7 @@ public partial class PatternMover : RigidBody2D
 	private float spawnRotation;
 	private float distanceTravelled = 0.0f;
 	private float patternLength;
+	private Player player;
 	
 	// health
 	private int health = 1;
@@ -35,6 +36,8 @@ public partial class PatternMover : RigidBody2D
 			Pattern = PatternPath.Curve;
 			patternLength = Pattern.GetBakedLength();
 		}
+		
+		player = GetNode<Player>("/root/Main/Scroller/Player");
 	}
 	
 	public override void _PhysicsProcess(double delta)
@@ -79,6 +82,7 @@ public partial class PatternMover : RigidBody2D
 		if (health <= 0) 
 		{
 			QueueFree();
+			player.Call("AddScore", 50);
 		}
 	}
 }

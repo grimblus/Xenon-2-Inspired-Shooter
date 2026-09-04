@@ -90,6 +90,7 @@ public partial class WallHugger : RigidBody2D
 		if (health <= 0) 
 		{
 			QueueFree();
+			player.Call("AddScore", 100);
 		}
 	}
 }
