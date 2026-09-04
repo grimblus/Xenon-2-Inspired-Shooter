@@ -291,12 +291,14 @@ public partial class Player : CharacterBody2D
 		
 		if (tripleShot == true) {
 			var b1 = BulletScene.Instantiate<Bullet>();
+			b1.Shooter = this;
 			GetParent().AddChild(b1);
-			b1.GlobalPosition = tripleBulletSpawn1.GlobalPosition;
+			b1.Start(tripleBulletSpawn1.GlobalPosition);
 			
 			var b2 = BulletScene.Instantiate<Bullet>();
+			b2.Shooter = this;
 			GetParent().AddChild(b2);
-			b2.GlobalPosition = tripleBulletSpawn2.GlobalPosition;
+			b2.Start(tripleBulletSpawn2.GlobalPosition);
 		}
 	}
 	

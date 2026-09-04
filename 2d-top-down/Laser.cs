@@ -3,10 +3,21 @@ using System;
 
 public partial class Laser : Area2D
 {
-	private void _on_laser_area_entered(Area2D area) {
+	public Player player;
+	
+	private void OnLaserAreaEntered(Area2D area) {
 		if (area.IsInGroup("enemies")) {
-			//area.Explode();
-			QueueFree();
+			if (area.HasMethod("TakeDamage"))  {
+				area.Call("TakeDamage", 10);
+			}
+		}
+	}
+	
+	private void OnLaserBodyEntered(Node2D body) {
+		if (body.IsInGroup("enemies")) {
+			if (body.HasMethod("TakeDamage")) {
+				body.Call("TakeDamage", 10);
+			} 
 		}
 	}
 }
