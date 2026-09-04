@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://byoldds7th4lq" path="res://graphics/24bit/Burner6.bmp" id="4_sweqy"]
 [ext_resource type="Script" uid="uid://ydbktit3lxu3" path="res://Laser.cs" id="8_b26j0"]
 [ext_resource type="Texture2D" uid="uid://b1f6sc0f7yx1f" path="res://laser.tres" id="8_dw050"]
+[ext_resource type="Material" uid="uid://vdb0ley6chky" path="res://chroma_key_material.tres" id="10_nvl01"]
+[ext_resource type="Texture2D" uid="uid://bbdiph5pq3b1l" path="res://graphics/24bit/clone.bmp" id="11_ivps1"]
+[ext_resource type="Script" uid="uid://lgtlfcmnokpv" path="res://Drone.cs" id="12_ivps1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lypxw"]
 shader = ExtResource("3_1jxqw")
@@ -57,7 +60,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"forward",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -68,7 +71,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"left",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -79,7 +82,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"right",
-"speed": 5.0
+"speed": 15.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e3tdd"]
@@ -93,10 +96,131 @@ colors = PackedColorArray(1, 1, 0, 0.39215687)
 gradient = SubResource("Gradient_dw050")
 width = 1
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_urp6f"]
+atlas = ExtResource("11_ivps1")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bwjto"]
+atlas = ExtResource("11_ivps1")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_606se"]
+atlas = ExtResource("11_ivps1")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1c27"]
+atlas = ExtResource("11_ivps1")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_op7ga"]
+atlas = ExtResource("11_ivps1")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q13i1"]
+atlas = ExtResource("11_ivps1")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pylmc"]
+atlas = ExtResource("11_ivps1")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbfsw"]
+atlas = ExtResource("11_ivps1")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tmop"]
+atlas = ExtResource("11_ivps1")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ahtn"]
+atlas = ExtResource("11_ivps1")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lmhl"]
+atlas = ExtResource("11_ivps1")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dx0e4"]
+atlas = ExtResource("11_ivps1")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm5j8"]
+atlas = ExtResource("11_ivps1")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hik5"]
+atlas = ExtResource("11_ivps1")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtqh7"]
+atlas = ExtResource("11_ivps1")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wuci"]
+atlas = ExtResource("11_ivps1")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hj1jt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urp6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bwjto")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_606se")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1c27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_op7ga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q13i1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pylmc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbfsw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tmop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ahtn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7lmhl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dx0e4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jm5j8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hik5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtqh7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2wuci")
+}],
+"loop": 1,
+"name": &"main",
+"speed": 15.0
+}]
+
 [node name="Player" type="CharacterBody2D" unique_id=2048921428]
 collision_layer = 2
 script = ExtResource("1_sweqy")
 BulletScene = ExtResource("2_2hs0m")
+droneBuy = true
 
 [node name="Ship" type="Sprite2D" parent="." unique_id=1737988385]
 material = SubResource("ShaderMaterial_lypxw")
@@ -122,12 +246,15 @@ autoplay = "forward"
 one_shot = true
 
 [node name="BulletSpawn" type="Marker2D" parent="." unique_id=1463174157]
+visible = false
 position = Vector2(0, -32)
 
 [node name="TripleBulletSpawn1" type="Marker2D" parent="." unique_id=2088722118]
+visible = false
 position = Vector2(-17, -4)
 
 [node name="TripleBulletSpawn2" type="Marker2D" parent="." unique_id=1772344748]
+visible = false
 position = Vector2(18, -4)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=2126392463]
@@ -152,6 +279,18 @@ texture = ExtResource("8_dw050")
 visible = false
 scale = Vector2(70, 70)
 texture = SubResource("GradientTexture1D_dw050")
+
+[node name="Drone" type="AnimatedSprite2D" parent="." unique_id=2052028975]
+material = ExtResource("10_nvl01")
+sprite_frames = SubResource("SpriteFrames_hj1jt")
+animation = &"main"
+script = ExtResource("12_ivps1")
+BulletScene = ExtResource("2_2hs0m")
+
+[node name="DroneTimer" type="Timer" parent="Drone" unique_id=1043406216]
+
+[node name="DroneBulletSpawn" type="Marker2D" parent="Drone" unique_id=428509913]
+position = Vector2(0, -12)
 
 [connection signal="timeout" from="GunCooldown" to="." method="OnGunCooldownTimeout"]
 [connection signal="area_entered" from="Laser" to="." method="_on_laser_area_entered"]

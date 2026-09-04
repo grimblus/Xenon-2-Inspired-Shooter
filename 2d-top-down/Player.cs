@@ -17,6 +17,8 @@ public partial class Player : CharacterBody2D
 	[Export] public bool invincibleUp = false;
 	
 	[Export] public bool missileBuy = false;
+	[Export] public bool droneBuy = false;
+	[Export] public bool dodgeBuy = false;
 	
 	/// Health Variables
 	private ProgressBar healthBar;
@@ -32,6 +34,7 @@ public partial class Player : CharacterBody2D
 	private Marker2D tripleBulletSpawn2;
 	private Area2D laser;
 	private Sprite2D shield;///Find circle sprite
+	private AnimatedSprite2D drone;
 	private Vector2 screenSize;
 	private bool canShoot = true;
 	private Vector2 knockback = Vector2.Zero;
@@ -49,6 +52,7 @@ public partial class Player : CharacterBody2D
 		tripleBulletSpawn2 = GetNode<Marker2D>("TripleBulletSpawn2");
 		laser = GetNode<Area2D>("Laser");
 		shield = GetNode<Sprite2D>("Shield");
+		drone = GetNode<AnimatedSprite2D>("Drone");
 		screenSize = GetViewportRect().Size;
 		
 		boostersPos = boosters.Position;
@@ -89,6 +93,17 @@ public partial class Player : CharacterBody2D
 		}
 		else {
 			shield.Visible = false;
+		}
+		
+		if (droneBuy) {
+			drone.Visible = true;
+			drone.ProcessMode = Node.ProcessModeEnum.Inherit;
+			drone.SetDeferred("monitoring", true);
+		}
+		else {
+			drone.Visible = false;
+			drone.ProcessMode = Node.ProcessModeEnum.Disabled;
+			drone.SetDeferred("monitoring", false);
 		}
 		
 		Vector2 input = Input.GetVector("left", "right", "up", "down");
