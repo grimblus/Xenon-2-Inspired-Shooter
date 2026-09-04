@@ -64,6 +64,17 @@ public partial class Player : CharacterBody2D
 	private float doubleTapTimer = 0f;
 	private string lastTap = "";
 	
+	// Power Up Timers
+	[Export] public float TripleShotDuration = 10f;
+	[Export] public float SpeedUpDuration = 10f;
+	[Export] public float LaserDuration = 10f;
+	[Export] public float InvincibleDuration = 5f;
+
+	private float tripleShotTimer = 0f;
+	private float speedUpTimer = 0f;
+	private float laserTimer = 0f;
+	private float invincibleTimer = 0f;
+	
 	public override void _Ready() {
 		ship = GetNode<Sprite2D>("Ship");
 		boosters = GetNode<AnimatedSprite2D>("Ship/Boosters");
@@ -266,6 +277,40 @@ public partial class Player : CharacterBody2D
 		if (Input.IsKeyPressed(Key.H)) {
 			TakeDamage(20);
 		}
+		
+		///Power Up Timers
+		if (tripleShotTimer > 0) {
+			tripleShotTimer -= (float)delta;
+			
+			if (tripleShotTimer <= 0) {
+				tripleShotTimer = 0;
+				tripleShot = false;
+			}
+		}
+		if (speedUpTimer > 0) {
+			speedUpTimer -= (float)delta;
+			
+			if (speedUpTimer <= 0) {
+				speedUpTimer = 0;
+				speedUp = false;
+			}
+		}
+		if (laserTimer > 0) {
+			laserTimer -= (float)delta;
+			
+			if (laserTimer <= 0) {
+				laserTimer = 0;
+				laserUp = false;
+			}
+		}
+		if (invincibleTimer > 0) {
+			invincibleTimer -= (float)delta;
+			
+			if (invincibleTimer <= 0) {
+				invincibleTimer = 0;
+				invincibleUp = false;
+			}
+		}
 	}
 	
 	private void StartDodge(Vector2 direction) {
@@ -375,7 +420,7 @@ public partial class Player : CharacterBody2D
 		GetTree().Paused = true;
 	}
 	
-	//For area2ds
+	///For area2ds
 	private void HurtboxAreaHit(Area2D area) {
 		if (area.IsInGroup("enemies")) {
 			TakeDamage(10);
@@ -385,7 +430,7 @@ public partial class Player : CharacterBody2D
 		}
 	}
 	
-	//For rigidbodys, charbodys etc
+	///For rigidbodys, charbodys etc
 	private void HurtboxBodyHit(Node2D body) {
 		if (body.IsInGroup("enemies")) {
 			TakeDamage(10);
@@ -393,5 +438,26 @@ public partial class Player : CharacterBody2D
 			TakeDamage(10);
 			bullet.QueueFree();
 		}
+	}
+	
+	///Activate Power Ups and their timers
+	public void ActivateTripleShot() {
+		tripleShot = true;
+		tripleShotTimer = TripleShotDuration;
+	}
+	
+	public void ActivateSpeedUp() {
+		speedUp = true;
+		speedUpTimer = SpeedUpDuration;
+	}
+	
+	public void ActivateLaser() {
+		laserUp = true;
+		laserTimer = LaserDuration;
+	}
+	
+	public void ActivateInvincible() {
+		invincibleUp = true;
+		invincibleTimer = InvincibleDuration;
 	}
 }

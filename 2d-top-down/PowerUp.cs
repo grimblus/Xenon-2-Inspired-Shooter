@@ -71,15 +71,15 @@ public partial class PowerUp : Area2D
 	private void ApplyPowerUp(Player player) {
 		switch (Type) {
 			case PowerType.TripleShot:
-				player.tripleShot = true;
+				player.ActivateTripleShot();
 				break;
 				
 			case PowerType.SpeedUp:
-				player.speedUp = true;
+				player.ActivateSpeedUp();
 				break;
 				
 			case PowerType.LaserUp:
-				player.laserUp = true;
+				player.ActivateLaser();
 				break;
 				
 			case PowerType.ShieldUp:
@@ -87,10 +87,18 @@ public partial class PowerUp : Area2D
 				break;
 				
 			case PowerType.InvincibleUp:
-				player.invincibleUp = true;
+				player.ActivateInvincible();
 				break;
 				
 			case PowerType.MissileBuy:
+				player.missileBuy = true;
+				break;
+				
+			case PowerType.DroneBuy:
+				player.missileBuy = true;
+				break;
+				
+			case PowerType.DodgeBuy:
 				player.missileBuy = true;
 				break;
 		}
