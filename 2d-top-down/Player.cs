@@ -42,6 +42,22 @@ public partial class Player : CharacterBody2D
 	private Vector2 boostersPos;
 	private Vector2 boosters2Pos;
 	
+	//Dodge Vars
+	[Export] public float DodgeSpeed = 600f;
+	[Export] public float DodgeDuration = 0.15f;
+	[Export] public float DodgeCooldown = 1f;
+	[Export] public float DoubleTapTime = 0.25f;
+
+	private bool isDodging = false;
+	private bool canDodge = true;
+	private Vector2 dodgeDirection = Vector2.Up;
+
+	private float dodgeTimer = 0f;
+	private float dodgeCooldownTimer = 0f;
+
+	private float doubleTapTimer = 0f;
+	private string lastTap = "";
+	
 	public override void _Ready() {
 		ship = GetNode<Sprite2D>("Ship");
 		boosters = GetNode<AnimatedSprite2D>("Ship/Boosters");
@@ -130,7 +146,85 @@ public partial class Player : CharacterBody2D
 			boosters2.Position = boosters2Pos + new Vector2(0,0);
 		}
 		
-		Velocity = input * Speed + knockback;
+		if (dodgeBuy && canDodge) {
+			if (Input.IsActionJustPressed("left")) {
+				if (doubleTapTimer > 0) {
+					StartDodge(Vector2.Left);
+					doubleTapTimer = 0;
+					lastTap = "";
+				}
+				else {
+					lastTap = "left";
+					doubleTapTimer = DoubleTapTime;
+				}
+			}
+			
+			if (Input.IsActionJustPressed("right")) {
+				if (doubleTapTimer > 0) {
+					StartDodge(Vector2.Right);
+					doubleTapTimer = 0;
+					lastTap = "";
+				}
+				else {
+					lastTap = "right";
+					doubleTapTimer = DoubleTapTime;
+				}
+			}
+			
+			if (Input.IsActionJustPressed("up")) {
+				if (doubleTapTimer > 0) {
+					StartDodge(Vector2.Up);
+					doubleTapTimer = 0;
+					lastTap = "";
+				}
+				else {
+					lastTap = "up";
+					doubleTapTimer = DoubleTapTime;
+				}
+			}
+			
+			if (Input.IsActionJustPressed("down")) {
+				if (doubleTapTimer > 0) {
+					StartDodge(Vector2.Down);
+					doubleTapTimer = 0;
+					lastTap = "";
+				}
+				else {
+					lastTap = "down";
+					doubleTapTimer = DoubleTapTime;
+				}
+			}
+		}
+		
+		if (doubleTapTimer > 0) {
+			doubleTapTimer -= (float)delta;
+			
+			if (doubleTapTimer <= 0) {
+				doubleTapTimer = 0;
+				lastTap = "";
+			}
+		}
+		
+		if (isDodging) {
+			Velocity = dodgeDirection * DodgeSpeed;
+			
+			dodgeTimer -= (float)delta;
+			
+			if (dodgeTimer <= 0) {
+				isDodging = false;
+			}
+		}
+		else {
+			Velocity = input * Speed + knockback;
+		}
+		
+		if (!canDodge) {
+			dodgeCooldownTimer -= (float)delta;
+			
+			if (dodgeCooldownTimer <= 0) {
+				canDodge = true;
+			}
+		}
 		MoveAndSlide();
 		
 		for (int i = 0; i < GetSlideCollisionCount(); i++) {
@@ -148,6 +242,19 @@ public partial class Player : CharacterBody2D
 		if (Input.IsKeyPressed(Key.H)) {
 			TakeDamage(20);
 		}
+	}
+	
+	private void StartDodge(Vector2 direction) {
+		if (!canDodge)
+			return;
+			
+		isDodging = true;
+		canDodge = false;
+		
+		dodgeDirection = direction;
+		
+		dodgeTimer = DodgeDuration;
+		dodgeCooldownTimer = DodgeCooldown;
 	}
 	
 	public void Shoot(){

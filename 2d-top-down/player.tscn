@@ -220,7 +220,6 @@ animations = [{
 collision_layer = 2
 script = ExtResource("1_sweqy")
 BulletScene = ExtResource("2_2hs0m")
-droneBuy = true
 
 [node name="Ship" type="Sprite2D" parent="." unique_id=1737988385]
 material = SubResource("ShaderMaterial_lypxw")
@@ -281,6 +280,7 @@ scale = Vector2(70, 70)
 texture = SubResource("GradientTexture1D_dw050")
 
 [node name="Drone" type="AnimatedSprite2D" parent="." unique_id=2052028975]
+visible = false
 material = ExtResource("10_nvl01")
 sprite_frames = SubResource("SpriteFrames_hj1jt")
 animation = &"main"
@@ -290,6 +290,7 @@ BulletScene = ExtResource("2_2hs0m")
 [node name="DroneTimer" type="Timer" parent="Drone" unique_id=1043406216]
 
 [node name="DroneBulletSpawn" type="Marker2D" parent="Drone" unique_id=428509913]
+visible = false
 position = Vector2(0, -12)
 
 [connection signal="timeout" from="GunCooldown" to="." method="OnGunCooldownTimeout"]
