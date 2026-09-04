@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dpxtrwb3flq0q" path="res://graphics/24bit/GAster96.bmp" id="7_qadj7"]
 [ext_resource type="Texture2D" uid="uid://b53daxmgcg63f" path="res://graphics/background/08_ice/layer2_nebula.png" id="8_8510i"]
 [ext_resource type="Texture2D" uid="uid://j1j4r2c2eriq" path="res://graphics/background/08_ice/layer3_stars.png" id="9_ckbuh"]
+[ext_resource type="AudioStream" uid="uid://bjlrgn6syq7ef" path="res://music/2. Entering the Void (Loop).mp3" id="11_cjqr7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jq2sk"]
 atlas = ExtResource("4_hf748")
@@ -734,3 +735,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 32
 text = "Exit"
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=329084165]
+stream = ExtResource("11_cjqr7")
+autoplay = true
