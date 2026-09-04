@@ -11,10 +11,14 @@ public partial class Bullet : Area2D
 	public Node2D Shooter;
 	
 	public void Start(Vector2 pos) {
-		Position = pos;
+		GlobalPosition = pos;
 		
 		if (usedByEnemy == true) {
+			//colour orange if used by enemy
 			Modulate = new Color (1.0f, 0.647f, 0.0f);
+		} else {
+			//default colour as player
+			Modulate = new Color (0.53f, 0.81f, 0.98f);
 		}
 	}
 

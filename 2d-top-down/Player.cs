@@ -142,7 +142,10 @@ public partial class Player : CharacterBody2D
 			var b = BulletScene.Instantiate<Bullet>();
 			b.Shooter = this;
 			GetParent().AddChild(b);
-			b.GlobalPosition = bulletSpawn.GlobalPosition;
+			//new so I can change colour
+			b.Start(bulletSpawn.GlobalPosition);
+			//old
+			//b.GlobalPosition = bulletSpawn.GlobalPosition;
 		}
 		
 		if (tripleShot == true) {
