@@ -4,7 +4,7 @@ public partial class BootScreen : Control
 {
 	// assign in order: bblogo, pcflogo, xenon banner, xenon 3d logo
 	[Export] public Texture2D[] Logos; 
-	[Export] public string NextScenePath = "res://Main.tscn";
+	[Export] public string NextScenePath = "res://main.tscn";
 
 	[Export] public float FadeTime = 0.5f;
 	[Export] public float HoldTime = 2.0f;
