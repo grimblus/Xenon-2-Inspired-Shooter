@@ -17,6 +17,7 @@
 [ext_resource type="FontFile" uid="uid://ccrwa32pufb8n" path="res://fonts/pixel_font.png" id="13_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://b6e4ek4ydg1q7" path="res://wall_hugger.tscn" id="14_w48qg"]
 [ext_resource type="Script" uid="uid://bkf5ehn65x84f" path="res://GameOver.cs" id="16_yaehf"]
+[ext_resource type="Script" uid="uid://cvtvrf2dox2ww" path="res://LevelEndTrigger.cs" id="17_leveltrigger"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jq2sk"]
 atlas = ExtResource("2_lquwl")
@@ -706,6 +707,9 @@ pattern_13 = SubResource("TileMapPattern_074og")
 pattern_14 = SubResource("TileMapPattern_0odxb")
 pattern_15 = SubResource("TileMapPattern_lswn8")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_leveltrigger"]
+size = Vector2(960, 40)
+
 [sub_resource type="Curve2D" id="Curve2D_kek77"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 252, 1, 0, 0, 0, 0, 488, 1, 0, 0, 0, 0, 743, 2)
@@ -864,6 +868,24 @@ tile_set = SubResource("TileSet_3ewea")
 material = ExtResource("2_7mycd")
 tile_map_data = PackedByteArray("AAA4AAEAAgAAABkAADA4AA8AAgAAABkAAAA4AB0AAgAAABkAADA4ACsAAgAAABkAAAA4AMn/AgAAABkAADA4ANf/AgAAABkAAAA4AOX/AgAAABkAADA4APP/AgAAABkAAAA4AJH/AgAAABkAADA4AJ//AgAAABkAAAA4AK3/AgAAABkAADA4ALv/AgAAABkAAAADAJD/AgAAABkAADADAJ7/AgAAABkAAAADAKz/AgAAABkAADADALr/AgAAABkAAAADAMj/AgAAABkAADADANb/AgAAABkAAAADAOT/AgAAABkAADADAPL/AgAAABkAAAADAAAAAgAAABkAADADAA4AAgAAABkAAAADABwAAgAAABkAADADACoAAgAAABkAAAADAOj+AgAAABkAADADAPb+AgAAABkAAAADAAT/AgAAABkAADADABL/AgAAABkAAAADACD/AgAAABkAADADAC7/AgAAABkAAAADADz/AgAAABkAADADAEr/AgAAABkAAAADAFj/AgAAABkAADADAGb/AgAAABkAAAADAHT/AgAAABkAADADAIL/AgAAABkAAAA4AOn+AgAAABkAADA4APf+AgAAABkAAAA4AAX/AgAAABkAADA4ABP/AgAAABkAAAA4ACH/AgAAABkAADA4AC//AgAAABkAAAA4AD3/AgAAABkAADA4AEv/AgAAABkAAAA4AFn/AgAAABkAADA4AGf/AgAAABkAAAA4AHX/AgAAABkAADA4AIP/AgAAABkAAAA4AEH+AgAAABkAADA4AE/+AgAAABkAAAA4AF3+AgAAABkAADA4AGv+AgAAABkAAAA4AHn+AgAAABkAADA4AIf+AgAAABkAAAA4AJX+AgAAABkAADA4AKP+AgAAABkAAAA4ALH+AgAAABkAADA4AL/+AgAAABkAAAA4AM3+AgAAABkAADA4ANv+AgAAABkAAAADAED+AgAAABkAADADAE7+AgAAABkAAAADAFz+AgAAABkAADADAGr+AgAAABkAAAADAHj+AgAAABkAADADAIb+AgAAABkAAAADAJT+AgAAABkAADADAKL+AgAAABkAAAADALD+AgAAABkAADADAL7+AgAAABkAAAADAMz+AgAAABkAADADANr+AgAAABkAAAA4AJn9AgAAABkAADA4AKf9AgAAABkAAAA4ALX9AgAAABkAADA4AMP9AgAAABkAAAA4ANH9AgAAABkAADA4AN/9AgAAABkAAAA4AO39AgAAABkAADA4APv9AgAAABkAAAA4AAn+AgAAABkAADA4ABf+AgAAABkAAAA4ACX+AgAAABkAADA4ADP+AgAAABkAAAADAJj9AgAAABkAADADAKb9AgAAABkAAAADALT9AgAAABkAADADAML9AgAAABkAAAADAND9AgAAABkAADADAN79AgAAABkAAAADAOz9AgAAABkAADADAPr9AgAAABkAAAADAAj+AgAAABkAADADABb+AgAAABkAAAADACT+AgAAABkAADADADL+AgAAABkAAAA=")
 tile_set = SubResource("TileSet_3ewea")
+
+[node name="LevelEndTrigger" type="Area2D" parent="." unique_id=1698765432]
+position = Vector2(480, -9546)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("17_leveltrigger")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEndTrigger" unique_id=1698765433]
+shape = SubResource("RectangleShape2D_leveltrigger")
+
+[node name="LevelEndTrigger2" type="Area2D" parent="." unique_id=631163159]
+position = Vector2(480, -1452)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("17_leveltrigger")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEndTrigger2" unique_id=1624219735]
+shape = SubResource("RectangleShape2D_leveltrigger")
 
 [node name="Scroller" type="Node2D" parent="." unique_id=1846077116]
 script = ExtResource("2_h2yge")
