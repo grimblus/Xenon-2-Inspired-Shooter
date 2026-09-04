@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c5jmryltwfg2r" path="res://logos/logo.jpg" id="3_v07ap"]
 [ext_resource type="Texture2D" uid="uid://dyquipqyhbawq" path="res://logos/pcflogo_clean.png" id="4_5sw8o"]
 [ext_resource type="Texture2D" uid="uid://dejtisj1741ry" path="res://logos/xlogo_clean.png" id="5_qxbx5"]
+[ext_resource type="AudioStream" uid="uid://bjlrgn6syq7ef" path="res://music/2. Entering the Void (Loop).mp3" id="6_v07ap"]
 
 [node name="BootScreen" type="Control" unique_id=303292086]
 layout_mode = 3
@@ -33,3 +34,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 stretch_mode = 5
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=586430343]
+stream = ExtResource("6_v07ap")
+autoplay = true
