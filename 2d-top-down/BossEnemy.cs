@@ -10,15 +10,21 @@ public partial class BossEnemy : Area2D
 	[Export] public PackedScene BulletScene;
 	[Export] public float ShootInterval = 1.5f;
 	[Export] public float BulletSpeed = 250f;
-	[Export] public float ShootRange = 800f;
 	
+	//health
 	private int maxHealth = 1000;
 	private int currentHealth = 1000;
 	private float patternLength;
 	
+	//for path pattern
 	private Vector2 spawnPosition;
 	private float spawnRotation;
 	private float distanceTravelled = 0.0f;
+	
+	private Player player;
+	private bool canShoot = true;
+	private Marker2D bulletSpawn;
+	private Timer cooldown;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -64,7 +70,14 @@ public partial class BossEnemy : Area2D
 			patternLength = Pattern.GetBakedLength();
 		}
 		
-		//so I dont have to readd it to enemies just in case
+		bulletSpawn = GetNode<Marker2D>("BulletSpawn");
+		cooldown = GetNode<Timer>("ShootCooldown");
+		cooldown.WaitTime = ShootInterval;
+		cooldown.Start();
+		
+		player = GetNode<Player>("/root/Main/Scroller/Player");
+		
+		//so I dont have to read it to enemies just in case
 		AddToGroup("enemies");
 	}
 
@@ -86,6 +99,29 @@ public partial class BossEnemy : Area2D
 		Vector2 localOffset = Pattern.SampleBaked(distanceTravelled);
 		Vector2 rotatedOffset = localOffset.Rotated(spawnRotation);
 		Position = spawnPosition + rotatedOffset;
+	}
+	
+	private void OnShootTimerTimeout()
+	{
+		if (player == null) {
+			canShoot = false;
+		}
+		Shoot();
+	}
+	
+	public void Shoot() 
+	{
+		if (!canShoot) {
+			return;
+		}
+		
+		var bullet = BulletScene.Instantiate<Bullet>();
+		bullet.Shooter = this;
+		bullet.usedByEnemy = true;
+		GetParent().AddChild(bullet);
+
+		bullet.Start(bulletSpawn.GlobalPosition);
+		bullet.Speed = BulletSpeed;
 	}
 	
 	public void TakeDamage(int amount) 
