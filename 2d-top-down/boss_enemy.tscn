@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://b8e53yv24ngf5" path="res://graphics/24bit/boss.bmp" id="2_xldg4"]
 [ext_resource type="Texture2D" uid="uid://dc5nju5kdgs47" path="res://graphics/24bit/bosseyes2.bmp" id="4_sqq6n"]
 
+[sub_resource type="Curve2D" id="Curve2D_046hu"]
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_voxn2"]
 animations = [{
 "frames": [{
@@ -152,9 +154,15 @@ animations = [{
 radius = 4.1005425
 
 [sub_resource type="Curve2D" id="Curve2D_sqq6n"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, -85.370834, 0, 85.370834, -148, -2, 0, 0, 0, 0, 0, 0, 0.4665073, 86.770355, -0.4665073, -86.770355, 145, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
 
-[node name="BossEnemy" type="Area2D" unique_id=1740176982]
+[node name="BossEnemy" type="Area2D" unique_id=1740176982 node_paths=PackedStringArray("PatternPath") groups=["enemies"]]
 script = ExtResource("1_xldg4")
+Pattern = SubResource("Curve2D_046hu")
+PatternPath = NodePath("Path2D")
 
 [node name="MainBodyAnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1324011635]
 material = ExtResource("1_1rih2")
@@ -197,9 +205,14 @@ scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_xmwrr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1113432813]
-visible = false
 scale = Vector2(30, 30)
 shape = SubResource("CircleShape2D_1y8me")
 
 [node name="Path2D" type="Path2D" parent="." unique_id=1436835528]
+position = Vector2(0.23890784, 0)
+scale = Vector2(0.8259385, 1)
 curve = SubResource("Curve2D_sqq6n")
+
+[node name="ShootCooldown" type="Timer" parent="." unique_id=967298698]
+
+[node name="BulletSpawn" type="Marker2D" parent="." unique_id=2056733985]

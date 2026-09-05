@@ -3,8 +3,22 @@ using System;
 
 public partial class BossEnemy : Area2D
 {
+	[Export] public Curve2D Pattern;
+	[Export] public float PatternSpeed = 200.0f;
+	[Export] public Path2D PatternPath;
+	
+	[Export] public PackedScene BulletScene;
+	[Export] public float ShootInterval = 1.5f;
+	[Export] public float BulletSpeed = 250f;
+	[Export] public float ShootRange = 800f;
+	
 	private int maxHealth = 1000;
 	private int currentHealth = 1000;
+	private float patternLength;
+	
+	private Vector2 spawnPosition;
+	private float spawnRotation;
+	private float distanceTravelled = 0.0f;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -37,6 +51,19 @@ public partial class BossEnemy : Area2D
 		string[] lEye3MobTypes = lEye3AnimatedSprite2D.SpriteFrames.GetAnimationNames();
 		lEye3AnimatedSprite2D.Play(lEye3MobTypes[GD.Randi() % lEye3MobTypes.Length]);
 		
+		//Makes it so that the boss actually starts where I put it in the scene
+		spawnPosition = Position;
+		spawnRotation = Rotation;
+		
+		if (Pattern != null)
+			patternLength = Pattern.GetBakedLength();
+			
+		if (PatternPath != null)
+		{
+			Pattern = PatternPath.Curve;
+			patternLength = Pattern.GetBakedLength();
+		}
+		
 		//so I dont have to readd it to enemies just in case
 		AddToGroup("enemies");
 	}
@@ -44,6 +71,21 @@ public partial class BossEnemy : Area2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if (Pattern == null || patternLength <= 0)
+		return;
+
+		distanceTravelled += PatternSpeed * (float)delta;
+
+		//if pattern finish, loop
+		if (distanceTravelled >= patternLength)
+		{
+			distanceTravelled = 0f;
+			return;
+		}
+
+		Vector2 localOffset = Pattern.SampleBaked(distanceTravelled);
+		Vector2 rotatedOffset = localOffset.Rotated(spawnRotation);
+		Position = spawnPosition + rotatedOffset;
 	}
 	
 	public void TakeDamage(int amount) 
