@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://l2yy24yc20rs" path="res://main.tscn" id="1_nmjpi"]
 [ext_resource type="Texture2D" uid="uid://yu67bjxmk2mq" path="res://graphics/background/09_toxic/layer2_nebula.png" id="2_xdadj"]
+[ext_resource type="PackedScene" uid="uid://bfryt124r7xim" path="res://boss_enemy.tscn" id="3_1y8me"]
 [ext_resource type="AudioStream" uid="uid://pn2y56fo5nxx" path="res://music/14. Beneath Alien Skies (Loop).mp3" id="3_xdadj"]
 
 [node name="Main" unique_id=2067105497 instance=ExtResource("1_nmjpi")]
@@ -17,6 +18,123 @@ tile_map_data = PackedByteArray("AAAIAN7/AgALABEAABAIAOX/AgALABEAADAKAOH/AgADABU
 
 [node name="Terrain_Walls" parent="." index="3" unique_id=543662033]
 tile_map_data = PackedByteArray("AAA4AAEAAgAAABkAADA4AA8AAgAAABkAAAA4AB0AAgAAABkAADA4ACsAAgAAABkAAAA4AMn/AgAAABkAADA4ANf/AgAAABkAAAA4AOX/AgAAABkAADA4APP/AgAAABkAAAA4AJH/AgAAABkAADA4AJ//AgAAABkAAAA4AK3/AgAAABkAADA4ALv/AgAAABkAAAADAJD/AgAAABkAADADAJ7/AgAAABkAAAADAKz/AgAAABkAADADALr/AgAAABkAAAADAMj/AgAAABkAADADANb/AgAAABkAAAADAOT/AgAAABkAADADAPL/AgAAABkAAAADAAAAAgAAABkAADADAA4AAgAAABkAAAADABwAAgAAABkAADADACoAAgAAABkAAAADAOj+AgAAABkAADADAPb+AgAAABkAAAADAAT/AgAAABkAADADABL/AgAAABkAAAADACD/AgAAABkAADADAC7/AgAAABkAAAADADz/AgAAABkAADADAEr/AgAAABkAAAADAFj/AgAAABkAADADAGb/AgAAABkAAAADAHT/AgAAABkAADADAIL/AgAAABkAAAA4AOn+AgAAABkAADA4APf+AgAAABkAAAA4AAX/AgAAABkAADA4ABP/AgAAABkAAAA4ACH/AgAAABkAADA4AC//AgAAABkAAAA4AD3/AgAAABkAADA4AEv/AgAAABkAAAA4AFn/AgAAABkAADA4AGf/AgAAABkAAAA4AHX/AgAAABkAADA4AIP/AgAAABkAAAA4AEH+AgAAABkAADA4AE/+AgAAABkAAAA4AF3+AgAAABkAADA4AGv+AgAAABkAAAA4AHn+AgAAABkAADA4AIf+AgAAABkAAAA4AJX+AgAAABkAADA4AKP+AgAAABkAAAA4ALH+AgAAABkAADA4AL/+AgAAABkAAAA4AM3+AgAAABkAADA4ANv+AgAAABkAAAADAED+AgAAABkAADADAE7+AgAAABkAAAADAFz+AgAAABkAADADAGr+AgAAABkAAAADAHj+AgAAABkAADADAIb+AgAAABkAAAADAJT+AgAAABkAADADAKL+AgAAABkAAAADALD+AgAAABkAADADAL7+AgAAABkAAAADAMz+AgAAABkAADADANr+AgAAABkAAAA4AJn9AgAAABkAADA4AKf9AgAAABkAAAA4ALX9AgAAABkAADA4AMP9AgAAABkAAAA4ANH9AgAAABkAADA4AN/9AgAAABkAAAA4AO39AgAAABkAADA4APv9AgAAABkAAAA4AAn+AgAAABkAADA4ABf+AgAAABkAAAA4ACX+AgAAABkAADA4ADP+AgAAABkAAAADAJj9AgAAABkAADADAKb9AgAAABkAAAADALT9AgAAABkAADADAML9AgAAABkAAAADAND9AgAAABkAADADAN79AgAAABkAAAADAOz9AgAAABkAADADAPr9AgAAABkAAAADAAj+AgAAABkAADADABb+AgAAABkAAAADACT+AgAAABkAADADADL+AgAAABkAAAAGALn+AgALABEAAEAGAL3+AgALABEAAGA0ALn+AgALABEAAFA0AL3+AgALABEAAHA=")
+
+[node name="BossEnemy" parent="Scroller" parent_id_path=PackedInt32Array(1846077116) index="0" unique_id=1740176982 instance=ExtResource("3_1y8me")]
+position = Vector2(476, 152)
+
+[node name="WallHugger" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="0" unique_id=605522866]
+visible = false
+
+[node name="WallHugger2" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="1" unique_id=1507393166]
+visible = false
+
+[node name="WallHugger3" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="2" unique_id=105121946]
+visible = false
+
+[node name="WallHugger4" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="3" unique_id=1630074839]
+visible = false
+
+[node name="WallHugger5" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="4" unique_id=2059575408]
+visible = false
+
+[node name="WallHugger6" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="5" unique_id=93814686]
+visible = false
+
+[node name="WallHugger7" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="6" unique_id=406048385]
+visible = false
+
+[node name="WallHugger8" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="7" unique_id=1931010297]
+visible = false
+
+[node name="WallHugger9" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="8" unique_id=1998438644]
+visible = false
+
+[node name="WallHugger10" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="9" unique_id=1368855468]
+visible = false
+
+[node name="WallHugger11" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="10" unique_id=1425349487]
+visible = false
+
+[node name="WallHugger12" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="11" unique_id=754832597]
+visible = false
+
+[node name="WallHugger13" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="12" unique_id=779564274]
+visible = false
+
+[node name="WallHugger14" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="13" unique_id=1660494265]
+visible = false
+
+[node name="WallHugger15" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="14" unique_id=899834901]
+visible = false
+
+[node name="WallHugger16" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="15" unique_id=960906657]
+visible = false
+
+[node name="WallHugger17" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="16" unique_id=1082644825]
+visible = false
+
+[node name="WallHugger18" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="17" unique_id=881674690]
+visible = false
+
+[node name="WallHugger19" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="18" unique_id=1791323646]
+visible = false
+
+[node name="WallHugger20" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="19" unique_id=26412686]
+visible = false
+
+[node name="WallHugger21" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="20" unique_id=115022750]
+visible = false
+
+[node name="WallHugger22" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="21" unique_id=1770616224]
+visible = false
+
+[node name="WallHugger23" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="22" unique_id=538257716]
+visible = false
+
+[node name="WallHugger24" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="23" unique_id=2040641880]
+visible = false
+
+[node name="WallHugger25" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="24" unique_id=1989682245]
+visible = false
+
+[node name="WallHugger26" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="25" unique_id=2031707744]
+visible = false
+
+[node name="WallHugger27" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="26" unique_id=46187856]
+visible = false
+
+[node name="WallHugger28" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="27" unique_id=1869022023]
+visible = false
+
+[node name="WallHugger29" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="28" unique_id=1204848001]
+visible = false
+
+[node name="WallHugger30" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="29" unique_id=16410190]
+visible = false
+
+[node name="WallHugger31" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="30" unique_id=1423077293]
+visible = false
+
+[node name="WallHugger32" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="31" unique_id=2000842313]
+visible = false
+
+[node name="WallHugger33" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="32" unique_id=2051401182]
+visible = false
+
+[node name="WallHugger34" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="33" unique_id=272791521]
+visible = false
+
+[node name="WallHugger35" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="34" unique_id=1965463022]
+visible = false
+
+[node name="WallHugger36" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="35" unique_id=158097562]
+visible = false
+
+[node name="WallHugger37" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="36" unique_id=1311308693]
+visible = false
+
+[node name="WallHugger38" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="37" unique_id=501409562]
+visible = false
 
 [node name="Music" parent="." index="14" unique_id=1218465614]
 stream = ExtResource("3_xdadj")

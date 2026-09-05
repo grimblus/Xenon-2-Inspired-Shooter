@@ -51,6 +51,9 @@ public partial class WallHugger : RigidBody2D
 		//while (animatedSprite2D.frame == 11 && cooldown) {
 			//canShoot = true;
 		//}
+		if (!this.Visible) {
+			canShoot = false;
+		}
 	}
 	
 	private void OnShootTimerTimeout()
