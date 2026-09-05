@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://b6e4ek4ydg1q7" path="res://wall_hugger.tscn" id="14_w48qg"]
 [ext_resource type="Script" uid="uid://bkf5ehn65x84f" path="res://GameOver.cs" id="16_yaehf"]
 [ext_resource type="Script" uid="uid://cvtvrf2dox2ww" path="res://LevelEndTrigger.cs" id="17_leveltrigger"]
+[ext_resource type="Script" uid="uid://dgkt0weax3hya" path="res://HighScores.cs" id="19_cegan"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jq2sk"]
 atlas = ExtResource("2_lquwl")
@@ -1155,10 +1156,84 @@ theme_override_fonts/font = ExtResource("13_ycdy4")
 theme_override_font_sizes/font_size = 32
 text = "Exit (Esc)"
 
+[node name="Scores_Button" type="Button" parent="CanvasLayer_GameOver/GameOver_UI/VBoxContainer" unique_id=1779477812]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("13_ycdy4")
+theme_override_font_sizes/font_size = 32
+text = "Scores"
+
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=1218465614]
 stream = ExtResource("12_dg77c")
 volume_db = -10.0
 autoplay = true
+
+[node name="CanvasLayer_HighScores" type="CanvasLayer" parent="." unique_id=1946999553]
+visible = false
+script = ExtResource("19_cegan")
+
+[node name="HighScores_UI" type="Control" parent="CanvasLayer_HighScores" unique_id=263921917]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer_HighScores/HighScores_UI" unique_id=509953872]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.84313726)
+
+[node name="Label_HighScores" type="Label" parent="CanvasLayer_HighScores/HighScores_UI" unique_id=367182343]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -52.5
+offset_top = 40.0
+offset_right = 52.5
+offset_bottom = 63.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("13_ycdy4")
+theme_override_font_sizes/font_size = 40
+text = "HIGH SCORES"
+horizontal_alignment = 1
+
+[node name="Scores_Container" type="VBoxContainer" parent="CanvasLayer_HighScores/HighScores_UI" unique_id=2028717729]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Back_Button" type="Button" parent="CanvasLayer_HighScores/HighScores_UI" unique_id=1784075604]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -52.5
+offset_top = -140.0
+offset_right = 52.5
+offset_bottom = -109.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("13_ycdy4")
+theme_override_font_sizes/font_size = 30
+text = "Back"
 
 [connection signal="timeout" from="MobTimer" to="." method="OnMobTimerTimeout"]
 [connection signal="timeout" from="MobBatchTimer" to="." method="OnMobBatchTimerTimeout"]
