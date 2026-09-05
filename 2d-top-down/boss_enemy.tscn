@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bfryt124r7xim"]
+
+[ext_resource type="Material" uid="uid://vdb0ley6chky" path="res://chroma_key_material.tres" id="1_1rih2"]
+[ext_resource type="Script" uid="uid://ccbitdcsp5ejt" path="res://BossEnemy.cs" id="1_xldg4"]
+[ext_resource type="Texture2D" uid="uid://b8e53yv24ngf5" path="res://graphics/24bit/boss.bmp" id="2_xldg4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_voxn2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xldg4")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="Curve2D" id="Curve2D_sqq6n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1y8me"]
+radius = 5.34374
+
+[node name="BossEnemy" type="Area2D" unique_id=1740176982]
+script = ExtResource("1_xldg4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1324011635]
+material = ExtResource("1_1rih2")
+sprite_frames = SubResource("SpriteFrames_voxn2")
+frame_progress = 0.3138946
+
+[node name="Path2D" type="Path2D" parent="." unique_id=1436835528]
+curve = SubResource("Curve2D_sqq6n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1113432813]
+scale = Vector2(30, 30)
+shape = SubResource("CircleShape2D_1y8me")

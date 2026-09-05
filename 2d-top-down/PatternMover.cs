@@ -38,6 +38,9 @@ public partial class PatternMover : Area2D
 		}
 		
 		player = GetNode<Player>("/root/Main/Scroller/Player");
+		
+		//so I dont have to readd it to enemies just in case
+		AddToGroup("enemies");
 	}
 	
 	public override void _PhysicsProcess(double delta)

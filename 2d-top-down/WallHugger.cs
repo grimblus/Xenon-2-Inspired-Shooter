@@ -35,6 +35,9 @@ public partial class WallHugger : RigidBody2D
 		cooldown.Start();
 		
 		player = GetNode<Player>("/root/Main/Scroller/Player");
+		
+		//so I dont have to readd it to enemies just in case
+		AddToGroup("enemies");
 	}
 	
 	private void OnVisibleOnScreenNotifier2DScreenExited()
