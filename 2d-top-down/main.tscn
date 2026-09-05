@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://b6e4ek4ydg1q7" path="res://wall_hugger.tscn" id="14_w48qg"]
 [ext_resource type="Script" uid="uid://bkf5ehn65x84f" path="res://GameOver.cs" id="16_yaehf"]
 [ext_resource type="Script" uid="uid://cvtvrf2dox2ww" path="res://LevelEndTrigger.cs" id="17_leveltrigger"]
+[ext_resource type="Script" uid="uid://dgkt0weax3hya" path="res://HighScores.cs" id="19_cegan"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jq2sk"]
 atlas = ExtResource("2_lquwl")
@@ -1159,6 +1160,40 @@ text = "Exit (Esc)"
 stream = ExtResource("12_dg77c")
 volume_db = -10.0
 autoplay = true
+
+[node name="CanvasLayer_HighScores" type="CanvasLayer" parent="." unique_id=1946999553]
+script = ExtResource("19_cegan")
+
+[node name="HighScores_UI" type="Control" parent="CanvasLayer_HighScores" unique_id=263921917]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer_HighScores/HighScores_UI" unique_id=509953872]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.64705884)
+
+[node name="Scores_Container" type="VBoxContainer" parent="CanvasLayer_HighScores/HighScores_UI" unique_id=874381120]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label_HighScores" type="Label" parent="CanvasLayer_HighScores/HighScores_UI/Scores_Container" unique_id=367182343]
+layout_mode = 2
+text = "HIGH SCORES"
+
+[node name="Back_Button" type="Button" parent="CanvasLayer_HighScores/HighScores_UI/Scores_Container" unique_id=1784075604]
+layout_mode = 2
+text = "Back"
 
 [connection signal="timeout" from="MobTimer" to="." method="OnMobTimerTimeout"]
 [connection signal="timeout" from="MobBatchTimer" to="." method="OnMobBatchTimerTimeout"]
