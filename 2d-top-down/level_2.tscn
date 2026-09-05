@@ -21,7 +21,6 @@ tile_map_data = PackedByteArray("AAA4AAEAAgAAABkAADA4AA8AAgAAABkAAAA4AB0AAgAAABk
 
 [node name="BossEnemy" parent="Scroller/Camera2D" parent_id_path=PackedInt32Array(386137376) index="0" unique_id=1740176982 instance=ExtResource("3_1y8me")]
 position = Vector2(476, 152)
-ShootInterval = 1.0
 
 [node name="WallHugger" parent="WallHuggers" parent_id_path=PackedInt32Array(1850199907) index="0" unique_id=605522866]
 visible = false

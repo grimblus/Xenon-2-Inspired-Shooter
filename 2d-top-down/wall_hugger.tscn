@@ -53,14 +53,6 @@ region = Rect2(192, 64, 64, 64)
 atlas = ExtResource("2_hmnmh")
 region = Rect2(256, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vucdb"]
-atlas = ExtResource("2_hmnmh")
-region = Rect2(320, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fbx7q"]
-atlas = ExtResource("2_hmnmh")
-region = Rect2(384, 64, 64, 64)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_wjs2r"]
 atlas = ExtResource("2_hmnmh")
 region = Rect2(0, 128, 64, 64)
@@ -109,14 +101,6 @@ region = Rect2(192, 192, 64, 64)
 atlas = ExtResource("2_hmnmh")
 region = Rect2(256, 192, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_70x6y"]
-atlas = ExtResource("2_hmnmh")
-region = Rect2(320, 192, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qf43s"]
-atlas = ExtResource("2_hmnmh")
-region = Rect2(384, 192, 64, 64)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_voxn2"]
 animations = [{
 "frames": [{
@@ -157,14 +141,23 @@ animations = [{
 "texture": SubResource("AtlasTexture_27iys")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vucdb")
+"texture": SubResource("AtlasTexture_f1jed")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fbx7q")
+"texture": SubResource("AtlasTexture_t1gd6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2kqp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2864")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ymh1")
 }],
 "loop": 1,
 "name": &"facingleft",
-"speed": 15.0
+"speed": 11.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -204,14 +197,23 @@ animations = [{
 "texture": SubResource("AtlasTexture_t8nad")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_70x6y")
+"texture": SubResource("AtlasTexture_wr5j4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qf43s")
+"texture": SubResource("AtlasTexture_1fdkj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0whd6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wi40")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4splb")
 }],
 "loop": 1,
 "name": &"facingright",
-"speed": 15.0
+"speed": 11.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_44oka"]
@@ -220,15 +222,14 @@ animations = [{
 gravity_scale = 0.0
 script = ExtResource("1_wjs2r")
 BulletScene = ExtResource("2_7aj6c")
-ShootInterval = 2.0
+ShootInterval = 1.0
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=879398172]
 material = ExtResource("2_47v3h")
 sprite_frames = SubResource("SpriteFrames_voxn2")
 animation = &"facingright"
-frame = 8
-frame_progress = 0.36699378
+frame_progress = 0.25110722
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2096650773]
 rotation = 1.5707964
@@ -240,6 +241,10 @@ shape = SubResource("CapsuleShape2D_44oka")
 [node name="ShootCooldown" type="Timer" parent="." unique_id=1419687922]
 wait_time = 0.5
 
-[node name="BulletSpawn" type="Marker2D" parent="." unique_id=1291082739]
+[node name="LeftBulletSpawn" type="Marker2D" parent="." unique_id=1291082739]
+position = Vector2(-30, 0)
+
+[node name="RightBulletSpawn" type="Marker2D" parent="." unique_id=1594166673]
+position = Vector2(30, 0)
 
 [connection signal="timeout" from="ShootCooldown" to="." method="OnShootTimerTimeout"]

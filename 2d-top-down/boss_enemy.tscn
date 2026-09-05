@@ -165,6 +165,7 @@ script = ExtResource("1_xldg4")
 Pattern = SubResource("Curve2D_046hu")
 PatternPath = NodePath("Path2D")
 BulletScene = ExtResource("2_046hu")
+ShootInterval = 0.75
 BulletSpeed = 500.0
 
 [node name="MainBodyAnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1324011635]
@@ -220,5 +221,6 @@ curve = SubResource("Curve2D_sqq6n")
 wait_time = 0.5
 
 [node name="BulletSpawn" type="Marker2D" parent="." unique_id=2056733985]
+position = Vector2(0, 87)
 
 [connection signal="timeout" from="ShootCooldown" to="." method="OnShootTimerTimeout"]

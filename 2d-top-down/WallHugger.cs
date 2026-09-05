@@ -25,11 +25,12 @@ public partial class WallHugger : RigidBody2D
 		var animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		if (FacingRight) {
 			animatedSprite2D.Play("facingright");
+			bulletSpawn = GetNode<Marker2D>("RightBulletSpawn");
 		} else {
 			animatedSprite2D.Play("facingleft");
+			bulletSpawn = GetNode<Marker2D>("LeftBulletSpawn");
 		}
 		
-		bulletSpawn = GetNode<Marker2D>("BulletSpawn");
 		cooldown = GetNode<Timer>("ShootCooldown");
 		cooldown.WaitTime = ShootInterval;
 		cooldown.Start();

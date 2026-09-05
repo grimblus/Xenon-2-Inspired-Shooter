@@ -55,7 +55,7 @@ public partial class Main : Node
 	private void OnMobBatchTimerTimeout()
 	{
 		// Choose random location on spawn2D, done here so that the batch spawns there
-		var mobSpawnLocation = GetNode<PathFollow2D>("Scroller/MobPath/MobSpawnLocation");
+		var mobSpawnLocation = GetNode<PathFollow2D>("Scroller/Camera2D/MobPath/MobSpawnLocation");
 		currentProgressRatio = GD.Randf();
 
 		// Start spawning, mobtimer starts
@@ -66,7 +66,7 @@ public partial class Main : Node
 	// We also specified this function name in PascalCase in the editor's connection window.
 	private void OnMobTimerTimeout()
 	{
-		var mobSpawnLocation = GetNode<PathFollow2D>("Scroller/MobPath/MobSpawnLocation");
+		var mobSpawnLocation = GetNode<PathFollow2D>("Scroller/Camera2D/MobPath/MobSpawnLocation");
 		mobSpawnLocation.ProgressRatio = currentProgressRatio;
 
 		//Create new instance of mob
