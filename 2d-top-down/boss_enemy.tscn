@@ -3,6 +3,7 @@
 [ext_resource type="Material" uid="uid://vdb0ley6chky" path="res://chroma_key_material.tres" id="1_1rih2"]
 [ext_resource type="Script" uid="uid://ccbitdcsp5ejt" path="res://BossEnemy.cs" id="1_xldg4"]
 [ext_resource type="Texture2D" uid="uid://b8e53yv24ngf5" path="res://graphics/24bit/boss.bmp" id="2_xldg4"]
+[ext_resource type="Texture2D" uid="uid://dc5nju5kdgs47" path="res://graphics/24bit/bosseyes2.bmp" id="4_sqq6n"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_voxn2"]
 animations = [{
@@ -15,23 +16,190 @@ animations = [{
 "speed": 3.0
 }]
 
-[sub_resource type="Curve2D" id="Curve2D_sqq6n"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqq6n"]
+atlas = ExtResource("4_sqq6n")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_046hu"]
+atlas = ExtResource("4_sqq6n")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_44oka"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqq6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_046hu")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phxyi"]
+atlas = ExtResource("4_sqq6n")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qijv"]
+atlas = ExtResource("4_sqq6n")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1v8cv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_phxyi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qijv")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q604m"]
+atlas = ExtResource("4_sqq6n")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b58q5"]
+atlas = ExtResource("4_sqq6n")
+region = Rect2(64, 128, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rxe0v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q604m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b58q5")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqpey"]
+atlas = ExtResource("4_sqq6n")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11pre"]
+atlas = ExtResource("4_sqq6n")
+region = Rect2(64, 160, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ajdi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqpey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11pre")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwom5"]
+atlas = ExtResource("4_sqq6n")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kergv"]
+atlas = ExtResource("4_sqq6n")
+region = Rect2(32, 160, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pkmxw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwom5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kergv")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvv5a"]
+atlas = ExtResource("4_sqq6n")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5kpc"]
+atlas = ExtResource("4_sqq6n")
+region = Rect2(0, 160, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xmwrr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvv5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5kpc")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 1.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1y8me"]
 radius = 4.1005425
 
+[sub_resource type="Curve2D" id="Curve2D_sqq6n"]
+
 [node name="BossEnemy" type="Area2D" unique_id=1740176982]
 script = ExtResource("1_xldg4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1324011635]
+[node name="MainBodyAnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1324011635]
 material = ExtResource("1_1rih2")
-scale = Vector2(0.75, 0.75)
+scale = Vector2(0.75000006, 0.75000006)
 sprite_frames = SubResource("SpriteFrames_voxn2")
 frame_progress = 0.3138946
 
-[node name="Path2D" type="Path2D" parent="." unique_id=1436835528]
-curve = SubResource("Curve2D_sqq6n")
+[node name="LeftEyeAnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1220111922]
+material = ExtResource("1_1rih2")
+position = Vector2(-96, 23)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_44oka")
+frame_progress = 0.27349877
+
+[node name="LeftEye2AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1455736699]
+position = Vector2(-71, -1)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_1v8cv")
+
+[node name="LeftEye3AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=905830501]
+position = Vector2(-34.9, 15)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_rxe0v")
+
+[node name="RightEyeAnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=524219293]
+material = ExtResource("1_1rih2")
+position = Vector2(96, 23)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_1ajdi")
+frame_progress = 0.20916736
+
+[node name="RightEye2AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=664659267]
+position = Vector2(72.4, -1)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_pkmxw")
+
+[node name="RightEye3AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1040966740]
+position = Vector2(36.5, 15)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_xmwrr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1113432813]
+visible = false
 scale = Vector2(30, 30)
 shape = SubResource("CircleShape2D_1y8me")
+
+[node name="Path2D" type="Path2D" parent="." unique_id=1436835528]
+curve = SubResource("Curve2D_sqq6n")
