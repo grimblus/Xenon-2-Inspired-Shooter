@@ -7,6 +7,9 @@ public partial class Bullet : Area2D
 	public bool usedByRightHugger = false;
 	public bool usedByLeftHugger = false;
 	public bool usedByEnemy = false;
+	public bool usedByBoss = false;
+	public Vector2 aimDirection = Vector2.Down;
+	
 	public Player player;
 	public Node2D Shooter;
 	
@@ -27,7 +30,9 @@ public partial class Bullet : Area2D
 		Vector2 shootDirection;
 
 		//Ifs are for when wallhugger uses
-		if (usedByRightHugger) {
+		if (usedByBoss) {
+			shootDirection = aimDirection * Mathf.Abs(Speed);
+		} else if (usedByRightHugger) {
 			shootDirection = new Vector2(Speed, 0);
 		} else if (usedByLeftHugger) {
 			shootDirection = new Vector2(-Speed, 0);

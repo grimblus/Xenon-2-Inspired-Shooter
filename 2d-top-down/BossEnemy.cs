@@ -122,6 +122,10 @@ public partial class BossEnemy : Area2D
 
 		bullet.Start(bulletSpawn.GlobalPosition);
 		bullet.Speed = BulletSpeed;
+		
+		Vector2 direction = (player.GlobalPosition - bulletSpawn.GlobalPosition).Normalized();
+		bullet.usedByBoss = true;
+		bullet.aimDirection = direction;
 	}
 	
 	public void TakeDamage(int amount) 

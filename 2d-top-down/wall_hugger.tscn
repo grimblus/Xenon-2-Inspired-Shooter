@@ -220,6 +220,7 @@ animations = [{
 gravity_scale = 0.0
 script = ExtResource("1_wjs2r")
 BulletScene = ExtResource("2_7aj6c")
+ShootInterval = 2.0
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=879398172]
