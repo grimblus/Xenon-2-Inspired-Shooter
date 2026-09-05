@@ -414,6 +414,8 @@ public partial class Player : CharacterBody2D
 		
 		GD.Print("Player died");
 		
+		ScoreManager.Instance.SubmitScore(score);
+		
 		var gameOverLayer = GetNode<GameOver>("../../CanvasLayer_GameOver");
 		gameOverLayer.ShowGameOver();
 		
