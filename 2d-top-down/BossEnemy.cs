@@ -131,6 +131,7 @@ public partial class BossEnemy : Area2D
 	public void TakeDamage(int amount) 
 	{		
 		currentHealth = Mathf.Clamp(currentHealth - amount, 0, maxHealth);
+		player.Call("AddScore", 20);
 		if (currentHealth <= 0) {
 			Die();
 		}
@@ -138,6 +139,7 @@ public partial class BossEnemy : Area2D
 	
 	private void Die()
 	{
+		player.Call("AddScore", 10000);
 		QueueFree();
 	}
 }
