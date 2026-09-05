@@ -9,8 +9,8 @@ public partial class HighScores : CanvasLayer
 	{
 		ProcessMode = ProcessModeEnum.Always;
 
-		scoresContainer = GetNode<VBoxContainer>("HighScores_UI/VBoxContainer/Scores_Container");
-		backButton = GetNode<Button>("HighScores_UI/VBoxContainer/Back_Button");
+		scoresContainer = GetNode<VBoxContainer>("HighScores_UI/Scores_Container");
+		backButton = GetNode<Button>("HighScores_UI/Back_Button");
 
 		backButton.Pressed += GoBack;
 	}
@@ -21,21 +21,24 @@ public partial class HighScores : CanvasLayer
 		RefreshDisplay();
 	}
 
-	private void RefreshDisplay()
+private void RefreshDisplay()
+{
+	foreach (Node child in scoresContainer.GetChildren())
 	{
-		foreach (Node child in scoresContainer.GetChildren())
-		{
-			child.QueueFree();
-		}
-
-		var scores = ScoreManager.Instance.HighScores;
-		for (int i = 0; i < scores.Count; i++)
-		{
-			var label = new Label();
-			label.Text = $"{i + 1}. {scores[i]:D7}";
-			scoresContainer.AddChild(label);
-		}
+		child.QueueFree();
 	}
+
+	var scores = ScoreManager.Instance.HighScores;
+	for (int i = 0; i < scores.Count; i++)
+	{
+		var label = new Label();
+		label.Text = $"{i + 1}. {scores[i]:D7}";
+		label.HorizontalAlignment = HorizontalAlignment.Center;
+		label.AddThemeFontSizeOverride("font_size", 32);
+		label.AddThemeFontOverride("font", GD.Load<FontFile>("res://fonts/pixel_font.png")); // add this line
+		scoresContainer.AddChild(label);
+	}
+}
 
 	private void GoBack()
 	{
