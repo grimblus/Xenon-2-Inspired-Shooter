@@ -1156,12 +1156,18 @@ theme_override_fonts/font = ExtResource("13_ycdy4")
 theme_override_font_sizes/font_size = 32
 text = "Exit (Esc)"
 
+[node name="Scores_Button" type="Button" parent="CanvasLayer_GameOver/GameOver_UI/VBoxContainer" unique_id=1779477812]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("13_ycdy4")
+text = "Scores"
+
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=1218465614]
 stream = ExtResource("12_dg77c")
 volume_db = -10.0
 autoplay = true
 
 [node name="CanvasLayer_HighScores" type="CanvasLayer" parent="." unique_id=1946999553]
+visible = false
 script = ExtResource("19_cegan")
 
 [node name="HighScores_UI" type="Control" parent="CanvasLayer_HighScores" unique_id=263921917]
