@@ -7,7 +7,6 @@ public partial class BootScreen : Control
 
 	[Export] public float FadeTime = 0.5f;
 	[Export] public float HoldTime = 2.0f;
-	[Export] public float LogoMaxHeight = 160f;
 
 	private enum State { FadeIn, Hold, FadeOut }
 	private State state;
@@ -31,15 +30,15 @@ public partial class BootScreen : Control
 			child.QueueFree();
 		}
 
-		foreach (Texture2D texture in Pages[index].Logos)
+		foreach (BootLogo logo in Pages[index].Logos)
 		{
 			var rect = new TextureRect();
-			rect.Texture = texture;
+			rect.Texture = logo.Texture;
 			rect.ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize;
 			rect.StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered;
 
-			float aspect = texture.GetWidth() / (float)texture.GetHeight();
-			rect.CustomMinimumSize = new Vector2(LogoMaxHeight * aspect, LogoMaxHeight);
+			float aspect = logo.Texture.GetWidth() / (float)logo.Texture.GetHeight();
+			rect.CustomMinimumSize = new Vector2(logo.MaxHeight * aspect, logo.MaxHeight);
 
 			logoRow.AddChild(rect);
 		}
