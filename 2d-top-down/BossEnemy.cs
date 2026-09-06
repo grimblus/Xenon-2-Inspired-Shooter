@@ -12,8 +12,8 @@ public partial class BossEnemy : Area2D
 	[Export] public float BulletSpeed = 250f;
 	
 	//health
-	private int maxHealth = 1000;
-	private int currentHealth = 1000;
+	[Export] public int MaxHealth = 1000;
+	private int currentHealth;
 	private float patternLength;
 	
 	//for path pattern
@@ -76,7 +76,9 @@ public partial class BossEnemy : Area2D
 		cooldown.Start();
 		
 		player = GetNode<Player>("/root/Main/Scroller/Player");
-		
+
+		currentHealth = MaxHealth;
+
 		//so I dont have to read it to enemies just in case
 		AddToGroup("enemies");
 	}
@@ -130,7 +132,7 @@ public partial class BossEnemy : Area2D
 	
 	public void TakeDamage(int amount) 
 	{		
-		currentHealth = Mathf.Clamp(currentHealth - amount, 0, maxHealth);
+		currentHealth = Mathf.Clamp(currentHealth - amount, 0, MaxHealth);
 		player.Call("AddScore", 20);
 		if (currentHealth <= 0) {
 			Die();
