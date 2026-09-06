@@ -12,6 +12,7 @@
 [ext_resource type="Material" uid="uid://vdb0ley6chky" path="res://chroma_key_material.tres" id="10_nvl01"]
 [ext_resource type="Texture2D" uid="uid://bbdiph5pq3b1l" path="res://graphics/24bit/clone.bmp" id="11_ivps1"]
 [ext_resource type="Script" uid="uid://lgtlfcmnokpv" path="res://Drone.cs" id="12_ivps1"]
+[ext_resource type="AudioStream" uid="uid://mebx151lcpf5" path="res://sfx/mixkit-short-laser-gun-shot-1670.wav" id="13_shootsfx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lypxw"]
 shader = ExtResource("3_1jxqw")
@@ -246,6 +247,10 @@ autoplay = "forward"
 
 [node name="GunCooldown" type="Timer" parent="." unique_id=1354024316]
 one_shot = true
+
+[node name="ShootSfx" type="AudioStreamPlayer" parent="." unique_id=1598512099]
+stream = ExtResource("13_shootsfx")
+volume_db = -10.0
 
 [node name="BulletSpawn" type="Marker2D" parent="." unique_id=1463174157]
 visible = false

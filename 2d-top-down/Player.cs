@@ -33,6 +33,7 @@ public partial class Player : CharacterBody2D
 	private AnimatedSprite2D boosters;
 	private AnimatedSprite2D boosters2;
 	private Timer cooldown;
+	private AudioStreamPlayer shootSfx;
 	private Marker2D bulletSpawn;
 	private Marker2D tripleBulletSpawn1;
 	private Marker2D tripleBulletSpawn2;
@@ -79,6 +80,7 @@ public partial class Player : CharacterBody2D
 		boosters = GetNode<AnimatedSprite2D>("Ship/Boosters");
 		boosters2 = GetNode<AnimatedSprite2D>("Ship/Boosters2");
 		cooldown = GetNode<Timer>("GunCooldown");
+		shootSfx = GetNode<AudioStreamPlayer>("ShootSfx");
 		bulletSpawn = GetNode<Marker2D>("BulletSpawn");
 		tripleBulletSpawn1 = GetNode<Marker2D>("TripleBulletSpawn1");
 		tripleBulletSpawn2 = GetNode<Marker2D>("TripleBulletSpawn2");
@@ -336,7 +338,8 @@ public partial class Player : CharacterBody2D
 		
 		canShoot = false;
 		cooldown.Start();
-		
+		shootSfx.Play();
+
 		if (!laserUp) {
 			var b = BulletScene.Instantiate<Bullet>();
 			b.Shooter = this;
