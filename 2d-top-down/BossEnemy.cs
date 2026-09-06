@@ -172,6 +172,11 @@ public partial class BossEnemy : Area2D
 	private void Die()
 	{
 		player.Call("AddScore", 10000);
+
+		var congratsLayer = GetNode<CongratsScreen>("/root/Main/CanvasLayer_Congrats");
+		congratsLayer.ShowCongrats();
+		GetTree().Paused = true;
+
 		QueueFree();
 	}
 }
