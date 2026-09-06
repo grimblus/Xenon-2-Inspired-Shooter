@@ -58,6 +58,9 @@ public partial class BossEnemy : Area2D
 		string[] lEye3MobTypes = lEye3AnimatedSprite2D.SpriteFrames.GetAnimationNames();
 		lEye3AnimatedSprite2D.Play(lEye3MobTypes[GD.Randi() % lEye3MobTypes.Length]);
 		
+		var expAnimatedSprite2D = GetNode<AnimatedSprite2D>("ExplodeAnimatedSprite2D");
+		expAnimatedSprite2D.Visible = false;
+		
 		//Makes it so that the boss actually starts where I put it in the scene
 		spawnPosition = Position;
 		spawnRotation = Rotation;
@@ -135,11 +138,34 @@ public partial class BossEnemy : Area2D
 	
 	public void TakeDamage(int amount) 
 	{		
+		var bodyAnimatedSprite2D = GetNode<AnimatedSprite2D>("MainBodyAnimatedSprite2D");
+		var rEyeAnimatedSprite2D = GetNode<AnimatedSprite2D>("RightEyeAnimatedSprite2D");
+		var rEye2AnimatedSprite2D = GetNode<AnimatedSprite2D>("RightEye2AnimatedSprite2D");
+		var rEye3AnimatedSprite2D = GetNode<AnimatedSprite2D>("RightEye3AnimatedSprite2D");
+		var lEyeAnimatedSprite2D = GetNode<AnimatedSprite2D>("LeftEyeAnimatedSprite2D");	
+		var lEye2AnimatedSprite2D = GetNode<AnimatedSprite2D>("LeftEye2AnimatedSprite2D");		
+		var lEye3AnimatedSprite2D = GetNode<AnimatedSprite2D>("LeftEye3AnimatedSprite2D");
+		var expAnimatedSprite2D = GetNode<AnimatedSprite2D>("ExplodeAnimatedSprite2D");
+		var collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
+		
 		currentHealth = Mathf.Clamp(currentHealth - amount, 0, maxHealth);
 		healthBar.Value = currentHealth;
 		player.Call("AddScore", 20);
 		if (currentHealth <= 0) {
-			Die();
+			bodyAnimatedSprite2D.Visible = false;
+			rEyeAnimatedSprite2D.Visible = false;
+			rEye2AnimatedSprite2D.Visible = false;
+			rEye3AnimatedSprite2D.Visible = false;
+			lEyeAnimatedSprite2D.Visible = false;
+			lEye2AnimatedSprite2D.Visible = false;
+			lEye3AnimatedSprite2D.Visible = false;
+			
+			collisionShape.SetDeferred("disabled", true);
+			canShoot = false;
+			
+			expAnimatedSprite2D.Visible = true;
+			expAnimatedSprite2D.Play("default");
+			expAnimatedSprite2D.AnimationFinished += Die;	
 		}
 	}
 	
