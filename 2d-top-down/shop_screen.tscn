@@ -667,7 +667,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_item")
 [node name="Item1_VBox" type="VBoxContainer" parent="VBoxContainer/Items_HBox/Item1_Panel" unique_id=1341268832]
 layout_mode = 2
 theme_override_constants/separation = 8
-alignment = 2
 
 [node name="Item1_Name" type="Label" parent="VBoxContainer/Items_HBox/Item1_Panel/Item1_VBox" unique_id=1306351945]
 layout_mode = 2
@@ -683,6 +682,10 @@ theme_override_font_sizes/font_size = 12
 text = "Fires powerful missiles at nearby enemies."
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[node name="Item1_Spacer" type="Control" parent="VBoxContainer/Items_HBox/Item1_Panel/Item1_VBox"]
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="Item1_Price" type="Label" parent="VBoxContainer/Items_HBox/Item1_Panel/Item1_VBox" unique_id=671156674]
 layout_mode = 2
@@ -705,7 +708,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_item")
 [node name="Item2_VBox" type="VBoxContainer" parent="VBoxContainer/Items_HBox/Item2_Panel" unique_id=22427813]
 layout_mode = 2
 theme_override_constants/separation = 8
-alignment = 2
 
 [node name="Item2_Name" type="Label" parent="VBoxContainer/Items_HBox/Item2_Panel/Item2_VBox" unique_id=986418368]
 layout_mode = 2
@@ -721,6 +723,10 @@ theme_override_font_sizes/font_size = 12
 text = "A companion drone that orbits and fires alongside you."
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[node name="Item2_Spacer" type="Control" parent="VBoxContainer/Items_HBox/Item2_Panel/Item2_VBox"]
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="Item2_Price" type="Label" parent="VBoxContainer/Items_HBox/Item2_Panel/Item2_VBox" unique_id=508335160]
 layout_mode = 2
@@ -743,7 +749,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_item")
 [node name="Item3_VBox" type="VBoxContainer" parent="VBoxContainer/Items_HBox/Item3_Panel" unique_id=1795006059]
 layout_mode = 2
 theme_override_constants/separation = 8
-alignment = 2
 
 [node name="Item3_Name" type="Label" parent="VBoxContainer/Items_HBox/Item3_Panel/Item3_VBox" unique_id=1147451812]
 layout_mode = 2
@@ -759,6 +764,10 @@ theme_override_font_sizes/font_size = 12
 text = "Double-tap a direction to dash out of danger."
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[node name="Item3_Spacer" type="Control" parent="VBoxContainer/Items_HBox/Item3_Panel/Item3_VBox"]
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="Item3_Price" type="Label" parent="VBoxContainer/Items_HBox/Item3_Panel/Item3_VBox" unique_id=1398915252]
 layout_mode = 2
