@@ -673,7 +673,7 @@ alignment = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 18
-text = "Item Name"
+text = "Missile"
 horizontal_alignment = 1
 
 [node name="Item1_Price" type="Label" parent="VBoxContainer/Items_HBox/Item1_Panel/Item1_VBox" unique_id=671156674]
@@ -682,6 +682,12 @@ theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 16
 text = "100 pts"
 horizontal_alignment = 1
+
+[node name="Item1_Buy" type="Button" parent="VBoxContainer/Items_HBox/Item1_Panel/Item1_VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "Buy"
 
 [node name="Item2_Panel" type="PanelContainer" parent="VBoxContainer/Items_HBox" unique_id=1487108623]
 custom_minimum_size = Vector2(180, 200)
@@ -697,15 +703,21 @@ alignment = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 18
-text = "Item Name"
+text = "Drone"
 horizontal_alignment = 1
 
 [node name="Item2_Price" type="Label" parent="VBoxContainer/Items_HBox/Item2_Panel/Item2_VBox" unique_id=508335160]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 16
-text = "100 pts"
+text = "150 pts"
 horizontal_alignment = 1
+
+[node name="Item2_Buy" type="Button" parent="VBoxContainer/Items_HBox/Item2_Panel/Item2_VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "Buy"
 
 [node name="Item3_Panel" type="PanelContainer" parent="VBoxContainer/Items_HBox" unique_id=706517793]
 custom_minimum_size = Vector2(180, 200)
@@ -721,15 +733,21 @@ alignment = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 18
-text = "Item Name"
+text = "Dodge"
 horizontal_alignment = 1
 
 [node name="Item3_Price" type="Label" parent="VBoxContainer/Items_HBox/Item3_Panel/Item3_VBox" unique_id=1398915252]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 16
-text = "100 pts"
+text = "200 pts"
 horizontal_alignment = 1
+
+[node name="Item3_Buy" type="Button" parent="VBoxContainer/Items_HBox/Item3_Panel/Item3_VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "Buy"
 
 [node name="NextLevel_Button" type="Button" parent="VBoxContainer" unique_id=1149509248]
 layout_mode = 2

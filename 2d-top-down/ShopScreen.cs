@@ -4,6 +4,10 @@ public partial class ShopScreen : Control
 {
 	[Export] public string NextLevelPath = "res://level_2.tscn";
 
+	[Export] public int MissilePrice = 100;
+	[Export] public int DronePrice = 150;
+	[Export] public int DodgePrice = 200;
+
 	private Button nextLevelButton;
 	private Button exitButton;
 	private Label shopLabel;
@@ -20,8 +24,50 @@ public partial class ShopScreen : Control
 		nextLevelButton.Pressed += GoToNextLevel;
 		exitButton.Pressed += Exit;
 
+		SetupItem("Item1", MissilePrice, () => GameState.Instance.MissileBuy, () => GameState.Instance.MissileBuy = true);
+		SetupItem("Item2", DronePrice, () => GameState.Instance.DroneBuy, () => GameState.Instance.DroneBuy = true);
+		SetupItem("Item3", DodgePrice, () => GameState.Instance.DodgeBuy, () => GameState.Instance.DodgeBuy = true);
+
 		UpdateScoreLabel();
 		CallDeferred(nameof(StartPulse));
+	}
+
+	private void SetupItem(string itemNode, int price, System.Func<bool> isOwned, System.Action markOwned)
+	{
+		var priceLabel = GetNode<Label>($"VBoxContainer/Items_HBox/{itemNode}_Panel/{itemNode}_VBox/{itemNode}_Price");
+		var buyButton = GetNode<Button>($"VBoxContainer/Items_HBox/{itemNode}_Panel/{itemNode}_VBox/{itemNode}_Buy");
+
+		void Refresh()
+		{
+			if (isOwned())
+			{
+				priceLabel.Text = "Owned";
+				buyButton.Disabled = true;
+				buyButton.Text = "Owned";
+			}
+			else
+			{
+				priceLabel.Text = $"{price} pts";
+				buyButton.Disabled = false;
+				buyButton.Text = "Buy";
+			}
+		}
+
+		buyButton.Pressed += () =>
+		{
+			if (isOwned())
+				return;
+
+			if (GameState.Instance.TrySpend(price))
+			{
+				markOwned();
+				UpdateScoreLabel();
+			}
+
+			Refresh();
+		};
+
+		Refresh();
 	}
 
 	private void UpdateScoreLabel()
