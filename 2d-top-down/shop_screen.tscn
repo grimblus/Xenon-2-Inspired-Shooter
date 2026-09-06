@@ -660,7 +660,7 @@ theme_override_constants/separation = 24
 alignment = 1
 
 [node name="Item1_Panel" type="PanelContainer" parent="VBoxContainer/Items_HBox" unique_id=2027925500]
-custom_minimum_size = Vector2(180, 200)
+custom_minimum_size = Vector2(180, 240)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_item")
 
@@ -676,6 +676,14 @@ theme_override_font_sizes/font_size = 18
 text = "Missile"
 horizontal_alignment = 1
 
+[node name="Item1_Description" type="Label" parent="VBoxContainer/Items_HBox/Item1_Panel/Item1_VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 12
+text = "Fires powerful missiles at nearby enemies."
+horizontal_alignment = 1
+autowrap_mode = 3
+
 [node name="Item1_Price" type="Label" parent="VBoxContainer/Items_HBox/Item1_Panel/Item1_VBox" unique_id=671156674]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_font")
@@ -690,7 +698,7 @@ theme_override_font_sizes/font_size = 16
 text = "Buy"
 
 [node name="Item2_Panel" type="PanelContainer" parent="VBoxContainer/Items_HBox" unique_id=1487108623]
-custom_minimum_size = Vector2(180, 200)
+custom_minimum_size = Vector2(180, 240)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_item")
 
@@ -706,6 +714,14 @@ theme_override_font_sizes/font_size = 18
 text = "Drone"
 horizontal_alignment = 1
 
+[node name="Item2_Description" type="Label" parent="VBoxContainer/Items_HBox/Item2_Panel/Item2_VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 12
+text = "A companion drone that orbits and fires alongside you."
+horizontal_alignment = 1
+autowrap_mode = 3
+
 [node name="Item2_Price" type="Label" parent="VBoxContainer/Items_HBox/Item2_Panel/Item2_VBox" unique_id=508335160]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_font")
@@ -720,7 +736,7 @@ theme_override_font_sizes/font_size = 16
 text = "Buy"
 
 [node name="Item3_Panel" type="PanelContainer" parent="VBoxContainer/Items_HBox" unique_id=706517793]
-custom_minimum_size = Vector2(180, 200)
+custom_minimum_size = Vector2(180, 240)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_item")
 
@@ -735,6 +751,14 @@ theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 18
 text = "Dodge"
 horizontal_alignment = 1
+
+[node name="Item3_Description" type="Label" parent="VBoxContainer/Items_HBox/Item3_Panel/Item3_VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 12
+text = "Double-tap a direction to dash out of danger."
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="Item3_Price" type="Label" parent="VBoxContainer/Items_HBox/Item3_Panel/Item3_VBox" unique_id=1398915252]
 layout_mode = 2
