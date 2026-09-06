@@ -2,31 +2,49 @@ using Godot;
 
 public partial class BootScreen : Control
 {
-	// assign in order: bblogo, pcflogo, xenon banner, xenon 3d logo
-	[Export] public Texture2D[] Logos; 
-	[Export] public string NextScenePath = "res://main.tscn";
+	[Export] public BootPage[] Pages;
+	[Export] public string NextScenePath = "res://main_menu.tscn";
 
 	[Export] public float FadeTime = 0.5f;
 	[Export] public float HoldTime = 2.0f;
+	[Export] public float LogoMaxHeight = 160f;
 
 	private enum State { FadeIn, Hold, FadeOut }
 	private State state;
 	private float timer = 0f;
 	private int index = 0;
 
-	private TextureRect display;
+	private VBoxContainer logoRow;
 
 	public override void _Ready()
 	{
-		display = GetNode<TextureRect>("Display");
-		ShowLogo(0);
+		logoRow = GetNode<VBoxContainer>("LogoRow");
+		ShowPage(0);
 	}
 
-	private void ShowLogo(int i)
+	private void ShowPage(int i)
 	{
 		index = i;
-		display.Texture = Logos[index];
-		display.Modulate = new Color(1, 1, 1, 0);
+
+		foreach (Node child in logoRow.GetChildren())
+		{
+			child.QueueFree();
+		}
+
+		foreach (Texture2D texture in Pages[index].Logos)
+		{
+			var rect = new TextureRect();
+			rect.Texture = texture;
+			rect.ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize;
+			rect.StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered;
+
+			float aspect = texture.GetWidth() / (float)texture.GetHeight();
+			rect.CustomMinimumSize = new Vector2(LogoMaxHeight * aspect, LogoMaxHeight);
+
+			logoRow.AddChild(rect);
+		}
+
+		logoRow.Modulate = new Color(1, 1, 1, 0);
 		state = State.FadeIn;
 		timer = 0f;
 	}
@@ -40,7 +58,7 @@ public partial class BootScreen : Control
 			case State.FadeIn:
 				timer += dt;
 				float fadeInAlpha = Mathf.Clamp(timer / FadeTime, 0f, 1f);
-				display.Modulate = new Color(1, 1, 1, fadeInAlpha);
+				logoRow.Modulate = new Color(1, 1, 1, fadeInAlpha);
 				if (timer >= FadeTime)
 				{
 					timer = 0f;
@@ -60,7 +78,7 @@ public partial class BootScreen : Control
 			case State.FadeOut:
 				timer += dt;
 				float fadeOutAlpha = Mathf.Clamp(1f - (timer / FadeTime), 0f, 1f);
-				display.Modulate = new Color(1, 1, 1, fadeOutAlpha);
+				logoRow.Modulate = new Color(1, 1, 1, fadeOutAlpha);
 				if (timer >= FadeTime)
 				{
 					timer = 0f;
@@ -91,13 +109,13 @@ public partial class BootScreen : Control
 	private void AdvanceToNext()
 	{
 		int next = index + 1;
-		if (next >= Logos.Length)
+		if (next >= Pages.Length)
 		{
 			GetTree().ChangeSceneToFile(NextScenePath);
 		}
 		else
 		{
-			ShowLogo(next);
+			ShowPage(next);
 		}
 	}
 }
