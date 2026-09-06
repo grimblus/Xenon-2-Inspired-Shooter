@@ -36,6 +36,18 @@ public partial class ShopScreen : Control
 	{
 		var priceLabel = GetNode<Label>($"VBoxContainer/Items_HBox/{itemNode}_Panel/{itemNode}_VBox/{itemNode}_Price");
 		var buyButton = GetNode<Button>($"VBoxContainer/Items_HBox/{itemNode}_Panel/{itemNode}_VBox/{itemNode}_Buy");
+		Tween flashTween = null;
+
+		void FlashInsufficientFunds()
+		{
+			flashTween?.Kill();
+			priceLabel.Modulate = Colors.Red;
+
+			flashTween = priceLabel.CreateTween();
+			flashTween.TweenProperty(priceLabel, "modulate", Colors.White, 0.4f)
+				.SetTrans(Tween.TransitionType.Sine)
+				.SetEase(Tween.EaseType.Out);
+		}
 
 		void Refresh()
 		{
@@ -62,9 +74,12 @@ public partial class ShopScreen : Control
 			{
 				markOwned();
 				UpdateScoreLabel();
+				Refresh();
 			}
-
-			Refresh();
+			else
+			{
+				FlashInsufficientFunds();
+			}
 		};
 
 		Refresh();
