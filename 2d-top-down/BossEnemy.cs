@@ -25,6 +25,7 @@ public partial class BossEnemy : Area2D
 	private bool canShoot = true;
 	private Marker2D bulletSpawn;
 	private Timer cooldown;
+	private ProgressBar healthBar;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -76,7 +77,11 @@ public partial class BossEnemy : Area2D
 		cooldown.Start();
 		
 		player = GetNode<Player>("/root/Main/Scroller/Player");
-		
+
+		healthBar = GetNode<ProgressBar>("HealthBar");
+		healthBar.MaxValue = maxHealth;
+		healthBar.Value = currentHealth;
+
 		//so I dont have to read it to enemies just in case
 		AddToGroup("enemies");
 	}
@@ -131,6 +136,7 @@ public partial class BossEnemy : Area2D
 	public void TakeDamage(int amount) 
 	{		
 		currentHealth = Mathf.Clamp(currentHealth - amount, 0, maxHealth);
+		healthBar.Value = currentHealth;
 		player.Call("AddScore", 20);
 		if (currentHealth <= 0) {
 			Die();

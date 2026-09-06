@@ -154,6 +154,20 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_1y8me"]
 radius = 4.1005425
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hpbar_bg"]
+bg_color = Color(0.047058824, 0.05882353, 0.101960786, 0.85)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hpbar_fill"]
+bg_color = Color(0.8, 0.15, 0.15, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [sub_resource type="Curve2D" id="Curve2D_sqq6n"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, -85.370834, 0, 85.370834, -148, -2, 0, 0, 0, 0, 0, 0, 0.4665073, 86.770355, -0.4665073, -86.770355, 145, 0, 0, 0, 0, 0, 0, 0)
@@ -222,5 +236,14 @@ wait_time = 0.5
 
 [node name="BulletSpawn" type="Marker2D" parent="." unique_id=2056733985]
 position = Vector2(0, 87)
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -60.0
+offset_top = -150.0
+offset_right = 60.0
+offset_bottom = -140.0
+theme_override_styles/background = SubResource("StyleBoxFlat_hpbar_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hpbar_fill")
+show_percentage = false
 
 [connection signal="timeout" from="ShootCooldown" to="." method="OnShootTimerTimeout"]
