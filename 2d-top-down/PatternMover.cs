@@ -22,7 +22,7 @@ public partial class PatternMover : Area2D
 	{
 		var animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		string[] mobTypes = animatedSprite2D.SpriteFrames.GetAnimationNames();
-		animatedSprite2D.Play(mobTypes[GD.Randi() % mobTypes.Length]);
+		animatedSprite2D.Play("default");
 		
 		spawnPosition = GlobalPosition;
 		spawnRotation = Rotation;
@@ -74,18 +74,24 @@ public partial class PatternMover : Area2D
 		QueueFree();
 	}
 	
-	private void Die() 
-	{
-		QueueFree();
-	}
-	
 	public void TakeDamage(int amount) 
 	{
+		var animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		health -= amount;
 		if (health <= 0) 
 		{
-			QueueFree();
+			//turns off collision 
+			var collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
+			collisionShape.SetDeferred("disabled", true);
+			
+			animatedSprite2D.Play("explode");
+			animatedSprite2D.AnimationFinished += Die;						
 			player.Call("AddScore", 50);
 		}
+	}
+	
+	private void Die() 
+	{
+		QueueFree();
 	}
 }
