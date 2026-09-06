@@ -4,7 +4,9 @@ public partial class Player : CharacterBody2D
 {
 	[Export] public float Speed = 150f;
 	[Export] public float Cooldown = 0.25f;
+	[Export] public float MissileCooldown = 2f;
 	[Export] PackedScene BulletScene;
+	[Export] PackedScene MissileScene;
 	[Export] public float BounceStrength = 300f;
 	[Export] public float KnockbackDecay = 800f;
 	
@@ -33,16 +35,20 @@ public partial class Player : CharacterBody2D
 	private AnimatedSprite2D boosters;
 	private AnimatedSprite2D boosters2;
 	private Timer cooldown;
+	private Timer missileCooldown;
 	private AudioStreamPlayer shootSfx;
 	private Marker2D bulletSpawn;
 	private Marker2D tripleBulletSpawn1;
 	private Marker2D tripleBulletSpawn2;
+	private Marker2D missileSpawn;
 	private Area2D laser;
 	private Sprite2D shield;///Find circle sprite
 	private Sprite2D invincible;
 	private AnimatedSprite2D drone;
+	
 	private Vector2 screenSize;
 	private bool canShoot = true;
+	private bool canMissileShoot = true;
 	private Vector2 knockback = Vector2.Zero;
 	
 	private Vector2 boostersPos;
@@ -63,7 +69,7 @@ public partial class Player : CharacterBody2D
 
 	private float doubleTapTimer = 0f;
 	private string lastTap = "";
-	
+
 	// Power Up Timers
 	[Export] public float TripleShotDuration = 10f;
 	[Export] public float SpeedUpDuration = 10f;
@@ -80,6 +86,7 @@ public partial class Player : CharacterBody2D
 		boosters = GetNode<AnimatedSprite2D>("Ship/Boosters");
 		boosters2 = GetNode<AnimatedSprite2D>("Ship/Boosters2");
 		cooldown = GetNode<Timer>("GunCooldown");
+		missileCooldown = GetNode<Timer>("MissileCooldown");
 		shootSfx = GetNode<AudioStreamPlayer>("ShootSfx");
 		bulletSpawn = GetNode<Marker2D>("BulletSpawn");
 		tripleBulletSpawn1 = GetNode<Marker2D>("TripleBulletSpawn1");
@@ -87,6 +94,7 @@ public partial class Player : CharacterBody2D
 		laser = GetNode<Area2D>("Laser");
 		shield = GetNode<Sprite2D>("Shield");
 		invincible = GetNode<Sprite2D>("Invincible");
+		missileSpawn = GetNode<Marker2D>("MissileSpawn");
 		drone = GetNode<AnimatedSprite2D>("Drone");
 		screenSize = GetViewportRect().Size;
 		
@@ -119,6 +127,7 @@ public partial class Player : CharacterBody2D
 	private void Start() {
 		Position = new Vector2(screenSize.X/2, screenSize.Y-64);
 		cooldown.WaitTime = Cooldown;
+		missileCooldown.WaitTime = MissileCooldown;
 	}
 	
 	public override void _PhysicsProcess(double delta) {
@@ -331,6 +340,7 @@ public partial class Player : CharacterBody2D
 		dodgeTimer = DodgeDuration;
 		dodgeCooldownTimer = DodgeCooldown;
 	}
+	
 	public void Shoot() {
 		if (!canShoot) {
 			return;
@@ -361,10 +371,24 @@ public partial class Player : CharacterBody2D
 			GetParent().AddChild(b2);
 			b2.Start(tripleBulletSpawn2.GlobalPosition);
 		}
+		
+		if (missileBuy == true && canMissileShoot == true) {
+			canMissileShoot = false;
+			missileCooldown.Start();
+			shootSfx.Play();
+			var m = MissileScene.Instantiate<Missile>();
+			m.Shooter = this;
+			GetParent().AddChild(m);
+			m.Start(missileSpawn.GlobalPosition);
+		}
 	}
 	
 	private void OnGunCooldownTimeout() {
 		canShoot = true;
+	}
+	
+	private void OnMissileCooldownTimeout() {
+		canMissileShoot = true;
 	}
 	
 	public void TakeDamage(int amount) {

@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bd4bxd4mj0p1n" path="res://bullet.tscn" id="2_2hs0m"]
 [ext_resource type="Texture2D" uid="uid://c5etd58dimfek" path="res://graphics/24bit/Burner1.bmp" id="2_onrkg"]
 [ext_resource type="Shader" uid="uid://le51gluc4kj8" path="res://shader.gdshader" id="3_1jxqw"]
+[ext_resource type="PackedScene" uid="uid://dy1edwdqcw8qd" path="res://missile.tscn" id="3_bwjto"]
 [ext_resource type="Texture2D" uid="uid://d0345gc33ak0w" path="res://graphics/24bit/Burner5.bmp" id="3_hqtel"]
 [ext_resource type="Texture2D" uid="uid://byoldds7th4lq" path="res://graphics/24bit/Burner6.bmp" id="4_sweqy"]
 [ext_resource type="Script" uid="uid://ydbktit3lxu3" path="res://Laser.cs" id="8_b26j0"]
@@ -224,6 +225,8 @@ size = Vector2(21.333334, 22.333336)
 collision_layer = 2
 script = ExtResource("1_sweqy")
 BulletScene = ExtResource("2_2hs0m")
+MissileScene = ExtResource("3_bwjto")
+missileBuy = true
 
 [node name="Ship" type="Sprite2D" parent="." unique_id=1737988385]
 material = SubResource("ShaderMaterial_lypxw")
@@ -248,6 +251,9 @@ autoplay = "forward"
 [node name="GunCooldown" type="Timer" parent="." unique_id=1354024316]
 one_shot = true
 
+[node name="MissileCooldown" type="Timer" parent="." unique_id=1260251993]
+one_shot = true
+
 [node name="ShootSfx" type="AudioStreamPlayer" parent="." unique_id=1598512099]
 stream = ExtResource("13_shootsfx")
 volume_db = -10.0
@@ -255,6 +261,10 @@ volume_db = -10.0
 [node name="BulletSpawn" type="Marker2D" parent="." unique_id=1463174157]
 visible = false
 position = Vector2(0, -32)
+
+[node name="MissileSpawn" type="Marker2D" parent="." unique_id=175966168]
+visible = false
+position = Vector2(30, 0)
 
 [node name="TripleBulletSpawn1" type="Marker2D" parent="." unique_id=2088722118]
 visible = false
@@ -314,5 +324,6 @@ scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_1ajdi")
 
 [connection signal="timeout" from="GunCooldown" to="." method="OnGunCooldownTimeout"]
+[connection signal="timeout" from="MissileCooldown" to="." method="OnMissileCooldownTimeout"]
 [connection signal="area_entered" from="Laser" to="Laser" method="OnLaserAreaEntered"]
 [connection signal="body_entered" from="Laser" to="Laser" method="OnLaserBodyEntered"]
