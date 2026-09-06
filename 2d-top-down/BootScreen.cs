@@ -14,11 +14,11 @@ public partial class BootScreen : Control
 	private float timer = 0f;
 	private int index = 0;
 
-	private HBoxContainer logoRow;
+	private VBoxContainer logoRow;
 
 	public override void _Ready()
 	{
-		logoRow = GetNode<HBoxContainer>("LogoRow");
+		logoRow = GetNode<VBoxContainer>("LogoRow");
 		ShowPage(0);
 	}
 
@@ -35,6 +35,7 @@ public partial class BootScreen : Control
 		{
 			var rect = new TextureRect();
 			rect.Texture = texture;
+			rect.ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize;
 			rect.StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered;
 
 			float aspect = texture.GetWidth() / (float)texture.GetHeight();
