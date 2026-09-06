@@ -6,9 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://dyquipqyhbawq" path="res://logos/pcflogo_clean.png" id="4_5sw8o"]
 [ext_resource type="AudioStream" uid="uid://bjlrgn6syq7ef" path="res://music/2. Entering the Void (Loop).mp3" id="6_v07ap"]
 
-[sub_resource type="Resource" id="BootPage_institutions"]
+[sub_resource type="Resource" id="BootPage_bitbrothers"]
 script = ExtResource("2_bootpage")
-Logos = Array[Texture2D]([ExtResource("3_nxau8"), ExtResource("4_5sw8o")])
+Logos = Array[Texture2D]([ExtResource("3_nxau8")])
+
+[sub_resource type="Resource" id="BootPage_pcformat"]
+script = ExtResource("2_bootpage")
+Logos = Array[Texture2D]([ExtResource("4_5sw8o")])
 
 [node name="BootScreen" type="Control" unique_id=303292086]
 layout_mode = 3
@@ -18,7 +22,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e05bb")
-Pages = Array[ExtResource("2_bootpage")]([SubResource("BootPage_institutions")])
+Pages = Array[ExtResource("2_bootpage")]([SubResource("BootPage_bitbrothers"), SubResource("BootPage_pcformat")])
 
 [node name="Background" type="ColorRect" parent="." unique_id=702314643]
 layout_mode = 1
