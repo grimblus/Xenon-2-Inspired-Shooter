@@ -7,6 +7,7 @@ public partial class ShopScreen : Control
 	private Button nextLevelButton;
 	private Button exitButton;
 	private Label shopLabel;
+	private Label scoreLabel;
 	private Tween pulseTween;
 
 	public override void _Ready()
@@ -14,11 +15,18 @@ public partial class ShopScreen : Control
 		nextLevelButton = GetNode<Button>("VBoxContainer/NextLevel_Button");
 		exitButton = GetNode<Button>("VBoxContainer/Exit_Button");
 		shopLabel = GetNode<Label>("VBoxContainer/Shop_Label");
+		scoreLabel = GetNode<Label>("VBoxContainer/Score_Label");
 
 		nextLevelButton.Pressed += GoToNextLevel;
 		exitButton.Pressed += Exit;
 
+		UpdateScoreLabel();
 		CallDeferred(nameof(StartPulse));
+	}
+
+	private void UpdateScoreLabel()
+	{
+		scoreLabel.Text = $"Score: {GameState.Instance.Score:D7}";
 	}
 
 	private void StartPulse()

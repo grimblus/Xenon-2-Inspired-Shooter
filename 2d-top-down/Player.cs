@@ -26,7 +26,6 @@ public partial class Player : CharacterBody2D
 	
 	/// Score Variables
 	private Label scoreLabel;
-	private int score = 0;
 	
 	private bool isDead = false;
 	
@@ -91,7 +90,12 @@ public partial class Player : CharacterBody2D
 		
 		boostersPos = boosters.Position;
 		boosters2Pos = boosters2.Position;
-		
+
+		/// Load purchased upgrades from the shop
+		missileBuy = GameState.Instance.MissileBuy;
+		droneBuy = GameState.Instance.DroneBuy;
+		dodgeBuy = GameState.Instance.DodgeBuy;
+
 		/// Health Bar Functioning
 		healthBar = GetNode<ProgressBar>("../../CanvasLayer_HUD/HUD_Panel/HUD_Bar/Health_Panel/Health_Bar");
 		healthBar.MaxValue = maxHealth;
@@ -400,12 +404,12 @@ public partial class Player : CharacterBody2D
 	}
 	
 	public void AddScore(int amount) {
-		score += amount;
+		GameState.Instance.AddScore(amount);
 		UpdateScoreLabel();
 	}
-	
+
 	private void UpdateScoreLabel() {
-		scoreLabel.Text = score.ToString("D7"); // pads to 7 digits, e.g. 0041920
+		scoreLabel.Text = GameState.Instance.Score.ToString("D7"); // pads to 7 digits, e.g. 0041920
 	}
 	
 	private void Die() {
@@ -414,7 +418,7 @@ public partial class Player : CharacterBody2D
 		
 		GD.Print("Player died");
 		
-		ScoreManager.Instance.SubmitScore(score);
+		ScoreManager.Instance.SubmitScore(GameState.Instance.Score);
 		
 		var gameOverLayer = GetNode<GameOver>("../../CanvasLayer_GameOver");
 		gameOverLayer.ShowGameOver();
