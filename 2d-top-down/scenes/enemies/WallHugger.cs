@@ -1,25 +1,27 @@
 using Godot;
 using System;
 
+/// <summary>
+/// Stationary enemy that clings to a wall facing left or right, shooting at the player
+/// whenever they're within range. Dies in one hit.
+/// </summary>
 public partial class WallHugger : RigidBody2D
 {
-	
 	[Export] public bool FacingRight = true;
 	[Export] public PackedScene BulletScene;
 	[Export] public float ShootInterval = 1.5f;
 	[Export] public float BulletSpeed = 250f;
 	[Export] public float ShootRange = 800f;
-	
-	// Called when the node enters the scene tree for the first time.
+
 	private Marker2D bulletSpawn;
 	private Timer cooldown;
 	private bool canShoot = true;
 	private Player player;
 	private Vector2 direction;
-	
-	//health
+
 	private int health = 1;
-	
+
+	/// <summary>Sets up the facing-direction sprite/bullet spawn, starts the shoot cooldown, and registers as an enemy.</summary>
 	public override void _Ready()
 	{
 		var animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
@@ -41,22 +43,21 @@ public partial class WallHugger : RigidBody2D
 		AddToGroup("enemies");
 	}
 	
+	/// <summary>Frees this enemy once it scrolls off-screen.</summary>
 	private void OnVisibleOnScreenNotifier2DScreenExited()
 	{
 		QueueFree();
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	/// <summary>Prevents shooting while invisible (e.g. hidden via a level override).</summary>
 	public override void _Process(double delta)
 	{
-		//while (animatedSprite2D.frame == 11 && cooldown) {
-			//canShoot = true;
-		//}
 		if (!this.Visible) {
 			canShoot = false;
 		}
 	}
-	
+
+	/// <summary>Fires at the player if they're within ShootRange, called on the shoot cooldown timer.</summary>
 	private void OnShootTimerTimeout()
 	{
 		if (player == null) {
@@ -70,7 +71,8 @@ public partial class WallHugger : RigidBody2D
 		}
 	}
 	
-	public void Shoot() 
+	/// <summary>Fires a bullet toward the direction this WallHugger is facing.</summary>
+	public void Shoot()
 	{
 		if (!canShoot) {
 			return;
@@ -91,13 +93,13 @@ public partial class WallHugger : RigidBody2D
 		
 	}
 	
-	public void TakeDamage(int amount) 
+	/// <summary>Applies damage; on death, disables collision/shooting, plays the explode animation, and awards score.</summary>
+	public void TakeDamage(int amount)
 	{
 		var animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		health -= amount;
-		if (health <= 0) 
+		if (health <= 0)
 		{
-			//turns off collision 
 			var collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
 			collisionShape.SetDeferred("disabled", true);
 			canShoot = false;
@@ -108,8 +110,9 @@ public partial class WallHugger : RigidBody2D
 		}
 	}
 	
-	public void Die() 
+	/// <summary>Removes this enemy from the scene once its death animation finishes.</summary>
+	public void Die()
 	{
-		QueueFree();		
+		QueueFree();
 	}
 }

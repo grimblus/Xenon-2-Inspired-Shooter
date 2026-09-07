@@ -1,6 +1,11 @@
 using Godot;
 using System;
 
+/// <summary>
+/// Level 2's boss: a multi-eyed enemy that follows an optional movement pattern, shoots
+/// at the player, and shows a health bar. On death, awards a large score bonus and
+/// triggers the victory (Congrats) screen.
+/// </summary>
 public partial class BossEnemy : Area2D
 {
 	[Export] public Curve2D Pattern;
@@ -27,7 +32,10 @@ public partial class BossEnemy : Area2D
 	private Timer cooldown;
 	private ProgressBar healthBar;
 
-	// Called when the node enters the scene tree for the first time.
+	/// <summary>
+	/// Randomizes each body part's idle animation, bakes the movement pattern, caches node
+	/// references, initializes the health bar, and registers as an enemy.
+	/// </summary>
 	public override void _Ready()
 	{
 		var bodyAnimatedSprite2D = GetNode<AnimatedSprite2D>("MainBodyAnimatedSprite2D");
@@ -89,7 +97,7 @@ public partial class BossEnemy : Area2D
 		AddToGroup("enemies");
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	/// <summary>Advances along the movement pattern each frame, looping back to the start once it completes.</summary>
 	public override void _Process(double delta)
 	{
 		if (Pattern == null || patternLength <= 0)
@@ -97,7 +105,6 @@ public partial class BossEnemy : Area2D
 
 		distanceTravelled += PatternSpeed * (float)delta;
 
-		//if pattern finish, loop
 		if (distanceTravelled >= patternLength)
 		{
 			distanceTravelled = 0f;
@@ -109,6 +116,7 @@ public partial class BossEnemy : Area2D
 		Position = spawnPosition + rotatedOffset;
 	}
 	
+	/// <summary>Fires at the player, called on the shoot cooldown timer.</summary>
 	private void OnShootTimerTimeout()
 	{
 		if (player == null) {
@@ -116,13 +124,14 @@ public partial class BossEnemy : Area2D
 		}
 		Shoot();
 	}
-	
-	public void Shoot() 
+
+	/// <summary>Fires a bullet aimed directly at the player's current position.</summary>
+	public void Shoot()
 	{
 		if (!canShoot) {
 			return;
 		}
-		
+
 		var bullet = BulletScene.Instantiate<Bullet>();
 		bullet.Shooter = this;
 		bullet.usedByEnemy = true;
@@ -136,8 +145,9 @@ public partial class BossEnemy : Area2D
 		bullet.aimDirection = direction;
 	}
 	
-	public void TakeDamage(int amount) 
-	{		
+	/// <summary>Applies damage to the boss's health bar; on death, hides all body parts, plays the explosion, and disables collision/shooting.</summary>
+	public void TakeDamage(int amount)
+	{
 		var bodyAnimatedSprite2D = GetNode<AnimatedSprite2D>("MainBodyAnimatedSprite2D");
 		var rEyeAnimatedSprite2D = GetNode<AnimatedSprite2D>("RightEyeAnimatedSprite2D");
 		var rEye2AnimatedSprite2D = GetNode<AnimatedSprite2D>("RightEye2AnimatedSprite2D");
@@ -169,6 +179,7 @@ public partial class BossEnemy : Area2D
 		}
 	}
 	
+	/// <summary>Awards the boss-kill score bonus, shows the victory screen, and pauses the game before freeing the boss.</summary>
 	private void Die()
 	{
 		player.Call("AddScore", 10000);

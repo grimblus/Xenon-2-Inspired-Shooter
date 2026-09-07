@@ -1,9 +1,12 @@
 using Godot;
 using System;
 
+/// <summary>
+/// Enemy that follows a fixed movement pattern (a Curve2D, either set directly or baked
+/// from a sibling Path2D) relative to its spawn point, freeing itself once the pattern completes.
+/// </summary>
 public partial class PatternMover : Area2D
 {
-	
 	[Export] public Curve2D Pattern;
 	[Export] public float PatternSpeed = 200.0f;
 	[Export] public Path2D PatternPath;
@@ -13,21 +16,19 @@ public partial class PatternMover : Area2D
 	private float distanceTravelled = 0.0f;
 	private float patternLength;
 	private Player player;
-	
-	// health
+
 	private int health = 1;
-	
-	// Called when the node enters the scene tree for the first time.
+
+	/// <summary>Records the spawn transform, bakes the movement pattern, and registers as an enemy.</summary>
 	public override void _Ready()
 	{
 		var animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		string[] mobTypes = animatedSprite2D.SpriteFrames.GetAnimationNames();
 		animatedSprite2D.Play("default");
-		
+
 		spawnPosition = GlobalPosition;
 		spawnRotation = Rotation;
 
-		//Makes the pattern from the Path2D work
+		// PatternPath (if assigned) takes priority over a directly-set Pattern curve.
 		if (Pattern != null)
 			patternLength = Pattern.GetBakedLength();
 			
@@ -43,15 +44,14 @@ public partial class PatternMover : Area2D
 		AddToGroup("enemies");
 	}
 	
+	/// <summary>Advances along the movement pattern each physics frame, freeing this enemy once the pattern completes.</summary>
 	public override void _PhysicsProcess(double delta)
 	{
-		//if no pattern do nothing
 		if (Pattern == null || patternLength <= 0)
 			return;
 
 		distanceTravelled += PatternSpeed * (float)delta;
 
-		//Once the pattern has been travelled through, queuefree
 		if (distanceTravelled >= patternLength)
 		{
 			QueueFree();
@@ -64,33 +64,30 @@ public partial class PatternMover : Area2D
 		GlobalPosition = spawnPosition + rotatedOffset;
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
-	
+	/// <summary>Frees this enemy once it scrolls off-screen.</summary>
 	private void OnVisibleOnScreenNotifier2DScreenExited()
 	{
 		QueueFree();
 	}
-	
-	public void TakeDamage(int amount) 
+
+	/// <summary>Applies damage; on death, disables collision, plays the explode animation, and awards score.</summary>
+	public void TakeDamage(int amount)
 	{
 		var animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		health -= amount;
-		if (health <= 0) 
+		if (health <= 0)
 		{
-			//turns off collision 
 			var collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
 			collisionShape.SetDeferred("disabled", true);
-			
+
 			animatedSprite2D.Play("explode");
-			animatedSprite2D.AnimationFinished += Die;						
+			animatedSprite2D.AnimationFinished += Die;
 			player.Call("AddScore", 50);
 		}
 	}
-	
-	private void Die() 
+
+	/// <summary>Removes this enemy from the scene once its death animation finishes.</summary>
+	private void Die()
 	{
 		QueueFree();
 	}
