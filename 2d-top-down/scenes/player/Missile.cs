@@ -1,30 +1,34 @@
 using Godot;
 using System;
 
+/// <summary>
+/// A homing-free missile projectile (player's Missile upgrade): travels like a Bullet but
+/// deals direct hit damage plus an area-of-effect explosion to nearby enemies on impact.
+/// </summary>
 public partial class Missile : Area2D
 {
 	[Export] public float Speed = -150f;
 	[Export] public int Damage = 50;
 	[Export] public int ExplosionDamage = 30;
-	
+
 	public bool usedByRightHugger = false;
 	public bool usedByLeftHugger = false;
 	public bool usedByEnemy = false;
 	public bool usedByBoss = false;
 	public Vector2 aimDirection = Vector2.Down;
-	
+
 	public Player player;
 	public Node2D Shooter;
 	private Area2D explosion;
-	
+
+	/// <summary>Caches the explosion hitbox and keeps it disabled until the missile actually explodes.</summary>
 	public override void _Ready() {
 		explosion = GetNode<Area2D>("Explosion");
-		
-		// Keep explosion disabled until the missile explodes
 		explosion.Visible = false;
 		explosion.Monitoring = false;
 	}
-	
+
+	/// <summary>Positions the missile and tints it by who fired it (orange for enemies, blue for the player).</summary>
 	public void Start(Vector2 pos) {
 		GlobalPosition = pos;
 		
@@ -37,11 +41,10 @@ public partial class Missile : Area2D
 		}
 	}
 	
+	/// <summary>Moves the missile each frame in the direction determined by who fired it, and orients its sprite to face that direction.</summary>
 	public override void _Process(double delta) {
-		//Var for shoot direction
 		Vector2 shootDirection;
 
-		//Ifs are for when wallhugger uses
 		if (usedByBoss) {
 			shootDirection = aimDirection * Mathf.Abs(Speed);
 		} else if (usedByRightHugger) {
@@ -49,21 +52,18 @@ public partial class Missile : Area2D
 		} else if (usedByLeftHugger) {
 			shootDirection = new Vector2(-Speed, 0);
 		} else {
-			//Default as player bullet
+			// Default: player missile, travels straight up (negative Speed).
 			shootDirection = new Vector2(0, Speed);
 		}
-		
-		//The rest of the equation
+
 		Position += shootDirection * (float)delta;
-		
-		// Bullet faces where it moves
 		Rotation = shootDirection.Angle() + Mathf.Pi / 2;
 	}
-	
+
+	/// <summary>Deals direct hit damage to an overlapped enemy Area2D, then detonates.</summary>
 	private void OnAreaEntered(Area2D area) {
 		if (area.IsInGroup("enemies") && (usedByEnemy == false)) {
-			//area.Explode();
-			if (area.HasMethod("TakeDamage")) 
+			if (area.HasMethod("TakeDamage"))
 			{
 				area.Call("TakeDamage", Damage);
 			}
@@ -71,20 +71,23 @@ public partial class Missile : Area2D
 		}
 	}
 	
+	/// <summary>Deals direct hit damage to a collided enemy body, then detonates.</summary>
 	private void OnBodyEntered(Node2D body) {
 		if (body.IsInGroup("enemies") && !usedByEnemy) {
 			if (body.HasMethod("TakeDamage"))
 			{
 				body.Call("TakeDamage", Damage);
-			} 
+			}
 			Explode();
 		}
 	}
-	
+
+	/// <summary>
+	/// Stops the missile, enables its explosion hitbox for one physics frame to catch
+	/// nearby enemies for ExplosionDamage, plays the explosion animation, then frees the missile.
+	/// </summary>
 	private async void Explode() {
 		SetProcess(false);
-		
-		//Enable explosion
 		explosion.Visible = true;
 		explosion.Monitoring = true;
 		
@@ -116,6 +119,7 @@ public partial class Missile : Area2D
 		GD.Print("EXPLOSION");
 	}
 	
+	/// <summary>Frees the missile once it leaves the visible screen, so off-screen shots don't linger forever.</summary>
 	private void OnVisibleOnScreenNotifier2DScreenExited() {
 		QueueFree();
 	}

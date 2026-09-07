@@ -1,5 +1,10 @@
 using Godot;
 using System;
+
+/// <summary>
+/// Player-controlled ship: movement, dodging, weapons (bullet/laser/triple-shot/missile),
+/// health, and power-up state (both temporary pickups and permanent shop upgrades).
+/// </summary>
 public partial class Player : CharacterBody2D
 {
 	[Export] public float Speed = 150f;
@@ -81,6 +86,7 @@ public partial class Player : CharacterBody2D
 	private float laserTimer = 0f;
 	private float invincibleTimer = 0f;
 	
+	/// <summary>Caches child node references, restores purchased upgrades from GameState, and initializes the HUD.</summary>
 	public override void _Ready() {
 		ship = GetNode<Sprite2D>("Ship");
 		boosters = GetNode<AnimatedSprite2D>("Ship/Boosters");
@@ -124,12 +130,18 @@ public partial class Player : CharacterBody2D
 		Start();
 	}
 	
+	/// <summary>Positions the ship near the bottom of the screen and configures weapon cooldown timers.</summary>
 	private void Start() {
 		Position = new Vector2(screenSize.X/2, screenSize.Y-64);
 		cooldown.WaitTime = Cooldown;
 		missileCooldown.WaitTime = MissileCooldown;
 	}
 	
+	/// <summary>
+	/// Per-physics-frame update: reflects active power-ups (speed/laser/invincible/shield/drone)
+	/// onto their visuals, handles movement and dodge input, applies knockback, fires on input,
+	/// and ticks down power-up timers.
+	/// </summary>
 	public override void _PhysicsProcess(double delta) {
 		if (speedUp) {
 			Speed = 300f;
@@ -323,6 +335,7 @@ public partial class Player : CharacterBody2D
 		}
 	}
 	
+	/// <summary>Begins a dodge dash in the given direction, if not already on cooldown.</summary>
 	private void StartDodge(Vector2 direction) {
 		if (!canDodge)
 			return;
@@ -336,11 +349,12 @@ public partial class Player : CharacterBody2D
 		dodgeCooldownTimer = DodgeCooldown;
 	}
 	
+	/// <summary>Fires the player's weapons (bullet/laser, triple-shot, missile) according to currently active upgrades.</summary>
 	public void Shoot() {
 		if (!canShoot) {
 			return;
 		}
-		
+
 		canShoot = false;
 		cooldown.Start();
 		shootSfx.Play();
@@ -349,10 +363,7 @@ public partial class Player : CharacterBody2D
 			var b = BulletScene.Instantiate<Bullet>();
 			b.Shooter = this;
 			GetParent().AddChild(b);
-			//new so I can change colour
 			b.Start(bulletSpawn.GlobalPosition);
-			//old
-			//b.GlobalPosition = bulletSpawn.GlobalPosition;
 		}
 		
 		if (tripleShot == true) {
@@ -378,14 +389,17 @@ public partial class Player : CharacterBody2D
 		}
 	}
 	
+	/// <summary>Re-enables firing once the gun cooldown timer elapses.</summary>
 	private void OnGunCooldownTimeout() {
 		canShoot = true;
 	}
-	
+
+	/// <summary>Re-enables missile firing once its cooldown timer elapses.</summary>
 	private void OnMissileCooldownTimeout() {
 		canMissileShoot = true;
 	}
-	
+
+	/// <summary>Applies damage to the player, respecting invincibility/shield, and triggers death at zero health.</summary>
 	public void TakeDamage(int amount) {
 		if (isDead) return;
 		
@@ -403,11 +417,13 @@ public partial class Player : CharacterBody2D
 		}
 	}
 	
+	/// <summary>Restores health, clamped to max, and refreshes the health bar.</summary>
 	public void Heal(int amount) {
 		currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
 		UpdateHealthBar();
 	}
-	
+
+	/// <summary>Syncs the health bar's value and fill colour (green/orange/red by percentage) to current health.</summary>
 	private void UpdateHealthBar() {
 		healthBar.Value = currentHealth;
 		
@@ -425,15 +441,18 @@ public partial class Player : CharacterBody2D
 		healthBar.AddThemeStyleboxOverride("fill", fillStyle);
 	}
 	
+	/// <summary>Adds to the player's score via GameState and refreshes the score label.</summary>
 	public void AddScore(int amount) {
 		GameState.Instance.AddScore(amount);
 		UpdateScoreLabel();
 	}
 
+	/// <summary>Refreshes the score label text from GameState's current score.</summary>
 	private void UpdateScoreLabel() {
 		scoreLabel.Text = GameState.Instance.Score.ToString("D7"); // pads to 7 digits, e.g. 0041920
 	}
-	
+
+	/// <summary>Handles player death: submits the final score, shows the Game Over screen, and pauses the game.</summary>
 	private void Die() {
 		if (isDead) return;
 		isDead = true;
@@ -448,7 +467,7 @@ public partial class Player : CharacterBody2D
 		GetTree().Paused = true;
 	}
 	
-	///For area2ds
+	/// <summary>Handles the player's hurtbox overlapping an Area2D (enemy hitboxes or enemy bullets).</summary>
 	private void HurtboxAreaHit(Area2D area) {
 		if (area.IsInGroup("enemies")) {
 			TakeDamage(10);
@@ -457,8 +476,8 @@ public partial class Player : CharacterBody2D
 			bullet.QueueFree();
 		}
 	}
-	
-	///For rigidbodys, charbodys etc
+
+	/// <summary>Handles the player's hurtbox colliding with a physics body (enemies, e.g. RigidBody2D/CharacterBody2D).</summary>
 	private void HurtboxBodyHit(Node2D body) {
 		if (body.IsInGroup("enemies")) {
 			TakeDamage(10);
@@ -468,22 +487,25 @@ public partial class Player : CharacterBody2D
 		}
 	}
 	
-	///Activate Power Ups and their timers
+	/// <summary>Activates triple-shot for TripleShotDuration seconds.</summary>
 	public void ActivateTripleShot() {
 		tripleShot = true;
 		tripleShotTimer = TripleShotDuration;
 	}
-	
+
+	/// <summary>Activates the speed boost for SpeedUpDuration seconds.</summary>
 	public void ActivateSpeedUp() {
 		speedUp = true;
 		speedUpTimer = SpeedUpDuration;
 	}
-	
+
+	/// <summary>Activates the laser weapon for LaserDuration seconds.</summary>
 	public void ActivateLaser() {
 		laserUp = true;
 		laserTimer = LaserDuration;
 	}
-	
+
+	/// <summary>Activates invincibility for InvincibleDuration seconds.</summary>
 	public void ActivateInvincible() {
 		invincibleUp = true;
 		invincibleTimer = InvincibleDuration;
