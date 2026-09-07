@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dy1edwdqcw8qd"]
 
-[ext_resource type="Script" uid="uid://sqwg2kj06ufq" path="res://Missile.cs" id="1_0uoyr"]
+[ext_resource type="Script" uid="uid://sqwg2kj06ufq" path="res://scenes/player/Missile.cs" id="1_0uoyr"]
 [ext_resource type="Texture2D" uid="uid://begd2o74ap2fr" path="res://graphics/24bit/missile.bmp" id="2_bqn2q"]
 [ext_resource type="Material" uid="uid://vdb0ley6chky" path="res://chroma_key_material.tres" id="3_jvt27"]
 [ext_resource type="Texture2D" uid="uid://dqaiskjuicww7" path="res://graphics/24bit/explode32.bmp" id="4_p1aio"]

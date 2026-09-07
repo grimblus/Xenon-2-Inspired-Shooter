@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" uid="uid://vdb0ley6chky" path="res://chroma_key_material.tres" id="1_1rih2"]
 [ext_resource type="Script" uid="uid://ccbitdcsp5ejt" path="res://BossEnemy.cs" id="1_xldg4"]
-[ext_resource type="PackedScene" uid="uid://bd4bxd4mj0p1n" path="res://bullet.tscn" id="2_046hu"]
+[ext_resource type="PackedScene" uid="uid://bd4bxd4mj0p1n" path="res://scenes/player/bullet.tscn" id="2_046hu"]
 [ext_resource type="Texture2D" uid="uid://b8e53yv24ngf5" path="res://graphics/24bit/boss.bmp" id="2_xldg4"]
 [ext_resource type="Texture2D" uid="uid://dc5nju5kdgs47" path="res://graphics/24bit/bosseyes2.bmp" id="4_sqq6n"]
 [ext_resource type="Texture2D" uid="uid://wwv4lnk5np7" path="res://graphics/24bit/explode64.bmp" id="6_phxyi"]
