@@ -287,12 +287,7 @@ public partial class Player : CharacterBody2D
 		if (Input.IsActionPressed("shoot")) {
 			Shoot();
 		}
-		
-		/// Testing damage (Remove Later)
-		if (Input.IsKeyPressed(Key.H)) {
-			TakeDamage(20);
-		}
-		
+
 		///Power Up Timers
 		if (tripleShotTimer > 0) {
 			tripleShotTimer -= (float)delta;
