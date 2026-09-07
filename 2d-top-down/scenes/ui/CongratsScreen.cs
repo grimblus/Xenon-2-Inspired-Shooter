@@ -50,7 +50,7 @@ public partial class CongratsScreen : CanvasLayer
 	{
 		pulseTween?.Kill();
 		GetTree().Paused = false;
-		GetTree().ChangeSceneToFile("res://main_menu.tscn");
+		GetTree().ChangeSceneToFile("res://scenes/ui/main_menu.tscn");
 	}
 
 	private void Exit()

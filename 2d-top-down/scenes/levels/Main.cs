@@ -17,7 +17,7 @@ public partial class Main : Node
 	public int SpawnTotal = 5;
 
 	[Export]
-	public string ShopScreenPath = "res://shop_screen.tscn";
+	public string ShopScreenPath = "res://scenes/ui/shop_screen.tscn";
 
 	//spawn increment for spawn total
 	private int spawnCount = 0;

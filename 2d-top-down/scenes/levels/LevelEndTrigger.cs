@@ -2,7 +2,7 @@ using Godot;
 
 public partial class LevelEndTrigger : Area2D
 {
-	[Export] public string NextScenePath = "res://shop_screen.tscn";
+	[Export] public string NextScenePath = "res://scenes/ui/shop_screen.tscn";
 
 	public override void _Ready()
 	{

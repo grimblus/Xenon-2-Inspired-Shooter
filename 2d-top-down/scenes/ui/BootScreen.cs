@@ -3,7 +3,7 @@ using Godot;
 public partial class BootScreen : Control
 {
 	[Export] public BootPage[] Pages;
-	[Export] public string NextScenePath = "res://main_menu.tscn";
+	[Export] public string NextScenePath = "res://scenes/ui/main_menu.tscn";
 
 	[Export] public float FadeTime = 0.5f;
 	[Export] public float HoldTime = 2.0f;

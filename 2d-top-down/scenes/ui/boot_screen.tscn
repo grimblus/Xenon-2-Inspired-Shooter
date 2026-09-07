@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c5bvyibdcc6ig"]
 
-[ext_resource type="Script" uid="uid://bv7t7jpv7p71m" path="res://BootScreen.cs" id="1_e05bb"]
-[ext_resource type="Script" uid="uid://dnvvlsoe2axlt" path="res://BootPage.cs" id="2_bootpage"]
-[ext_resource type="Script" uid="uid://2dmconf8f7fq" path="res://BootLogo.cs" id="2_bootlogo"]
+[ext_resource type="Script" uid="uid://bv7t7jpv7p71m" path="res://scenes/ui/BootScreen.cs" id="1_e05bb"]
+[ext_resource type="Script" uid="uid://dnvvlsoe2axlt" path="res://scenes/ui/BootPage.cs" id="2_bootpage"]
+[ext_resource type="Script" uid="uid://2dmconf8f7fq" path="res://scenes/ui/BootLogo.cs" id="2_bootlogo"]
 [ext_resource type="Texture2D" uid="uid://beysguc8u7kp6" path="res://logos/bblogo_clean.png" id="3_nxau8"]
 [ext_resource type="Texture2D" uid="uid://dyquipqyhbawq" path="res://logos/pcflogo_clean.png" id="4_5sw8o"]
 
