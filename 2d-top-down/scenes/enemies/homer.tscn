@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bi44bxmpw1rch"]
 
 [ext_resource type="Texture2D" uid="uid://byrw4xd3dng75" path="res://graphics/24bit/Homing.bmp" id="1_cdceo"]
-[ext_resource type="Script" uid="uid://8lrnotknb6kd" path="res://Homer.cs" id="1_mdlqk"]
+[ext_resource type="Script" uid="uid://8lrnotknb6kd" path="res://scenes/enemies/Homer.cs" id="1_mdlqk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mdlqk"]
 atlas = ExtResource("1_cdceo")
