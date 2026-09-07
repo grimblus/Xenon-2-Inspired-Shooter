@@ -36,4 +36,13 @@ public partial class GameState : Node
 		Score -= amount;
 		return true;
 	}
+
+	/// <summary>Clears score and all purchased upgrades, for a fresh run (on retry after death, or returning to the main menu after winning).</summary>
+	public void Reset()
+	{
+		Score = 0;
+		MissileBuy = false;
+		DroneBuy = false;
+		DodgeBuy = false;
+	}
 }

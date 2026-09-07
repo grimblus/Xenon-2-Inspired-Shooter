@@ -63,10 +63,11 @@ public partial class GameOver : CanvasLayer {
 		}
 	}
 
-	/// <summary>Unpauses the game and reloads the current level from scratch.</summary>
+	/// <summary>Resets score/upgrades, unpauses the game, and reloads the current level from scratch.</summary>
 	private void Retry()
 	{
 		pulseTween?.Kill();
+		GameState.Instance.Reset();
 		GetTree().Paused = false;
 		GetTree().ReloadCurrentScene();
 	}

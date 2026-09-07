@@ -53,10 +53,11 @@ public partial class CongratsScreen : CanvasLayer
 			.SetEase(Tween.EaseType.InOut);
 	}
 
-	/// <summary>Unpauses the game and returns to the main menu.</summary>
+	/// <summary>Resets score/upgrades, unpauses the game, and returns to the main menu.</summary>
 	private void ReturnToMenu()
 	{
 		pulseTween?.Kill();
+		GameState.Instance.Reset();
 		GetTree().Paused = false;
 		GetTree().ChangeSceneToFile("res://scenes/ui/main_menu.tscn");
 	}
