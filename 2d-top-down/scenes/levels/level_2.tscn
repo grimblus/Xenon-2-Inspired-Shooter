@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://f4ndnr4qx3sq"]
 
-[ext_resource type="PackedScene" uid="uid://l2yy24yc20rs" path="res://main.tscn" id="1_nmjpi"]
+[ext_resource type="PackedScene" uid="uid://l2yy24yc20rs" path="res://scenes/levels/main.tscn" id="1_nmjpi"]
 [ext_resource type="Texture2D" uid="uid://yu67bjxmk2mq" path="res://graphics/background/09_toxic/layer2_nebula.png" id="2_xdadj"]
 [ext_resource type="PackedScene" uid="uid://bfryt124r7xim" path="res://scenes/enemies/boss_enemy.tscn" id="3_1y8me"]
 [ext_resource type="AudioStream" uid="uid://pn2y56fo5nxx" path="res://music/14. Beneath Alien Skies (Loop).mp3" id="3_xdadj"]

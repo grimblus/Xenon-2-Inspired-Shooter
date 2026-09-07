@@ -2,7 +2,7 @@ using Godot;
 
 public partial class ShopScreen : Control
 {
-	[Export] public string NextLevelPath = "res://level_2.tscn";
+	[Export] public string NextLevelPath = "res://scenes/levels/level_2.tscn";
 
 	[Export] public int MissilePrice = 100;
 	[Export] public int DronePrice = 150;

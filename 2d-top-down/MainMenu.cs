@@ -2,7 +2,7 @@ using Godot;
 
 public partial class MainMenu : Control
 {
-	[Export] public string StartGamePath = "res://main.tscn";
+	[Export] public string StartGamePath = "res://scenes/levels/main.tscn";
 
 	private Button startGameButton;
 	private Button controlsButton;
