@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c8il7733psbm5" path="res://scenes/levels/Main.cs" id="1_5vw27"]
 [ext_resource type="PackedScene" uid="uid://dcjpfraeg45ep" path="res://scenes/player/player.tscn" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://j1j4r2c2eriq" path="res://graphics/background/08_ice/layer3_stars.png" id="2_4c57u"]
-[ext_resource type="Material" uid="uid://vdb0ley6chky" path="res://chroma_key_material.tres" id="2_7mycd"]
+[ext_resource type="Material" uid="uid://vdb0ley6chky" path="res://resources/chroma_key_material.tres" id="2_7mycd"]
 [ext_resource type="Script" uid="uid://clqt3caa8aewq" path="res://scenes/levels/Scroller.cs" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://ebgn7q4t1v64" path="res://scenes/enemies/pattern_mover.tscn" id="2_kek77"]
 [ext_resource type="Texture2D" uid="uid://105gvxm1n4xt" path="res://graphics/24bit/GAster32.bmp" id="2_lquwl"]

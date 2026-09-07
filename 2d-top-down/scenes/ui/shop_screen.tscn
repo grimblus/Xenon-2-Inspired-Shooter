@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c6ndyb8b7hj6o" path="res://scenes/ui/ShopScreen.cs" id="1_shop"]
 [ext_resource type="FontFile" uid="uid://ccrwa32pufb8n" path="res://fonts/pixel_font.png" id="2_font"]
 [ext_resource type="Texture2D" uid="uid://bp7k8t1xqr7ql" path="res://graphics/background/08_ice/layer1_far.png" id="2_jwjxw"]
-[ext_resource type="Material" uid="uid://vdb0ley6chky" path="res://chroma_key_material.tres" id="3_cjqr7"]
+[ext_resource type="Material" uid="uid://vdb0ley6chky" path="res://resources/chroma_key_material.tres" id="3_cjqr7"]
 [ext_resource type="Texture2D" uid="uid://105gvxm1n4xt" path="res://graphics/24bit/GAster32.bmp" id="4_hf748"]
 [ext_resource type="Script" uid="uid://cyvifbxk7e4j0" path="res://effects/MeteorDefault.cs" id="5_rev71"]
 [ext_resource type="Texture2D" uid="uid://dxaswhgig86c2" path="res://graphics/24bit/GAster64.bmp" id="6_btspr"]

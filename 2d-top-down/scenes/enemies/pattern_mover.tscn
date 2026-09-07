@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://fq0gy0hfsjh2" path="res://scenes/enemies/PatternMover.cs" id="1_55c17"]
 [ext_resource type="Texture2D" uid="uid://bq6g2jspgj28q" path="res://graphics/24bit/drone.bmp" id="1_pj6rf"]
-[ext_resource type="Material" uid="uid://vdb0ley6chky" path="res://chroma_key_material.tres" id="2_h8vdy"]
+[ext_resource type="Material" uid="uid://vdb0ley6chky" path="res://resources/chroma_key_material.tres" id="2_h8vdy"]
 [ext_resource type="Texture2D" uid="uid://dqaiskjuicww7" path="res://graphics/24bit/explode32.bmp" id="4_gybs5"]
 
 [sub_resource type="Curve2D" id="Curve2D_ycdy4"]
