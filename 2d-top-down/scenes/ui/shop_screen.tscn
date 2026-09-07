@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bp7k8t1xqr7ql" path="res://graphics/background/08_ice/layer1_far.png" id="2_jwjxw"]
 [ext_resource type="Material" uid="uid://vdb0ley6chky" path="res://chroma_key_material.tres" id="3_cjqr7"]
 [ext_resource type="Texture2D" uid="uid://105gvxm1n4xt" path="res://graphics/24bit/GAster32.bmp" id="4_hf748"]
-[ext_resource type="Script" uid="uid://cyvifbxk7e4j0" path="res://MeteorDefault.cs" id="5_rev71"]
+[ext_resource type="Script" uid="uid://cyvifbxk7e4j0" path="res://effects/MeteorDefault.cs" id="5_rev71"]
 [ext_resource type="Texture2D" uid="uid://dxaswhgig86c2" path="res://graphics/24bit/GAster64.bmp" id="6_btspr"]
 [ext_resource type="Texture2D" uid="uid://dpxtrwb3flq0q" path="res://graphics/24bit/GAster96.bmp" id="7_qadj7"]
 [ext_resource type="Texture2D" uid="uid://b53daxmgcg63f" path="res://graphics/background/08_ice/layer2_nebula.png" id="8_8510i"]
