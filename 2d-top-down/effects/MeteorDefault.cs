@@ -1,16 +1,14 @@
 using Godot;
-using System;
 
+/// <summary>
+/// Parallax background decoration: plays a meteor's idle animation on loop.
+/// Purely visual, no gameplay behaviour.
+/// </summary>
 public partial class MeteorDefault : AnimatedSprite2D
 {
-	// Called when the node enters the scene tree for the first time.
+	/// <summary>Starts the meteor's default animation as soon as it enters the scene.</summary>
 	public override void _Ready()
 	{
 		Play("default");
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
 	}
 }
