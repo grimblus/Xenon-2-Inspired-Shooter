@@ -182,7 +182,7 @@ theme_override_constants/separation = 10
 [node name="Congrats_Label" type="Label" parent="CanvasLayer_Congrats/Congrats_UI/VBoxContainer" index="0" unique_id=2135140987]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_font")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 50
 text = "Congratulations!"
 horizontal_alignment = 1
 
