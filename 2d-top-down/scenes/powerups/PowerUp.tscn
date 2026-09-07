@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bakjxdy64tk8s"]
 
-[ext_resource type="Script" uid="uid://ckbhb2palrnc7" path="res://PowerUp.cs" id="1_1jq60"]
+[ext_resource type="Script" uid="uid://ckbhb2palrnc7" path="res://scenes/powerups/PowerUp.cs" id="1_1jq60"]
 [ext_resource type="Material" uid="uid://vdb0ley6chky" path="res://chroma_key_material.tres" id="2_8d637"]
 [ext_resource type="Texture2D" uid="uid://bphvhw2ongbc5" path="res://graphics/24bit/PUInvuln.bmp" id="2_xn8ad"]
 [ext_resource type="Texture2D" uid="uid://bxlr0rbrk7etv" path="res://graphics/24bit/PULaser.bmp" id="3_8d637"]
