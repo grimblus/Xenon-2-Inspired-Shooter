@@ -1,6 +1,11 @@
 using Godot;
 using System;
 
+/// <summary>
+/// A pickup orb that grants the player a power-up on contact: either a temporary in-level
+/// boost (triple-shot, speed, laser, shield, invincibility) or a permanent shop-style
+/// upgrade flag (missile/drone/dodge). Appearance and effect are driven by Type.
+/// </summary>
 public partial class PowerUp : Area2D
 {
 	public enum PowerType {
@@ -18,11 +23,13 @@ public partial class PowerUp : Area2D
 	
 	private AnimatedSprite2D orb;
 	
+	/// <summary>Caches the orb sprite and sets its appearance based on Type.</summary>
 	public override void _Ready() {
 		orb = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		SetAppearance();
 	}
-	
+
+	/// <summary>Plays the animation matching this power-up's Type.</summary>
 	private void SetAppearance() {
 		switch (Type) {
 			case PowerType.TripleShot:
@@ -61,13 +68,15 @@ public partial class PowerUp : Area2D
 		orb.Play();
 	}
 	
+	/// <summary>Applies this power-up to the player on contact, then removes the orb.</summary>
 	private void _on_body_entered(Node2D body) {
 		if (body is Player player) {
 			ApplyPowerUp(player);
 			QueueFree();
 		}
 	}
-	
+
+	/// <summary>Grants the player the effect matching this power-up's Type.</summary>
 	private void ApplyPowerUp(Player player) {
 		switch (Type) {
 			case PowerType.TripleShot:
@@ -95,11 +104,11 @@ public partial class PowerUp : Area2D
 				break;
 				
 			case PowerType.DroneBuy:
-				player.missileBuy = true;
+				player.droneBuy = true;
 				break;
-				
+
 			case PowerType.DodgeBuy:
-				player.missileBuy = true;
+				player.dodgeBuy = true;
 				break;
 		}
 	}

@@ -1,6 +1,12 @@
 using Godot;
 using System;
 
+/// <summary>
+/// Drives the auto-scroll effect by continuously moving the whole level (Scroller and its
+/// children: Camera2D, Player) upward, and gives the camera limited "leeway" to follow the
+/// player down when they approach the bottom of the screen, so the ship can never scroll
+/// off the bottom edge.
+/// </summary>
 public partial class Scroller : Node2D
 {
 	[Export] public float ScrollSpeed =80f;
@@ -12,7 +18,7 @@ public partial class Scroller : Node2D
 	private float baseCameraY;
 	private float screenHeight;
 
-	// Called when the node enters the scene tree for the first time.
+	/// <summary>Caches the player/camera references and the camera's starting Y position.</summary>
 	public override void _Ready()
 	{
 		player = GetNode<Player>("Player");
@@ -21,7 +27,7 @@ public partial class Scroller : Node2D
 		screenHeight = GetViewportRect().Size.Y;
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	/// <summary>Scrolls the level upward each frame, and smoothly pulls the camera down to keep the player in view once they cross the bottom deadzone.</summary>
 	public override void _Process(double delta)
 	{
 		Position += new Vector2(0, -ScrollSpeed * (float)delta);
