@@ -1,5 +1,9 @@
 using Godot;
 
+/// <summary>
+/// Between-levels shop: displays current score and three purchasable upgrades
+/// (missile, drone, dodge), spending score via GameState. Next Level and Exit buttons.
+/// </summary>
 public partial class ShopScreen : Control
 {
 	[Export] public string NextLevelPath = "res://scenes/levels/level_2.tscn";
@@ -14,6 +18,7 @@ public partial class ShopScreen : Control
 	private Label scoreLabel;
 	private Tween pulseTween;
 
+	/// <summary>Caches UI node references, wires up navigation buttons, sets up each shop item, and starts the title's pulse animation.</summary>
 	public override void _Ready()
 	{
 		nextLevelButton = GetNode<Button>("VBoxContainer/NextLevel_Button");
@@ -32,12 +37,18 @@ public partial class ShopScreen : Control
 		CallDeferred(nameof(StartPulse));
 	}
 
+	/// <summary>
+	/// Wires up one shop item's price/buy-button UI: shows price or "Owned", and on click
+	/// either completes the purchase (spending score, marking owned) or flashes the price
+	/// red if funds are insufficient.
+	/// </summary>
 	private void SetupItem(string itemNode, int price, System.Func<bool> isOwned, System.Action markOwned)
 	{
 		var priceLabel = GetNode<Label>($"VBoxContainer/Items_HBox/{itemNode}_Panel/{itemNode}_VBox/{itemNode}_Price");
 		var buyButton = GetNode<Button>($"VBoxContainer/Items_HBox/{itemNode}_Panel/{itemNode}_VBox/{itemNode}_Buy");
 		Tween flashTween = null;
 
+		// Briefly flashes the price label red to indicate a failed purchase attempt.
 		void FlashInsufficientFunds()
 		{
 			flashTween?.Kill();
@@ -49,6 +60,7 @@ public partial class ShopScreen : Control
 				.SetEase(Tween.EaseType.Out);
 		}
 
+		// Syncs the price label/buy button to whether this item is currently owned.
 		void Refresh()
 		{
 			if (isOwned())
@@ -85,11 +97,13 @@ public partial class ShopScreen : Control
 		Refresh();
 	}
 
+	/// <summary>Refreshes the score label from GameState's current score.</summary>
 	private void UpdateScoreLabel()
 	{
 		scoreLabel.Text = $"Score: {GameState.Instance.Score:D7}";
 	}
 
+	/// <summary>Loops a gentle scale pulse on the "Shop" title label. Pivot is recomputed via CallDeferred since this runs from _Ready, before layout has necessarily settled.</summary>
 	private void StartPulse()
 	{
 		pulseTween?.Kill();
@@ -108,11 +122,13 @@ public partial class ShopScreen : Control
 			.SetEase(Tween.EaseType.InOut);
 	}
 
+	/// <summary>Advances to the next level.</summary>
 	private void GoToNextLevel()
 	{
 		GetTree().ChangeSceneToFile(NextLevelPath);
 	}
 
+	/// <summary>Quits the game.</summary>
 	private void Exit()
 	{
 		GetTree().Quit();

@@ -1,5 +1,9 @@
 using Godot;
 
+/// <summary>
+/// Victory overlay shown when the boss dies (embedded in level_2.tscn, since it's boss-only).
+/// Displays the final score and offers Main Menu / Exit buttons. Mirrors GameOver's pattern.
+/// </summary>
 public partial class CongratsScreen : CanvasLayer
 {
 	private Button menuButton;
@@ -8,6 +12,7 @@ public partial class CongratsScreen : CanvasLayer
 	private Label scoreLabel;
 	private Tween pulseTween;
 
+	/// <summary>Caches UI node references and wires up the button handlers. Runs even while the game is paused.</summary>
 	public override void _Ready()
 	{
 		ProcessMode = ProcessModeEnum.Always;
@@ -21,6 +26,7 @@ public partial class CongratsScreen : CanvasLayer
 		exitButton.Pressed += Exit;
 	}
 
+	/// <summary>Shows the screen with the current final score and starts the title's pulse animation.</summary>
 	public void ShowCongrats()
 	{
 		Visible = true;
@@ -28,6 +34,7 @@ public partial class CongratsScreen : CanvasLayer
 		StartPulse();
 	}
 
+	/// <summary>Loops a gentle scale pulse on the title label. Pivot is recomputed here (not in _Ready) since by now layout has definitely settled.</summary>
 	private void StartPulse()
 	{
 		pulseTween?.Kill();
@@ -46,6 +53,7 @@ public partial class CongratsScreen : CanvasLayer
 			.SetEase(Tween.EaseType.InOut);
 	}
 
+	/// <summary>Unpauses the game and returns to the main menu.</summary>
 	private void ReturnToMenu()
 	{
 		pulseTween?.Kill();
@@ -53,6 +61,7 @@ public partial class CongratsScreen : CanvasLayer
 		GetTree().ChangeSceneToFile("res://scenes/ui/main_menu.tscn");
 	}
 
+	/// <summary>Quits the game.</summary>
 	private void Exit()
 	{
 		GetTree().Quit();

@@ -1,5 +1,10 @@
 using Godot;
 
+/// <summary>
+/// Plays the startup logo sequence: fades each BootPage's logos in, holds, fades out, then
+/// advances to the next page (or the main menu once all pages are done). Any key/click
+/// press skips straight to the fade-out of the current page.
+/// </summary>
 public partial class BootScreen : Control
 {
 	[Export] public BootPage[] Pages;
@@ -15,12 +20,14 @@ public partial class BootScreen : Control
 
 	private VBoxContainer logoRow;
 
+	/// <summary>Caches the logo row container and starts the sequence at the first page.</summary>
 	public override void _Ready()
 	{
 		logoRow = GetNode<VBoxContainer>("LogoRow");
 		ShowPage(0);
 	}
 
+	/// <summary>Builds the logo row for the given page (sized from each logo's own aspect ratio) and starts its fade-in.</summary>
 	private void ShowPage(int i)
 	{
 		index = i;
@@ -48,6 +55,7 @@ public partial class BootScreen : Control
 		timer = 0f;
 	}
 
+	/// <summary>Advances the current page's fade-in/hold/fade-out state machine each frame.</summary>
 	public override void _Process(double delta)
 	{
 		float dt = (float)delta;
@@ -87,6 +95,7 @@ public partial class BootScreen : Control
 		}
 	}
 
+	/// <summary>Lets the player skip the current page's hold time with any key press or click.</summary>
 	public override void _UnhandledInput(InputEvent @event)
 	{
 		bool skipPressed = (@event is InputEventKey key && key.Pressed && !key.Echo)
@@ -98,6 +107,7 @@ public partial class BootScreen : Control
 		}
 	}
 
+	/// <summary>Jumps straight to the fade-out state, skipping the rest of the current page's hold time.</summary>
 	private void SkipCurrent()
 	{
 		if (state == State.FadeOut) return; // already leaving, let it finish naturally
@@ -105,6 +115,7 @@ public partial class BootScreen : Control
 		timer = 0f;
 	}
 
+	/// <summary>Moves to the next page, or transitions to NextScenePath once all pages have played.</summary>
 	private void AdvanceToNext()
 	{
 		int next = index + 1;

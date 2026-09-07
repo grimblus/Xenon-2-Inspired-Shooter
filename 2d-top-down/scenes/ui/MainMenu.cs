@@ -1,5 +1,9 @@
 using Godot;
 
+/// <summary>
+/// The main menu, reached after the boot sequence: Start Game, a toggleable Controls
+/// panel, and Exit.
+/// </summary>
 public partial class MainMenu : Control
 {
 	[Export] public string StartGamePath = "res://scenes/levels/main.tscn";
@@ -10,6 +14,7 @@ public partial class MainMenu : Control
 	private Control controlsPanel;
 	private Button backButton;
 
+	/// <summary>Caches UI node references and wires up all the button handlers.</summary>
 	public override void _Ready()
 	{
 		startGameButton = GetNode<Button>("VBoxContainer/StartGame_Button");
@@ -24,21 +29,25 @@ public partial class MainMenu : Control
 		backButton.Pressed += HideControls;
 	}
 
+	/// <summary>Starts a new run by loading the first level.</summary>
 	private void StartGame()
 	{
 		GetTree().ChangeSceneToFile(StartGamePath);
 	}
 
+	/// <summary>Opens the controls panel overlay.</summary>
 	private void ShowControls()
 	{
 		controlsPanel.Visible = true;
 	}
 
+	/// <summary>Closes the controls panel overlay.</summary>
 	private void HideControls()
 	{
 		controlsPanel.Visible = false;
 	}
 
+	/// <summary>Quits the game.</summary>
 	private void Exit()
 	{
 		GetTree().Quit();
