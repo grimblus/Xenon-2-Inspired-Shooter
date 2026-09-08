@@ -1226,19 +1226,70 @@ theme_override_fonts/font = ExtResource("13_ycdy4")
 theme_override_font_sizes/font_size = 30
 text = "Back"
 
-[node name="PowerUp-Triple" parent="." unique_id=391771576 instance=ExtResource("20_xgklb")]
+[node name="PowerUps" type="Node2D" parent="." unique_id=1290975359]
+
+[node name="PowerUp-Triple" parent="PowerUps" unique_id=391771576 instance=ExtResource("20_xgklb")]
 position = Vector2(533, -223)
 
-[node name="PowerUp-Laser" parent="." unique_id=1225383786 instance=ExtResource("20_xgklb")]
+[node name="PowerUp-Triple2" parent="PowerUps" unique_id=2125317462 instance=ExtResource("20_xgklb")]
+position = Vector2(648, -5169)
+
+[node name="PowerUp-Triple3" parent="PowerUps" unique_id=1872556675 instance=ExtResource("20_xgklb")]
+position = Vector2(533, -2992)
+
+[node name="PowerUp-Triple4" parent="PowerUps" unique_id=1046530617 instance=ExtResource("20_xgklb")]
+position = Vector2(403, -7347)
+
+[node name="PowerUp-Laser" parent="PowerUps" unique_id=1225383786 instance=ExtResource("20_xgklb")]
 position = Vector2(462, -2061)
 Type = 2
 
-[node name="PowerUp-Shield2" parent="." unique_id=73555786 instance=ExtResource("20_xgklb")]
+[node name="PowerUp-Laser5" parent="PowerUps" unique_id=521796892 instance=ExtResource("20_xgklb")]
+position = Vector2(333, -607)
+Type = 2
+
+[node name="PowerUp-Laser2" parent="PowerUps" unique_id=1181110280 instance=ExtResource("20_xgklb")]
+position = Vector2(592, -4671)
+Type = 2
+
+[node name="PowerUp-Laser3" parent="PowerUps" unique_id=136679223 instance=ExtResource("20_xgklb")]
+position = Vector2(639, -6692)
+Type = 2
+
+[node name="PowerUp-Laser4" parent="PowerUps" unique_id=739109729 instance=ExtResource("20_xgklb")]
+position = Vector2(601, -7344)
+Type = 2
+
+[node name="PowerUp-Shield" parent="PowerUps" unique_id=73555786 instance=ExtResource("20_xgklb")]
 position = Vector2(577, -4363)
 Type = 3
 
-[node name="PowerUp-Shield3" parent="." unique_id=1566522621 instance=ExtResource("20_xgklb")]
-position = Vector2(480, -6443)
+[node name="PowerUp-Shield2" parent="PowerUps" unique_id=1503722714 instance=ExtResource("20_xgklb")]
+position = Vector2(614, -8026)
+Type = 3
+
+[node name="PowerUp-Shield3" parent="PowerUps" unique_id=73167068 instance=ExtResource("20_xgklb")]
+position = Vector2(495, -3432)
+Type = 3
+
+[node name="PowerUp-Invincible" parent="PowerUps" unique_id=1566522621 instance=ExtResource("20_xgklb")]
+position = Vector2(389, -6398)
+Type = 4
+
+[node name="PowerUp-Invincible2" parent="PowerUps" unique_id=916960288 instance=ExtResource("20_xgklb")]
+position = Vector2(411, -1076)
+Type = 4
+
+[node name="PowerUp-Speed" parent="PowerUps" unique_id=981976495 instance=ExtResource("20_xgklb")]
+position = Vector2(480, -5534)
+Type = 1
+
+[node name="PowerUp-Speed2" parent="PowerUps" unique_id=1059423195 instance=ExtResource("20_xgklb")]
+position = Vector2(588, -2468)
+Type = 1
+
+[node name="PowerUp-Speed3" parent="PowerUps" unique_id=1749097987 instance=ExtResource("20_xgklb")]
+position = Vector2(490, -8600)
 Type = 1
 
 [connection signal="timeout" from="MobTimer" to="." method="OnMobTimerTimeout"]

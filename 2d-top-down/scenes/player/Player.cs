@@ -42,6 +42,7 @@ public partial class Player : CharacterBody2D
 	private Timer cooldown;
 	private Timer missileCooldown;
 	private AudioStreamPlayer shootSfx;
+	private AudioStreamPlayer laserSfx;
 	private Marker2D bulletSpawn;
 	private Marker2D tripleBulletSpawn1;
 	private Marker2D tripleBulletSpawn2;
@@ -94,6 +95,7 @@ public partial class Player : CharacterBody2D
 		cooldown = GetNode<Timer>("GunCooldown");
 		missileCooldown = GetNode<Timer>("MissileCooldown");
 		shootSfx = GetNode<AudioStreamPlayer>("ShootSfx");
+		laserSfx = GetNode<AudioStreamPlayer>("LaserSfx");
 		bulletSpawn = GetNode<Marker2D>("BulletSpawn");
 		tripleBulletSpawn1 = GetNode<Marker2D>("TripleBulletSpawn1");
 		tripleBulletSpawn2 = GetNode<Marker2D>("TripleBulletSpawn2");
@@ -155,6 +157,7 @@ public partial class Player : CharacterBody2D
 			laser.SetDeferred("monitoring", true);
 		}
 		else {
+			laserSfx.Stop();
 			laser.Visible = false;
 			laser.ProcessMode = Node.ProcessModeEnum.Disabled;
 			laser.SetDeferred("monitoring", false);
@@ -354,16 +357,16 @@ public partial class Player : CharacterBody2D
 		if (!canShoot) {
 			return;
 		}
-
+		
 		canShoot = false;
 		cooldown.Start();
-		shootSfx.Play();
-
+		
 		if (!laserUp) {
 			var b = BulletScene.Instantiate<Bullet>();
 			b.Shooter = this;
 			GetParent().AddChild(b);
 			b.Start(bulletSpawn.GlobalPosition);
+			shootSfx.Play();
 		}
 		
 		if (tripleShot == true) {
@@ -371,11 +374,13 @@ public partial class Player : CharacterBody2D
 			b1.Shooter = this;
 			GetParent().AddChild(b1);
 			b1.Start(tripleBulletSpawn1.GlobalPosition);
+			shootSfx.Play();
 			
 			var b2 = BulletScene.Instantiate<Bullet>();
 			b2.Shooter = this;
 			GetParent().AddChild(b2);
 			b2.Start(tripleBulletSpawn2.GlobalPosition);
+			shootSfx.Play();
 		}
 		
 		if (missileBuy == true && canMissileShoot == true) {
@@ -501,6 +506,7 @@ public partial class Player : CharacterBody2D
 
 	/// <summary>Activates the laser weapon for LaserDuration seconds.</summary>
 	public void ActivateLaser() {
+		laserSfx.Play();
 		laserUp = true;
 		laserTimer = LaserDuration;
 	}
