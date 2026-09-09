@@ -58,6 +58,7 @@ godot --headless --path . --quit   # loads the boot scene and exits, useful for 
 - Parallax background art: [Nebula Parallax Vol. 2](https://nebulakit.itch.io/nebula-parallax-vol2)
 - Sci-fi game music pack: [30 Sci-fi Space Tracks Music Pack](https://alkakrab.itch.io/sci-fi-music-pack-vol-3)
 - Short laser gun shot: [Mixkit — Space Shooter Sound Effects](https://mixkit.co/free-sound-effects/space-shooter/)
+- Continuous laser: [Pixabay - freesound_community](https://pixabay.com/sound-effects/search/laser/)
 
 ### Team
 
