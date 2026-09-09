@@ -9,6 +9,8 @@ public partial class PauseScreen : CanvasLayer
 	private Button resumeButton;
 	private Button retryButton;
 	private Button exitButton;
+	private Label pauseLabel;
+	private Tween pulseTween;
 
 	/// <summary>Caches UI node references and wires up the button handlers. Runs even while the game is paused.</summary>
 	public override void _Ready()
@@ -17,9 +19,27 @@ public partial class PauseScreen : CanvasLayer
 		resumeButton = GetNode<Button>("Pause_UI/VBoxContainer/Resume_Button");
 		retryButton = GetNode<Button>("Pause_UI/VBoxContainer/Retry_Button");
 		exitButton = GetNode<Button>("Pause_UI/VBoxContainer/Exit_Button");
+		pauseLabel = GetNode<Label>("Pause_UI/VBoxContainer/Pause_Label");
 		resumeButton.Pressed += Resume;
 		retryButton.Pressed += Retry;
 		exitButton.Pressed += Exit;
+		pauseLabel.PivotOffset = pauseLabel.Size / 2f;
+		pauseLabel.Resized += () => pauseLabel.PivotOffset = pauseLabel.Size / 2f;
+	}
+
+	/// <summary>Loops a gentle scale pulse on the title label. Pivot is recomputed here (not just in _Ready) since by now layout has definitely settled.</summary>
+	private void StartPulse()
+	{
+		pulseTween?.Kill();
+		pauseLabel.PivotOffset = pauseLabel.Size / 2f;
+		pulseTween = pauseLabel.CreateTween();
+		pulseTween.SetLoops();
+		pulseTween.TweenProperty(pauseLabel, "scale", new Vector2(1.15f, 1.15f), 0.6f)
+			.SetTrans(Tween.TransitionType.Sine)
+			.SetEase(Tween.EaseType.InOut);
+		pulseTween.TweenProperty(pauseLabel, "scale", Vector2.One, 0.6f)
+			.SetTrans(Tween.TransitionType.Sine)
+			.SetEase(Tween.EaseType.InOut);
 	}
 
 	/// <summary>Toggles the pause menu on the pause action, unless the GameOver/Congrats screen already has focus.</summary>
@@ -48,16 +68,18 @@ public partial class PauseScreen : CanvasLayer
 		return true;
 	}
 
-	/// <summary>Shows the pause menu and freezes the game tree.</summary>
+	/// <summary>Shows the pause menu, freezes the game tree, and starts the title's pulse animation.</summary>
 	private void Open()
 	{
 		Visible = true;
 		GetTree().Paused = true;
+		StartPulse();
 	}
 
 	/// <summary>Hides the pause menu and unfreezes the game tree.</summary>
 	private void Resume()
 	{
+		pulseTween?.Kill();
 		Visible = false;
 		GetTree().Paused = false;
 	}
@@ -65,6 +87,7 @@ public partial class PauseScreen : CanvasLayer
 	/// <summary>Resets score/upgrades, unpauses the game, and reloads the current level from scratch.</summary>
 	private void Retry()
 	{
+		pulseTween?.Kill();
 		GameState.Instance.Reset();
 		GetTree().Paused = false;
 		GetTree().ReloadCurrentScene();
