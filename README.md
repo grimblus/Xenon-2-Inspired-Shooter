@@ -38,7 +38,7 @@ godot --headless --path . --quit   # loads the boot scene and exits, useful for 
 2d-top-down/
 ├── scenes/
 │   ├── player/     Player, Bullet, Missile, Laser, Drone, laser.tres
-│   ├── enemies/     WallHugger, PatternMover, Homer, BossEnemy
+│   ├── enemies/     WallHugger, PatternMover, BossEnemy
 │   ├── powerups/     PowerUp pickup
 │   ├── levels/     Main, Scroller, LevelEndTrigger, main.tscn, level_2.tscn
 │   └── ui/     Boot sequence, main menu, shop, pause menu, game over, high scores, victory screen
