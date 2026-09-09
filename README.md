@@ -24,6 +24,7 @@ godot --headless --path . --quit   # loads the boot scene and exits, useful for 
 - **Move:** WASD or Arrow Keys
 - **Shoot:** Space or Left Click
 - **Dodge:** double-tap a direction (requires the Dodge upgrade from the shop)
+- **Pause:** Esc (in-level only) — brings up Resume / Retry / Exit
 
 (Also shown in-game via the Controls button on the main menu.)
 
@@ -40,7 +41,7 @@ godot --headless --path . --quit   # loads the boot scene and exits, useful for 
 │   ├── enemies/     WallHugger, PatternMover, Homer, BossEnemy
 │   ├── powerups/     PowerUp pickup
 │   ├── levels/     Main, Scroller, LevelEndTrigger, main.tscn, level_2.tscn
-│   └── ui/     Boot sequence, main menu, shop, game over, high scores, victory screen
+│   └── ui/     Boot sequence, main menu, shop, pause menu, game over, high scores, victory screen
 ├── autoload/     GameState (score/currency, purchased upgrades), ScoreManager (high scores)
 ├── effects/     Parallax background decoration scripts
 ├── resources/     Shared materials/shaders (chroma key, etc.)

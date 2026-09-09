@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://cvtvrf2dox2ww" path="res://scenes/levels/LevelEndTrigger.cs" id="17_leveltrigger"]
 [ext_resource type="Script" uid="uid://dgkt0weax3hya" path="res://scenes/ui/HighScores.cs" id="19_cegan"]
 [ext_resource type="PackedScene" uid="uid://bakjxdy64tk8s" path="res://scenes/powerups/PowerUp.tscn" id="20_xgklb"]
+[ext_resource type="Script" uid="uid://ur5yzdn8xix62" path="res://scenes/ui/PauseScreen.cs" id="21_pause"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jq2sk"]
 atlas = ExtResource("2_lquwl")
@@ -1225,6 +1226,69 @@ grow_vertical = 0
 theme_override_fonts/font = ExtResource("13_ycdy4")
 theme_override_font_sizes/font_size = 30
 text = "Back"
+
+[node name="CanvasLayer_Pause" type="CanvasLayer" parent="." unique_id=3820165441]
+process_mode = 3
+visible = false
+script = ExtResource("21_pause")
+
+[node name="Pause_UI" type="Control" parent="CanvasLayer_Pause" unique_id=3820165442]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer_Pause/Pause_UI" unique_id=3820165443]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.64705884)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer_Pause/Pause_UI" unique_id=3820165444]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Pause_Label" type="Label" parent="CanvasLayer_Pause/Pause_UI/VBoxContainer" unique_id=3820165445]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("13_ycdy4")
+theme_override_font_sizes/font_size = 80
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="Resume_Button" type="Button" parent="CanvasLayer_Pause/Pause_UI/VBoxContainer" unique_id=3820165446]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("13_ycdy4")
+theme_override_font_sizes/font_size = 32
+text = "Resume (Esc)"
+
+[node name="Retry_Button" type="Button" parent="CanvasLayer_Pause/Pause_UI/VBoxContainer" unique_id=3820165447]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("13_ycdy4")
+theme_override_font_sizes/font_size = 32
+text = "Retry"
+
+[node name="Exit_Button" type="Button" parent="CanvasLayer_Pause/Pause_UI/VBoxContainer" unique_id=3820165448]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("13_ycdy4")
+theme_override_font_sizes/font_size = 32
+text = "Exit"
 
 [node name="PowerUps" type="Node2D" parent="." unique_id=1290975359]
 

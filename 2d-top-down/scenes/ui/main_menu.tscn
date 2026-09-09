@@ -708,6 +708,12 @@ theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 20
 text = "Shoot: Space / Left Click"
 
+[node name="Pause" type="Label" parent="ControlsPanel/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 20
+text = "Pause: Esc"
+
 [node name="Back_Button" type="Button" parent="ControlsPanel/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_font")
