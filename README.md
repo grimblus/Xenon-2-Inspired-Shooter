@@ -70,6 +70,14 @@ godot --headless --path . --quit   # loads the boot scene and exits, useful for 
 └── docs/     Assignment specification and project plan
 ```
 
+## Balance
+
+Current numbers, not the result of a dedicated tuning pass — worth revisiting if a level feels too easy, too grindy, or too stingy with score.
+
+- **Shop prices** (`ShopScreen.cs`): Missile 100 pts, Drone 150 pts, Dodge 200 pts — 450 pts to own everything
+- **Score per enemy**: `PatternMover` 50 (level 1 waves), `WallHugger` 100 (38 placed in level 1), Boss 20 per hit landed + 10,000 on kill (level 2)
+- **Power-up placement**: 17 hand-placed in level 1 (4 triple-shot, 5 laser, 3 shield, 2 invincible, 3 speed); level 2 has none — whatever's still active going into the boss fight is whatever you brought with you
+
 ## Known Issues
 
 - Level design currently does not account for backwards (upward/downward) player movement relative to the auto-scroll direction. Moving against the scroll can cause movement bugs or leave the player stuck.
