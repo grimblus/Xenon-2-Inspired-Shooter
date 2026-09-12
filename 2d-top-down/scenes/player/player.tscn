@@ -308,6 +308,10 @@ position = Vector2(0, -270)
 scale = Vector2(2, 540)
 texture = ExtResource("8_dw050")
 
+[node name="DamageTickTimer" type="Timer" parent="Laser" unique_id=-474801847]
+wait_time = 0.2
+autostart = true
+
 [node name="Shield" type="Sprite2D" parent="." unique_id=993496730]
 visible = false
 scale = Vector2(1.09375, 1.09375)
@@ -339,5 +343,3 @@ polygon = PackedVector2Array(-31, 0, -31, 12, -17, 19, -17, 27, -13, 31, 13, 31,
 
 [connection signal="timeout" from="GunCooldown" to="." method="OnGunCooldownTimeout"]
 [connection signal="timeout" from="MissileCooldown" to="." method="OnMissileCooldownTimeout"]
-[connection signal="area_entered" from="Laser" to="Laser" method="OnLaserAreaEntered"]
-[connection signal="body_entered" from="Laser" to="Laser" method="OnLaserBodyEntered"]
