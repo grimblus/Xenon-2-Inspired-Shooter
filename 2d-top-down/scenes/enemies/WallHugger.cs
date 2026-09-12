@@ -5,7 +5,7 @@ using System;
 /// Stationary enemy that clings to a wall facing left or right, shooting at the player
 /// whenever they're within range. Dies in one hit.
 /// </summary>
-public partial class WallHugger : RigidBody2D
+public partial class WallHugger : StaticBody2D
 {
 	[Export] public bool FacingRight = true;
 	[Export] public PackedScene BulletScene;
