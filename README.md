@@ -100,4 +100,7 @@ Current numbers, not the result of a dedicated tuning pass — worth revisiting 
 
 ### Team
 
-Aaron Tran · Andrew Loi · Donovan Ong · Jayden Bach
+- **Aaron Tran** — Gameplay/Core Programmer & Technical/Optimization Lead: player controls, shooting, collision, performance/FPS profiling, build export
+- **Andrew Loi** — Enemy/AI Programmer: enemy behaviours, wave spawner, difficulty scaling
+- **Donovan Ong** — Visual & Audio Lead, Documentation & Project Lead: parallax layers, asset integration, SFX/music, README, design doc, Gantt/RACI upkeep, repo hygiene
+- **Jayden Bach** — Systems Programmer: health, scoring, power-ups, game over/restart logic
