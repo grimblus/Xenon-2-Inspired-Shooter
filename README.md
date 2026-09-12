@@ -74,6 +74,14 @@ godot --headless --path . --quit   # loads the boot scene and exits, useful for 
 
 - Level design currently does not account for backwards (upward/downward) player movement relative to the auto-scroll direction. Moving against the scroll can cause movement bugs or leave the player stuck.
 
+## Future Work
+
+- A piercing/splash power-up, so awkwardly-angled `WallHugger`s tucked into corners don't require a direct hit to clear
+- More enemy types beyond `PatternMover`/`WallHugger`/`BossEnemy` — e.g. a mine layer, a shielded enemy, or one that only dies to a specific weapon
+- Additional levels beyond the current two, with their own boss and difficulty curve
+- Fix backwards-movement handling (see Known Issues) so levels support non-linear player movement
+- Per-level or endless difficulty scaling instead of fixed spawn parameters
+
 ## Credits
 
 - Graphics starter kit (ships, enemies, pickups, UI): provided by COSC2349 (Games Studio 2)
