@@ -343,3 +343,5 @@ polygon = PackedVector2Array(-31, 0, -31, 12, -17, 19, -17, 27, -13, 31, 13, 31,
 
 [connection signal="timeout" from="GunCooldown" to="." method="OnGunCooldownTimeout"]
 [connection signal="timeout" from="MissileCooldown" to="." method="OnMissileCooldownTimeout"]
+[connection signal="area_entered" from="Laser" to="Laser" method="OnLaserAreaEntered"]
+[connection signal="body_entered" from="Laser" to="Laser" method="OnLaserBodyEntered"]
