@@ -2,6 +2,27 @@
 
 A 2D top-down scrolling shoot 'em up built for COSC2349 (Games Studio 2), inspired by the Amiga/Atari ST classic *Xenon 2: The Megablast*. Fly through parallax-scrolling levels, fight enemy waves and a boss, spend earned score in a shop between levels, and try to survive.
 
+## Assignment Requirements
+
+Built against the COSC2349 Assignment 2 spec (`2d-top-down/docs/SPECIFICATION.md`).
+
+**Required features**
+- Parallax scrolling — layered `ParallaxBackground`/`ParallaxLayer` (stars, nebula, animated meteors) in both levels
+- Enemy waves — batched `PatternMover` spawns (`Main.cs`), stationary `WallHugger` shooters, and a multi-part `BossEnemy` fight on level 2
+- Power-ups — `PowerUp.cs`: 5 temporary pickups (triple-shot, speed, laser, shield, invincibility) + 3 permanent shop upgrades (missile, drone, dodge)
+- Player-controlled spaceship — `Player.cs`, full movement/shoot/dodge/health kit
+
+**Core mechanics**
+- *Physics:* `CharacterBody2D` + `MoveAndSlide` for the player; everything else is signal-driven `Area2D`/`StaticBody2D` overlap detection — no unused `RigidBody2D` simulation
+- *Rendering:* sprites/tiles built from shared texture atlases for automatic draw-call batching, plus `ParallaxBackground` layers and `CanvasLayer` UI overlays
+- *Collision:* layer-separated (`Terrain`/`Ship`), `"enemies"` group filtering, engine broadphase via `area_entered`/`body_entered` signals rather than manual per-frame checks
+- *Optimization:* off-screen bullets/enemies self-free via `VisibleOnScreenNotifier2D`; stationary enemies use `StaticBody2D` instead of a simulated body; shared atlases keep draw calls low
+
+**Aiming for the top rubric band**
+- *Functionality (13–16):* all four required features implemented and working end-to-end across 2 levels, a shop, and a boss fight — fully playable
+- *Technical Implementation (10–12):* layered project structure (`scenes/`, `autoload/`, `effects/`, `resources/`), signal-driven collision, batched rendering, no needless physics overhead — targets a smooth 60 FPS
+- *Creativity & Polish (3–4):* original music/SFX, animated parallax, pulsing UI, shield/pause/high-score polish, chroma-key shader on meteor sprites
+
 ## Version
 
 - **Engine:** Godot 4.7.2 (.NET / C# via `GodotSharp`)
