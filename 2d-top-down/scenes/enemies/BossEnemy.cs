@@ -145,7 +145,7 @@ public partial class BossEnemy : Area2D
 		bullet.aimDirection = direction;
 	}
 	
-	/// <summary>Applies damage to the boss's health bar; on death, hides all body parts, plays the explosion, and disables collision/shooting.</summary>
+	/// <summary>Applies damage to the boss's health bar; on death, hides all body parts, plays the explosion, grants player a flat 10,000 score, and disables collision/shooting.</summary>
 	public void TakeDamage(int amount)
 	{
 		var bodyAnimatedSprite2D = GetNode<AnimatedSprite2D>("MainBodyAnimatedSprite2D");
@@ -179,7 +179,7 @@ public partial class BossEnemy : Area2D
 		}
 	}
 	
-	/// <summary>Awards the boss-kill score bonus (a flat 12,000: the original 10,000 kill bonus plus a 2,000 replacement for the old per-hit scoring), shows the victory screen, and pauses the game before freeing the boss.</summary>
+	/// <summary>Shows the victory screen for killing boss (shows the victory screen, and pauses the game before freeing the boss.</summary>
 	private void Die()
 	{
 		var congratsLayer = GetNode<CongratsScreen>("/root/Main/CanvasLayer_Congrats");
