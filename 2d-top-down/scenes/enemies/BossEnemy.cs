@@ -161,6 +161,7 @@ public partial class BossEnemy : Area2D
 		currentHealth = Mathf.Clamp(currentHealth - amount, 0, maxHealth);
 		healthBar.Value = currentHealth;
 		if (currentHealth <= 0) {
+			player.Call("AddScore", 10000);
 			bodyAnimatedSprite2D.Visible = false;
 			rEyeAnimatedSprite2D.Visible = false;
 			rEye2AnimatedSprite2D.Visible = false;
@@ -181,8 +182,6 @@ public partial class BossEnemy : Area2D
 	/// <summary>Awards the boss-kill score bonus (a flat 12,000: the original 10,000 kill bonus plus a 2,000 replacement for the old per-hit scoring), shows the victory screen, and pauses the game before freeing the boss.</summary>
 	private void Die()
 	{
-		player.Call("AddScore", 12000);
-
 		var congratsLayer = GetNode<CongratsScreen>("/root/Main/CanvasLayer_Congrats");
 		congratsLayer.ShowCongrats();
 		GetTree().Paused = true;
